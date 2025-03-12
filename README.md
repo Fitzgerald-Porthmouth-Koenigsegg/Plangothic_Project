@@ -20,9 +20,6 @@
 ## 收录范围
 本字体主要支援扩展B区至扩展J区的全部汉字，其他区块有零星的字符。
 
-> [!WARNING]
->
-> 该字体目前处于未完成阶段，仍然缺少大量汉字。
 ## 贡献者
 - 主制作：**[Fitzgerald](https://github.com/Fitzgerald-Porthmouth-Koenigsegg)**、[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)
 - 联合制作：Magnetshroom、[Humework](https://github.com/Humework-Gollayosh-Carzonharch-Hu)
