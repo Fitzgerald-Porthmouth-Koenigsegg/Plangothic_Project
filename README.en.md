@@ -19,9 +19,6 @@ Plangothic Project (Chinese: 遍黑体项目) is based on [Source Han Sans](http
 ## Coverage
 This font mainly supports all CJK ideographs from extension B to extension J, with sporadic character in other blocks.
 
-> [!WARNING]
->
-> This font is currently uncompleted 和 still lacks large numbers of CJK ideographs.
 ## Contributors
 - Main: **[Fitzgerald](https://github.com/Fitzgerald-Porthmouth-Koenigsegg)**, [Usagixineist](https://github.com/Usagixineist), [WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)
 - Collab: Magnetshroom, [Humework](https://github.com/Humework-Gollayosh-Carzonharch-Hu)

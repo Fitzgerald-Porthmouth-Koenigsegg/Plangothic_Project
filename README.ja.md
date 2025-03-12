@@ -19,9 +19,6 @@ Plangothic Project（プランゴシックプロジェクト、中国語：遍�
 ## 収録範囲
 本フォントは主に拡張漢字B区から拡張漢字J区までのすべてを支援し、その他のブロックには散発的な文字がある。
 
-> [!WARNING]
->
-> このフォントは現在未完成の段階にあり、まだ大量の漢字が不足している。
 ## 主な開発メンバー
 - 制作コア：**[Fitzgerald](https://github.com/Fitzgerald-Porthmouth-Koenigsegg)**、[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)
 - 共同制作：Magnetshroom、[Humework](https://github.com/Humework-Gollayosh-Carzonharch-Hu)

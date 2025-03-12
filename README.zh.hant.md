@@ -20,9 +20,6 @@
 ## 收錄範圍
 本字體主要支援擴展B區至擴展J區的全部漢字，其他區塊有零星的字元。
 
-> [!WARNING]
->
-> 該字體目前處於未完成階段，仍然缺少大量漢字。
 ## 貢獻者
 - 主製作：**[Fitzgerald](https://github.com/Fitzgerald-Porthmouth-Koenigsegg)**、[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)
 - 聯合製作：Magnetshroom、[Humework](https://github.com/Humework-Gollayosh-Carzonharch-Hu)
