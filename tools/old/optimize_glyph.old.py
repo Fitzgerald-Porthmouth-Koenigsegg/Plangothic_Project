@@ -65,7 +65,6 @@ def process_line_endpoints(glyph):
 
 def processing_optimization_glyph_extension(glyph):
     glyph.simplify(0.5, ('mergelines', 'smoothcurves', 'choosehv', 'removesingletonpoints' ), 0.3, 0, 0.5)
-    glyph.addExtrema()
     glyph.width = int(round(glyph.width / 10.0) * 10)
     glyph.balance()
     glyph.autoHint()
