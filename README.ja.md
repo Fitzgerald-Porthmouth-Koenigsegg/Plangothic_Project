@@ -1,6 +1,6 @@
 <div align="center">
 
-![Logo Image](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/blob/main/pic/31fix.svg)
+![Logo Image](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/blob/main/documentation/samples/31fix.svg)
 
 [簡體字中国語 / 简体中文](README.md) | [英語 / English](README.en.md) | [繁體字中國語 / 繁體中文](README.zh.hant.md)
 

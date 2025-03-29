@@ -1,6 +1,6 @@
 <div align="center">
 
-![Logo Image](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/blob/main/pic/31fix.svg)
+![Logo Image](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/blob/main/documentation/samples/31fix.svg)
 
 [日文 / 日本語](README.ja.md) | [英文 / English](README.en.md) | [簡體中文 / 简体中文](README.md)
 
@@ -96,7 +96,7 @@
 - 您向本項目捐助，即默認表明您贊同我們的理念，並願意以此種方式支持我們的發展。捐助者提出的意見會被認真考慮，但捐款再多也沒有權利以個人意志改變本項目的宗旨和公益性質。
 - 捐助後如願意，可留言寫明您的捐款時間和金額，感謝您對本項目的支持。
 - 所有捐助資金均會逐一記錄，並將全部用於該項目的技術支援等開銷，不會被私用。
-![Sponsor Image](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/blob/main/pic/1650383987393.svg)
+![Sponsor Image](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/blob/main/documentation/samples/1650383987393.svg)
 
 ## 联系方式
 您在使用本字體的過程中如有任何問題和建議，歡迎反饋。您可在項目中提交issue（嚴禁提交無關內容），也可以通過下列聯繫方式進行反饋：
