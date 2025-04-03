@@ -1,0 +1,122 @@
+name: Build Fonts
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'sources/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y p7zip-full fontforge python3-fontforge python3-pip ttfautohint parallel
+          pip install fonttools brotli
+
+      - name: Extract TTX files
+        run: |
+          mkdir -p temp
+          7z x sources/PlangothicP1-Regular.ttx.7z -otemp/
+          7z x sources/PlangothicP2-Regular.ttx.7z -otemp/
+
+      - name: Convert TTX to TTF
+        run: |
+          mkdir -p build
+          find temp -name "*.ttx" | parallel ttx -o build/{/.}.ttf {}
+
+      - name: Optimize glyphs
+        run: |
+          mkdir -p optimized
+          find build -name "Plangothic*-Regular.ttf" | parallel fontforge -script tools/optimize_glyph.py {} -s 0.5
+          mv build/*_merge_glyphs.ttf optimized/
+
+      - name: Convert to OTF
+        run: |
+          mkdir -p fonts/otf
+          find optimized -name "Plangothic*-Regular_merge_glyphs.ttf" | parallel 'fontforge -script tools/convert_font.py {} -f otf'
+
+          for ttf in optimized/Plangothic*-Regular_merge_glyphs.ttf; do
+            base=$(basename "$ttf" _merge_glyphs.ttf)
+            if [ -f "${base}_merge_glyphs.otf" ]; then
+              echo "Found OTF in current directory"
+              mv "${base}_merge_glyphs.otf" fonts/otf/${base}.otf
+            elif [ -f "optimized/${base}_merge_glyphs.otf" ]; then
+              echo "Found OTF in optimized directory"
+              mv "optimized/${base}_merge_glyphs.otf" fonts/otf/${base}.otf
+            else
+              echo "WARNING: Could not find OTF file for ${base} in expected locations."
+              find . -name "*${base}*.otf" -o -name "*Plangothic*.otf"
+            fi
+          done
+
+      - name: Convert to WOFF2
+        run: |
+          mkdir -p fonts/web
+          find optimized -name "Plangothic*-Regular_merge_glyphs.ttf" | parallel 'fontforge -script tools/convert_font.py {} -f woff2'
+
+          for ttf in optimized/Plangothic*-Regular_merge_glyphs.ttf; do
+            base=$(basename "$ttf" _merge_glyphs.ttf)
+            if [ -f "${base}_merge_glyphs.woff2" ]; then
+              echo "Found WOFF2 in current directory"
+              mv "${base}_merge_glyphs.woff2" fonts/web/${base}.woff2
+            elif [ -f "optimized/${base}_merge_glyphs.woff2" ]; then
+              echo "Found WOFF2 in optimized directory"
+              mv "optimized/${base}_merge_glyphs.woff2" fonts/web/${base}.woff2
+            else
+              echo "WARNING: Could not find WOFF2 file for ${base} in expected locations."
+              find . -name "*${base}*.woff2" -o -name "*Plangothic*.woff2"
+            fi
+          done
+
+      - name: Create static TTF files
+        run: |
+          mkdir -p fonts/static
+          cp optimized/*_merge_glyphs.ttf fonts/static/
+          for ttf in fonts/static/*_merge_glyphs.ttf; do
+            mv "$ttf" "${ttf%_merge_glyphs.ttf}.ttf"
+          done
+
+      - name: Merge TTF to TTC
+        run: |
+          python3 - <<EOF
+          from fontTools.ttLib import TTFont
+          from fontTools.ttLib.tables._n_a_m_e import NameRecord
+          from fontTools.ttLib.ttCollection import TTCollection
+
+          font1 = TTFont("fonts/static/PlangothicP1-Regular.ttf")
+          font2 = TTFont("fonts/static/PlangothicP2-Regular.ttf")
+
+          ttc = TTCollection()
+          ttc.fonts = [font1, font2]
+
+          ttc.save("fonts/static/Plangothic.ttc")
+          EOF
+
+      - name: Publish Font Assets
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: fonts
+          branch: build
+          target-folder: fonts
+          clean: false
+          clean-exclude: |
+            .nojekyll
+            CNAME
+          path-option: skip
+
+      - name: Debug on failure
+        if: failure()
+        run: |
+          echo "Debug information on failure:"
+          echo "Directory structure:"
+          find . -type f -name "*.ttf" -o -name "*.otf" -o -name "*.woff2" | sort
+          echo "Last commands output:"
+          cat $HOME/.bash_history | tail -n 20
