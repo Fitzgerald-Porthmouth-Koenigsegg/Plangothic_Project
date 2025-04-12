@@ -21,16 +21,11 @@ jobs:
           sudo apt-get install -y p7zip-full fontforge python3-fontforge python3-pip ttfautohint parallel
           pip install fonttools brotli
 
-      - name: Extract TTX files
+      - name: Extract TTF files
         run: |
           mkdir -p temp
-          7z x sources/PlangothicP1-Regular.ttx.7z -otemp/
-          7z x sources/PlangothicP2-Regular.ttx.7z -otemp/
-
-      - name: Convert TTX to TTF
-        run: |
-          mkdir -p build
-          find temp -name "*.ttx" | parallel ttx -o build/{/.}.ttf {}
+          7z x sources/PlangothicP1-Regular.7z -obuild/
+          7z x sources/PlangothicP2-Regular.7z -obuild/
 
       - name: Optimize glyphs
         run: |
