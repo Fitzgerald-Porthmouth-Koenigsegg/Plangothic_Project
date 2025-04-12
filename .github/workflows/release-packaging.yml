@@ -1,0 +1,130 @@
+name: Release Packaging
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      font_name:
+        description: 'Font name prefix for packages (overrides default)'
+        required: false
+        default: ''
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up environment
+        id: setup
+        run: |
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+            echo "Running for release tag: $VERSION"
+          else
+            VERSION=manual-$(date +'%Y%m%d%H%M%S')
+            echo "Running manual workflow with version: $VERSION"
+          fi
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
+
+          FONT_NAME="Plangothic"
+
+          if [ -n "${{ github.event.inputs.font_name }}" ]; then
+            FONT_NAME="${{ github.event.inputs.font_name }}"
+            echo "Overriding font name from workflow input"
+          fi
+
+          echo "FONT_NAME=${FONT_NAME}" >> $GITHUB_ENV
+          echo "Using font name: ${FONT_NAME}"
+
+          sudo apt-get update && sudo apt-get install -y p7zip-full
+
+          if [ ! -d "./fonts" ]; then
+            echo "Error: fonts directory not found!"
+            exit 1
+          fi
+
+          for DIR in ./fonts/otf ./fonts/static ./fonts/web; do
+            if [ ! -d "$DIR" ]; then
+              echo "Warning: $DIR directory not found, will be skipped"
+            else
+              echo "Found directory: $DIR"
+            fi
+          done
+
+      - name: Prepare and package font files
+        run: |
+          # Copy LICENSE.txt to all font directories
+          if [ -f "LICENSE.txt" ]; then
+            for DIR in "./fonts/static" "./fonts/otf" "./fonts/web"; do
+              if [ -d "$DIR" ]; then
+                echo "Copying LICENSE.txt to $DIR directory"
+                cp LICENSE.txt "$DIR/"
+              else
+                echo "$DIR directory not found, skipping license copy"
+              fi
+            done
+          else
+            echo "LICENSE.txt not found, skipping license copy"
+          fi
+
+          mkdir -p ./dist
+
+          echo "Creating versioned packages..."
+          
+          cd ./fonts
+
+          OTF_DIR="../dist/${FONT_NAME}-otf-${VERSION}"
+          STATIC_DIR="../dist/${FONT_NAME}-static-${VERSION}"
+          WEB_DIR="../dist/${FONT_NAME}-web-${VERSION}"
+          FONTS_DIR="../dist/${FONT_NAME}-all-${VERSION}"
+
+          mkdir -p ${OTF_DIR} ${STATIC_DIR} ${WEB_DIR} ${FONTS_DIR}
+
+          if [ -d "otf" ]; then cp -r otf/* ${OTF_DIR}/; fi
+          if [ -d "static" ]; then cp -r static/* ${STATIC_DIR}/; fi
+          if [ -d "web" ]; then cp -r web/* ${WEB_DIR}/; fi
+          cp -r ./* ${FONTS_DIR}/
+
+          cd ../dist
+
+          echo "Creating ZIP and 7z archives..."
+          for DIR in ${FONT_NAME}-otf-${VERSION} ${FONT_NAME}-static-${VERSION} ${FONT_NAME}-web-${VERSION} ${FONT_NAME}-all-${VERSION}; do
+            if [ -d "$DIR" ]; then
+              echo "Creating archives for $DIR"
+              zip -r -9 ${DIR}.zip ${DIR}
+              7z a -t7z -mx=9 ${DIR}.7z ${DIR}
+            fi
+          done
+
+          echo "Created the following packages:"
+          ls -la *.zip *.7z
+
+      - name: Upload release assets
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/${{ env.FONT_NAME }}-otf-${{ env.VERSION }}.zip
+            dist/${{ env.FONT_NAME }}-otf-${{ env.VERSION }}.7z
+            dist/${{ env.FONT_NAME }}-static-${{ env.VERSION }}.zip
+            dist/${{ env.FONT_NAME }}-static-${{ env.VERSION }}.7z
+            dist/${{ env.FONT_NAME }}-web-${{ env.VERSION }}.zip
+            dist/${{ env.FONT_NAME }}-web-${{ env.VERSION }}.7z
+            dist/${{ env.FONT_NAME }}-all-${{ env.VERSION }}.zip
+            dist/${{ env.FONT_NAME }}-all-${{ env.VERSION }}.7z
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload artifacts for manual runs
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.FONT_NAME }}-packaged-fonts-${{ env.VERSION }}
+          path: dist/*.{zip,7z}
+          retention-days: 7
