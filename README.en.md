@@ -129,7 +129,7 @@ Additionally, you can experience the **SVG-VF Dynamic Glyph Demo** (with interac
 ## About "The Planiverse"
 Founded by Fitzgerald in December 2023 and includes several sub-projects currently as follows:
 1. **Plangothic Project (Chinese: 遍黑体项目)**: Based on Source Han Sans CN and takes the CN variant as the standard to supplement the CJK Unified Ideographs Extension blocks.
-    - **Status**: Created project and its homepage. Uncompleted.
+    - **Status**: Keep up with the latest version of Unicode.
 2. **Planwritzen Project (Chinese: 遍蕤体项目)**: Based on Fitzgerald's own handwriting and using the Plangothic Project as the standard. Character range set to align with the Source Han Sans + Plangothic Project temporarily (or there may be an extension).
     - **Status**: Created project without homepage. Uncompleted.
 3. **Planschrift Project (Chinese: 遍玨体项目)**: Based on Huiwen-mincho supplementing the CJK Unified Ideographs Extension blocks. Temporary character range expanded from the range of Huiwen-mincho to Source Han Sans + Plangothic Project.
