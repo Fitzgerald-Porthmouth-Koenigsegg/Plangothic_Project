@@ -19,7 +19,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y p7zip-full fontforge python3-fontforge python3-pip ttfautohint parallel
-          pip install fonttools brotli
+          pip install fonttools brotli fontmake
 
       - name: Extract TTF files
         run: |
@@ -98,13 +98,13 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: fonts
-          branch: build
+          branch: main
           target-folder: fonts
           clean: false
           clean-exclude: |
             .nojekyll
             CNAME
-          path-option: skip
+          commit-message: "自动更新字体资源 [skip ci]"
 
       - name: Debug on failure
         if: failure()
