@@ -24,8 +24,7 @@ jobs:
       - name: Extract TTF files
         run: |
           mkdir -p temp
-          7z x sources/PlangothicP1-Regular.7z -obuild/
-          7z x sources/PlangothicP2-Regular.7z -obuild/
+          7z x sources/Plangothic-Regular.7z -obuild/
 
       - name: Optimize glyphs
         run: |

@@ -1,17 +1,17 @@
 <div align="center">
 
-![Logo Image](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/blob/main/documentation/samples/31fix.svg)
+![Logo Image](./documentation/samples/31fix.svg)
 
 [日文 / 日本語](README.ja.md) | [英文 / English](README.en.md) | [繁体中文 / 繁體中文](README.zh.hant.md)
 
 # 遍黑体项目（Plangothic Project）
-[![提交](https://img.shields.io/github/last-commit/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project?color=critical&label=最近提交&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iI0U2NiI+PHBhdGggZD0iTS40IDEuOSAxLjYgMy4xQTggOCA5MCAxMTAgOSAuOC44IDkwIDAxMS41IDkgNi41IDYuNSA5MCAxMDIuNyA0LjFMNC4xIDUuNUEuMy4zIDkwIDAxMy45IDZILjNBLjMuMyA5MCAwMTAgNS44VjIuMWEuMy4zIDkwIDAxLjQtLjJaTTcuOCA0YS44LjggOTAgMDEuOC44djNsMiAuOEEuOC44IDkwIDAxMTAgMTBMNy41IDlBLjguOCA5MCAwMTcgOC4zVjQuOEEuOC44IDkwIDAxNy44IDRaIi8+PC9zdmc+)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/commits/main)
-[![下载](https://img.shields.io/github/release/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project?color=critical&label=最新版本&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjMgMyAxOCAxOCI+PHBhdGggc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6I0U2NjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2Utd2lkdGg6MiIgZD0iTTEwIDdhMiAyIDAgMDEyLTJoNmEyIDIgMCAwMTIgMnYxMGEyIDIgMCAwMS0yIDJoLTZhMiAyIDAgMDEtMi0yek03IDd2MTBNNCA4djgiLz48L3N2Zz4=)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/latest)
-[![总下载](https://img.shields.io/github/downloads/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/total.svg?color=critical&label=总下载量&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3LjQyIDcuNDIiPjxjaXJjbGUgY3g9IjMuNyIgY3k9IjMuNyIgcj0iMy43IiBmaWxsPSIjZDY2Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTQuMiAxLjZjLjguMiAxLjQuOSAxLjQgMS42LjQgMCAuOC41LjggMS4xUzYgNS40IDUuNiA1LjRIMmMtLjQgMC0uOC0uNS0uOC0xLjFzLjMtMS4xLjgtMS4xYzAtLjcuNi0xLjQgMS40LTEuNlYzLjJIMi42TDMuOCA0LjcgNC45IDMuMkg0LjJaIi8+PC9zdmc+)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/latest)
+[![提交](https://img.shields.io/github/last-commit/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project?color=critical&label=最近提交&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iI0U2NiI+PHBhdGggZD0iTS40IDEuOSAxLjYgMy4xQTggOCA5MCAxMTAgOSAuOC44IDkwIDAxMS41IDkgNi41IDYuNSA5MCAxMDIuNyA0LjFMNC4xIDUuNUEuMy4zIDkwIDAxMy45IDZILjNBLjMuMyA5MCAwMTAgNS44VjIuMWEuMy4zIDkwIDAxLjQtLjJaTTcuOCA0YS44LjggOTAgMDEuOC44djNsMiAuOEEuOC44IDkwIDAxMTAgMTBMNy41IDlBLjguOCA5MCAwMTcgOC4zVjQuOEEuOC44IDkwIDAxNy44IDRaIi8+PC9zdmc+)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/commits/main)
+[![最新版本](https://img.shields.io/github/release/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project?color=critical&label=最新版本&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjMgMyAxOCAxOCI+PHBhdGggc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6I0U2NjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2Utd2lkdGg6MiIgZD0iTTEwIDdhMiAyIDAgMDEyLTJoNmEyIDIgMCAwMTIgMnYxMGEyIDIgMCAwMS0yIDJoLTZhMiAyIDAgMDEtMi0yek03IDd2MTBNNCA4djgiLz48L3N2Zz4=)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/latest)
+[![总下载量](https://img.shields.io/github/downloads/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/total.svg?color=critical&label=总下载量&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3LjQyIDcuNDIiPjxjaXJjbGUgY3g9IjMuNyIgY3k9IjMuNyIgcj0iMy43IiBmaWxsPSIjZDY2Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTQuMiAxLjZjLjguMiAxLjQuOSAxLjQgMS42LjQgMCAuOC41LjggMS4xUzYgNS40IDUuNiA1LjRIMmMtLjQgMC0uOC0uNS0uOC0xLjFzLjMtMS4xLjgtMS4xYzAtLjcuNi0xLjQgMS40LTEuNlYzLjJIMi42TDMuOCA0LjcgNC45IDMuMkg0LjJaIi8+PC9zdmc+)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/latest)
 [![License](https://img.shields.io/static/v1?label=使用协议&message=SIL%20Open%20Font%20License&color=critical&logo=creative%20commons)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/blob/main/LICENSE)
 [![QQ Group](https://img.shields.io/badge/QQ群-1135661191-critical?logo=qq)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=HvSdPx6z78suzTz51M3xGe-gENeaa1yc&authKey=eHjDZI54yDVbhyFjQqA2ImtV35LFy%2Fit8EuAzVDscVPcACE23L0hT314LiU9ey2%2F&noverify=0&group_code=1135661191)
 
-[![视频介绍](https://img.shields.io/badge/%E8%A7%86%E9%A2%91%E4%BB%8B%E7%BB%8D-00a1d6?logo=Bilibili&logoColor=ffffff)](https://www.bilibili.com/video/BV1Dr4y1V7b7)　　[![星标](https://img.shields.io/github/stars/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project?label=星标数&color=critical&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGZpbGw9IiNmZDAiIGQ9Im00IDAgMSAyLjYgMi43LjMtMi4xIDEuOC44IDNMNCA2LjQgMS42IDcuN2wuOC0zTC4zIDIuOSAzIDIuNnoiLz48L3N2Zz4=)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project)
+[![视频介绍](https://img.shields.io/badge/%E8%A7%86%E9%A2%91%E4%BB%8B%E7%BB%8D-00a1d6?logo=Bilibili&logoColor=ffffff)](https://www.bilibili.com/video/BV1Dr4y1V7b7)　　[![星标](https://img.shields.io/github/stars/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project?label=星标数&color=critical&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGZpbGw9IiNmZDAiIGQ9Im00IDAgMSAyLjYgMi43LjMtMi4xIDEuOC44IDNMNCA2LjQgMS42IDcuN2wuOC0zTC4zIDIuOSAzIDIuNnoiLz48L3N2Zz4=)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/stargazers)
 </div>
 
 ## 概述
@@ -96,7 +96,7 @@
 - 您向本项目捐助，即默认表明您赞同我们的理念，并愿意以此种方式支持我们的发展。捐助者提出的意见会被认真考虑，但捐款再多也没有权利以个人意志改变本项目的宗旨和公益性质。
 - 捐助后如愿意，可留言写明您的捐款时间和金额，感谢您对本项目的支持。
 - 所有捐助资金均会逐一记录，并将全部用于该项目的技术支持等开销，不会被私用。
-![Sponsor Image](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/blob/main/documentation/samples/1650383987393.svg)
+![Sponsor Image](./documentation/samples/1650383987393.svg)
 
 ## 联系方式
 您在使用本字体的过程中如有任何问题和建议，欢迎反馈。您可在项目中提交issue（严禁提交无关内容），也可以通过下列联系方式进行反馈：
