@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'sources/**'
+      - 'sources/Plangothic-Regular.7z'
   workflow_dispatch:
 
 jobs:
