@@ -3,7 +3,6 @@ name: Release Packaging
 on:
   release:
     types: [published]
-  workflow_dispatch:
     inputs:
       font_name:
         description: 'Font name prefix for packages (overrides default)'
