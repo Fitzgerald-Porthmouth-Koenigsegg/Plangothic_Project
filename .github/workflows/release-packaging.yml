@@ -78,10 +78,10 @@ jobs:
           
           cd ./fonts
 
-          OTF_DIR="../dist/${FONT_NAME}-otf-${VERSION}"
-          STATIC_DIR="../dist/${FONT_NAME}-static-${VERSION}"
-          WEB_DIR="../dist/${FONT_NAME}-web-${VERSION}"
-          FONTS_DIR="../dist/${FONT_NAME}-all-${VERSION}"
+          OTF_DIR="../dist/${FONT_NAME}-OTF-${VERSION}"
+          STATIC_DIR="../dist/${FONT_NAME}-Static-${VERSION}"
+          WEB_DIR="../dist/${FONT_NAME}-Web-${VERSION}"
+          FONTS_DIR="../dist/${FONT_NAME}-Super-${VERSION}"
 
           mkdir -p ${OTF_DIR} ${STATIC_DIR} ${WEB_DIR} ${FONTS_DIR}
 
@@ -93,7 +93,7 @@ jobs:
           cd ../dist
 
           echo "Creating ZIP and 7z archives..."
-          for DIR in ${FONT_NAME}-otf-${VERSION} ${FONT_NAME}-static-${VERSION} ${FONT_NAME}-web-${VERSION} ${FONT_NAME}-all-${VERSION}; do
+          for DIR in ${FONT_NAME}-OTF-${VERSION} ${FONT_NAME}-Static-${VERSION} ${FONT_NAME}-Web-${VERSION} ${FONT_NAME}-Super-${VERSION}; do
             if [ -d "$DIR" ]; then
               echo "Creating archives for $DIR"
               zip -r -9 ${DIR}.zip ${DIR}
