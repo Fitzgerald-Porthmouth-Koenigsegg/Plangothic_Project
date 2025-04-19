@@ -110,14 +110,14 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            dist/${{ env.FONT_NAME }}-otf-${{ env.VERSION }}.zip
-            dist/${{ env.FONT_NAME }}-otf-${{ env.VERSION }}.7z
-            dist/${{ env.FONT_NAME }}-static-${{ env.VERSION }}.zip
-            dist/${{ env.FONT_NAME }}-static-${{ env.VERSION }}.7z
-            dist/${{ env.FONT_NAME }}-web-${{ env.VERSION }}.zip
-            dist/${{ env.FONT_NAME }}-web-${{ env.VERSION }}.7z
-            dist/${{ env.FONT_NAME }}-all-${{ env.VERSION }}.zip
-            dist/${{ env.FONT_NAME }}-all-${{ env.VERSION }}.7z
+            dist/${{ env.FONT_NAME }}-OTF-${{ env.VERSION }}.zip
+            dist/${{ env.FONT_NAME }}-OTF-${{ env.VERSION }}.7z
+            dist/${{ env.FONT_NAME }}-Static-${{ env.VERSION }}.zip
+            dist/${{ env.FONT_NAME }}-Static-${{ env.VERSION }}.7z
+            dist/${{ env.FONT_NAME }}-Web-${{ env.VERSION }}.zip
+            dist/${{ env.FONT_NAME }}-Web-${{ env.VERSION }}.7z
+            dist/${{ env.FONT_NAME }}-Super-${{ env.VERSION }}.zip
+            dist/${{ env.FONT_NAME }}-Super-${{ env.VERSION }}.7z
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
