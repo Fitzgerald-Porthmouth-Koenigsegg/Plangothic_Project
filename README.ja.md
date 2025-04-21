@@ -112,6 +112,7 @@ Android フォンに Plangothic TTC フォントをインストールする手�
     - [Unihanデータベース](https://www.unicode.org/Public/16.0.0/ucd/Unihan.zip)。
     - [Losketch](https://github.com/Losketch)氏による[落尘無襯](https://github.com/Losketch/LorchinSans)。
     - [ぼんのう堂](https://shokaki.booth.pm)氏による[しょかき変体仮名ゴチック](https://shokaki.booth.pm/items/5633978)。
+    - [Unicodia](https://github.com/Mercury13/unicodia/)。
 6. このプロジェクトの文字データは[Hulenkius](https://github.com/Hulenkius)によって SVG ファイルを使用してオンラインで提供されています。ユーザーは「<https://seeki.vistudium.top/SVG/{小文字の漢字の 16 進コードポイント}.svg>」リンクを使用して取得することができます。
 
     例：`<img src="https://seeki.vistudium.top/SVG/2ebf0.svg"/>`の表示結果は次のようになります：

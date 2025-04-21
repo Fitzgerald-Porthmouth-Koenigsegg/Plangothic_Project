@@ -127,6 +127,7 @@
     - [Unihan數據庫](https://www.unicode.org/Public/16.0.0/ucd/Unihan.zip)。
     - [Losketch](https://github.com/Losketch)所開發的[落尘無襯](https://github.com/Losketch/LorchinSans)。
     - [ぼんのう堂](https://shokaki.booth.pm)所开发的[しょかき変体仮名ゴチック（Shokaki Hentaigana Gothic）](https://shokaki.booth.pm/items/5633978)。
+    - [Unicodia](https://github.com/Mercury13/unicodia/)。
 6. 該項目的字形資料由[Hulenkius](https://github.com/Hulenkius)通過SVG檔案進行線上使用，使用者可以通過「<https://seeki.vistudium.top/SVG/{小寫的漢字十六進制碼位}.svg>」鏈接獲取。
 
     例：`<img src="https://seeki.vistudium.top/SVG/2ebf0.svg"/>`的顯示結果將會是：

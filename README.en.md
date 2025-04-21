@@ -112,6 +112,7 @@ If you have any questions or suggestions during the use of this font, please fee
     - [Unihan database](https://www.unicode.org/Public/16.0.0/ucd/Unihan.zip).
     - [Lorchin Sans](https://github.com/Losketch/LorchinSans) developed by [Losketch](https://github.com/Losketch).
     - [Shokaki Hentaigana Gothic（しょかき変体仮名ゴチック）](https://shokaki.booth.pm/items/5633978) developed by [ぼんのう堂](https://shokaki.booth.pm).
+    - [Unicodia](https://github.com/Mercury13/unicodia/).
 6. The glyph data of this project is provided by [Hulenkius](https://github.com/Hulenkius) in SVG format. Users can access the glyphs via the link:  
 「<https://seeki.vistudium.top/SVG/{lowercase-hex-unicode}.svg>」
 
