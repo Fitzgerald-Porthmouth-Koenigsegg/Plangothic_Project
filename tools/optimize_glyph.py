@@ -104,7 +104,6 @@ class GlyphProcessor:
         glyph.simplify(self.simplify_value, 
                      ('mergelines', 'smoothcurves', 'removesingletonpoints'), 
                      0.3, 0, 0.5)
-        glyph.addExtrema()
         glyph.canonicalContours()
         glyph.canonicalStart()
         glyph.simplify()

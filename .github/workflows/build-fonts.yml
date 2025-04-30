@@ -12,105 +12,162 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: 检查仓库 / Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Install dependencies
+      - name: 安装依赖项 / Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y p7zip-full fontforge python3-fontforge python3-pip ttfautohint parallel
-          pip install fonttools brotli fontmake
+          mkdir -p ~/.cache/pip
 
-      - name: Extract TTF files
+          sudo apt-get update -q
+          sudo apt-get install --no-install-recommends -y \
+            p7zip-full \
+            fontforge \
+            python3-fontforge \
+            python3-pip \
+            ttfautohint \
+            parallel \
+
+          sudo apt-get clean
+          sudo rm -rf /var/lib/apt/lists/*
+
+          pip install --no-cache-dir --upgrade pip
+          pip install --no-cache-dir fonttools brotli fontmake
+
+      - name: 提取文件 / Extract files
         run: |
           mkdir -p temp
           7z x sources/Plangothic-Regular.7z -obuild/
 
-      - name: Optimize glyphs
+      - name: 优化并转换字体 / Optimize and Convert Fonts
         run: |
-          mkdir -p optimized
+          mkdir -p optimized fonts/otf fonts/web fonts/static
+          
+          echo "===== 开始优化字形 ====="
           find build -name "Plangothic*-Regular.ttf" | parallel fontforge -script tools/optimize_glyph.py {} -s 0.5
           mv build/*_merge_glyphs.ttf optimized/
 
-      - name: Convert to OTF
-        run: |
-          mkdir -p fonts/otf
-          find optimized -name "Plangothic*-Regular_merge_glyphs.ttf" | parallel 'fontforge -script tools/convert_font.py {} -f otf'
+          process_fonts() {
+            local format=$1
+            local target_dir=$2
+            local extension=$3
 
-          for ttf in optimized/Plangothic*-Regular_merge_glyphs.ttf; do
+            echo "===== 开始转换为${format}格式 ====="
+            find optimized -name "Plangothic*-Regular_merge_glyphs.ttf" | parallel "fontforge -script tools/convert_font.py {} -f ${format}"
+
+            for ttf in optimized/Plangothic*-Regular_merge_glyphs.ttf; do
+              base=$(basename "$ttf" _merge_glyphs.ttf)
+              found=false
+
+              for location in "./" "optimized/"; do
+                source_file="${location}${base}_merge_glyphs.${extension}"
+                if [ -f "$source_file" ]; then
+                  echo "找到${format}文件: $source_file"
+                  mv "$source_file" "${target_dir}/${base}.${extension}"
+                  found=true
+                  break
+                fi
+              done
+
+              if [ "$found" = false ]; then
+                echo "警告: 未能在预期位置找到${base}的${format}文件"
+                echo "尝试查找所有可能的文件:"
+                find . -name "*${base}*.${extension}" -o -name "*Plangothic*.${extension}"
+              fi
+            done
+          }
+
+          process_fonts "otf" "fonts/otf" "otf"
+          process_fonts "woff2" "fonts/web" "woff2"
+
+          echo "===== 创建静态TTF文件 ====="
+          for ttf in optimized/*_merge_glyphs.ttf; do
             base=$(basename "$ttf" _merge_glyphs.ttf)
-            if [ -f "${base}_merge_glyphs.otf" ]; then
-              echo "Found OTF in current directory"
-              mv "${base}_merge_glyphs.otf" fonts/otf/${base}.otf
-            elif [ -f "optimized/${base}_merge_glyphs.otf" ]; then
-              echo "Found OTF in optimized directory"
-              mv "optimized/${base}_merge_glyphs.otf" fonts/otf/${base}.otf
-            else
-              echo "WARNING: Could not find OTF file for ${base} in expected locations."
-              find . -name "*${base}*.otf" -o -name "*Plangothic*.otf"
-            fi
+            cp "$ttf" "fonts/static/${base}.ttf"
           done
+          
+          echo "===== 生成文件验证 ====="
+          echo "OTF文件:"
+          ls -la fonts/otf/
+          echo "WOFF2文件:"
+          ls -la fonts/web/
+          echo "TTF文件:"
+          ls -la fonts/static/
 
-      - name: Convert to WOFF2
-        run: |
-          mkdir -p fonts/web
-          find optimized -name "Plangothic*-Regular_merge_glyphs.ttf" | parallel 'fontforge -script tools/convert_font.py {} -f woff2'
-
-          for ttf in optimized/Plangothic*-Regular_merge_glyphs.ttf; do
-            base=$(basename "$ttf" _merge_glyphs.ttf)
-            if [ -f "${base}_merge_glyphs.woff2" ]; then
-              echo "Found WOFF2 in current directory"
-              mv "${base}_merge_glyphs.woff2" fonts/web/${base}.woff2
-            elif [ -f "optimized/${base}_merge_glyphs.woff2" ]; then
-              echo "Found WOFF2 in optimized directory"
-              mv "optimized/${base}_merge_glyphs.woff2" fonts/web/${base}.woff2
-            else
-              echo "WARNING: Could not find WOFF2 file for ${base} in expected locations."
-              find . -name "*${base}*.woff2" -o -name "*Plangothic*.woff2"
-            fi
-          done
-
-      - name: Create static TTF files
-        run: |
-          mkdir -p fonts/static
-          cp optimized/*_merge_glyphs.ttf fonts/static/
-          for ttf in fonts/static/*_merge_glyphs.ttf; do
-            mv "$ttf" "${ttf%_merge_glyphs.ttf}.ttf"
-          done
-
-      - name: Merge TTF to TTC
+      - name: 合并字体到集合 / Merge Fonts to Collections
         run: |
           python3 - <<EOF
           from fontTools.ttLib import TTFont
-          from fontTools.ttLib.tables._n_a_m_e import NameRecord
           from fontTools.ttLib.ttCollection import TTCollection
 
-          font1 = TTFont("fonts/static/PlangothicP1-Regular.ttf")
-          font2 = TTFont("fonts/static/PlangothicP2-Regular.ttf")
+          def merge_fonts(input_files, output_file):
+              collection = TTCollection()
+              for font_file in input_files:
+                  font = TTFont(font_file)
+                  collection.fonts.append(font)
+              collection.save(output_file)
+              print(f"已创建字体集合文件: {output_file}")
 
-          ttc = TTCollection()
-          ttc.fonts = [font1, font2]
+          import os
+          os.makedirs("fonts/static", exist_ok=True)
+          os.makedirs("fonts/otf", exist_ok=True)
 
-          ttc.save("fonts/static/Plangothic.ttc")
+          ttf_files = ["fonts/static/PlangothicP1-Regular.ttf", "fonts/static/PlangothicP2-Regular.ttf"]
+          merge_fonts(ttf_files, "fonts/static/Plangothic.ttc")
+
+          otf_files = ["fonts/otf/PlangothicP1-Regular.otf", "fonts/otf/PlangothicP2-Regular.otf"]
+          merge_fonts(otf_files, "fonts/otf/Plangothic.ttc")
           EOF
 
-      - name: Publish Font Assets
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: fonts
-          branch: main
-          target-folder: fonts
-          clean: false
-          clean-exclude: |
-            .nojekyll
-            CNAME
-          commit-message: "自动更新字体资源 [skip ci]"
+      - name: 更新字体并修改最后提交 / Update Fonts and Amend Last Commit
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
 
-      - name: Debug on failure
+          LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
+
+          if [[ "$LAST_COMMIT_MSG" == *"[skip ci][√]"* ]]; then
+            echo "最近的提交已经包含[skip ci][√]标记，跳过修改"
+            exit 0
+          fi
+
+          if [ ! -d "fonts" ]; then
+            echo "fonts目录不存在，正在创建..."
+            mkdir -p fonts
+            echo "已创建fonts目录"
+          else
+            echo "fonts目录已存在，继续处理..."
+          fi
+
+          git add fonts/
+
+          git commit --amend -m "$LAST_COMMIT_MSG [skip ci][√]"
+
+          echo "推送修改后的提交..."
+          git push --force origin main && echo "成功推送修改" || echo "推送失败"
+
+      - name: 上传构建产物 / Upload artifacts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: font-files
+          path: fonts/
+          retention-days: 7
+
+      - name: 失败时调试 / Debug on failure
         if: failure()
         run: |
-          echo "Debug information on failure:"
-          echo "Directory structure:"
+          echo "===== 调试信息 ====="
+          echo "目录结构:"
           find . -type f -name "*.ttf" -o -name "*.otf" -o -name "*.woff2" | sort
-          echo "Last commands output:"
-          cat $HOME/.bash_history | tail -n 20
+
+          echo "磁盘空间:"
+          df -h
+
+          echo "最近的日志:"
+          tail -n 100 $(find /tmp -name "*.log" -type f 2>/dev/null | head -1) 2>/dev/null || echo "没有找到日志文件"
+
+          echo "环境变量:"
+          env | grep -v -E "TOKEN|SECRET|KEY" | sort
