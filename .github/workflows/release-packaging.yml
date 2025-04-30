@@ -9,102 +9,119 @@ on:
         required: false
         default: ''
 
+env:
+  DEFAULT_FONT_NAME: "Plangothic"
+
 jobs:
   package:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: 检出代码 / Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up environment
+      - name: 设置环境变量 / Set up environment
         id: setup
         run: |
+          # 设置版本号
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/}
-            echo "Running for release tag: $VERSION"
+            echo "使用发布标签版本: $VERSION"
+          elif [[ -n "${{ github.event.inputs.tag_version }}" ]]; then
+            VERSION="${{ github.event.inputs.tag_version }}"
+            echo "使用手动指定版本: $VERSION"
           else
-            VERSION=manual-$(date +'%Y%m%d%H%M%S')
-            echo "Running manual workflow with version: $VERSION"
+            VERSION=dev-$(date +'%Y%m%d-%H%M%S')
+            echo "使用自动生成版本: $VERSION"
           fi
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
           echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
 
-          FONT_NAME="Plangothic"
-
-          if [ -n "${{ github.event.inputs.font_name }}" ]; then
+          # 设置字体名称
+          FONT_NAME="${{ env.DEFAULT_FONT_NAME }}"
+          if [[ -n "${{ github.event.inputs.font_name }}" ]]; then
             FONT_NAME="${{ github.event.inputs.font_name }}"
-            echo "Overriding font name from workflow input"
+            echo "使用自定义字体名称: ${FONT_NAME}"
+          else
+            echo "使用默认字体名称: ${FONT_NAME}"
           fi
-
           echo "FONT_NAME=${FONT_NAME}" >> $GITHUB_ENV
-          echo "Using font name: ${FONT_NAME}"
 
+          # 安装依赖
           sudo apt-get update && sudo apt-get install -y p7zip-full
 
-          if [ ! -d "./fonts" ]; then
-            echo "Error: fonts directory not found!"
+          # 验证字体目录结构
+          if [[ ! -d "./fonts" ]]; then
+            echo "错误: 未找到fonts目录!"
             exit 1
           fi
 
-          for DIR in ./fonts/otf ./fonts/static ./fonts/web; do
-            if [ ! -d "$DIR" ]; then
-              echo "Warning: $DIR directory not found, will be skipped"
+          # 检查并报告子目录状态
+          declare -a SUBDIRS=("otf" "static" "web")
+          for DIR in "${SUBDIRS[@]}"; do
+            if [[ -d "./fonts/$DIR" ]]; then
+              echo "✓ 找到目录: ./fonts/$DIR"
             else
-              echo "Found directory: $DIR"
+              echo "⚠ 警告: ./fonts/$DIR 目录不存在，将被跳过"
             fi
           done
 
-      - name: Prepare and package font files
+      - name: 准备并打包字体文件 / Prepare and package font files
         run: |
-          # Copy LICENSE.txt to all font directories
-          if [ -f "LICENSE.txt" ]; then
-            for DIR in "./fonts/static" "./fonts/otf" "./fonts/web"; do
-              if [ -d "$DIR" ]; then
-                echo "Copying LICENSE.txt to $DIR directory"
-                cp LICENSE.txt "$DIR/"
-              else
-                echo "$DIR directory not found, skipping license copy"
+          mkdir -p ./dist
+
+          # 复制LICENSE到字体目录
+          if [[ -f "LICENSE.txt" ]]; then
+            echo "正在复制许可证文件..."
+            for DIR in "static" "otf" "web"; do
+              if [[ -d "./fonts/$DIR" ]]; then
+                cp LICENSE.txt "./fonts/$DIR/"
+                echo "✓ 已复制LICENSE到 ./fonts/$DIR/"
               fi
             done
           else
-            echo "LICENSE.txt not found, skipping license copy"
+            echo "⚠ 警告: 未找到LICENSE.txt文件"
           fi
 
-          mkdir -p ./dist
-
-          echo "Creating versioned packages..."
-          
           cd ./fonts
-
-          OTF_DIR="../dist/${FONT_NAME}-OTF-${VERSION}"
-          STATIC_DIR="../dist/${FONT_NAME}-Static-${VERSION}"
-          WEB_DIR="../dist/${FONT_NAME}-Web-${VERSION}"
-          FONTS_DIR="../dist/${FONT_NAME}-Super-${VERSION}"
-
-          mkdir -p ${OTF_DIR} ${STATIC_DIR} ${WEB_DIR} ${FONTS_DIR}
-
-          if [ -d "otf" ]; then cp -r otf/* ${OTF_DIR}/; fi
-          if [ -d "static" ]; then cp -r static/* ${STATIC_DIR}/; fi
-          if [ -d "web" ]; then cp -r web/* ${WEB_DIR}/; fi
-          cp -r ./* ${FONTS_DIR}/
-
+          
+          # 定义包目录
+          declare -A PACKAGES=(
+            ["OTF"]="../dist/${FONT_NAME}-OTF-${VERSION}"
+            ["Static"]="../dist/${FONT_NAME}-Static-${VERSION}"
+            ["Web"]="../dist/${FONT_NAME}-Web-${VERSION}"
+            ["Super"]="../dist/${FONT_NAME}-Super-${VERSION}"
+          )
+          
+          # 创建包目录
+          for DIR in "${PACKAGES[@]}"; do
+            mkdir -p "$DIR"
+          done
+          
+          # 复制文件到包目录
+          [[ -d "otf" ]] && cp -r otf/* "${PACKAGES[OTF]}/"
+          [[ -d "static" ]] && cp -r static/* "${PACKAGES[Static]}/"
+          [[ -d "web" ]] && cp -r web/* "${PACKAGES[Web]}/"
+          cp -r ./* "${PACKAGES[Super]}/"
+          
           cd ../dist
-
-          echo "Creating ZIP and 7z archives..."
-          for DIR in ${FONT_NAME}-OTF-${VERSION} ${FONT_NAME}-Static-${VERSION} ${FONT_NAME}-Web-${VERSION} ${FONT_NAME}-Super-${VERSION}; do
-            if [ -d "$DIR" ]; then
-              echo "Creating archives for $DIR"
-              zip -r -9 ${DIR}.zip ${DIR}
-              7z a -t7z -mx=9 ${DIR}.7z ${DIR}
+          
+          # 创建压缩包
+          echo "正在创建压缩文件..."
+          for DIR in ${FONT_NAME}-*-${VERSION}; do
+            if [[ -d "$DIR" ]]; then
+              echo "正在打包: $DIR"
+              zip -r -9 "${DIR}.zip" "$DIR" > /dev/null
+              7z a -t7z -mx=9 "${DIR}.7z" "$DIR" > /dev/null
+              echo "✓ 已完成: ${DIR}.zip 和 ${DIR}.7z"
             fi
           done
+          
+          echo "==== 创建的包文件列表 ===="
+          ls -lh *.zip *.7z | awk '{print $5"\t"$9}'
 
-          echo "Created the following packages:"
-          ls -la *.zip *.7z
-
-      - name: Upload release assets
+      - name: 上传Release资源 / Upload release assets
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
         with:
@@ -120,7 +137,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload artifacts for manual runs
+      - name: 上传工作流构建产物 / Upload artifacts for manual runs
         if: github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v4
         with:
