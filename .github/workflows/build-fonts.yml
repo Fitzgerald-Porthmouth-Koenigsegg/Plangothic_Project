@@ -143,10 +143,11 @@ jobs:
 
           git add fonts/
 
+          CURRENT_BRANCH=${GITHUB_REF#refs/heads/}
           git commit --amend -m "$LAST_COMMIT_MSG [skip ci][√]"
 
-          echo "推送修改后的提交..."
-          git push --force origin main && echo "成功推送修改" || echo "推送失败"
+          echo "推送修改后的提交到 $CURRENT_BRANCH..."
+          git push --force origin "$CURRENT_BRANCH" && echo "成功推送修改" || echo "推送失败"
 
       - name: 上传构建产物 / Upload artifacts
         if: success()
