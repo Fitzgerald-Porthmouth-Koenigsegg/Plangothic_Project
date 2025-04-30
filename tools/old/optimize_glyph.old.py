@@ -113,7 +113,6 @@ def process_font(input_file, simplify_value=0.5):
         glyph.simplify(0.1, ('mergelines', 'choosehv'), 0.1, 0.1, 0)
         process_line_endpoints(glyph)
         glyph.simplify(simplify_value, ('mergelines', 'smoothcurves', 'removesingletonpoints'), 0.3, 0, 0.5)
-        glyph.addExtrema()
         glyph.canonicalContours()
         glyph.canonicalStart()
         glyph.simplify()
