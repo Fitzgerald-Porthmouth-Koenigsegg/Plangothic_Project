@@ -117,19 +117,14 @@
 5. 本項目部分或全部借用或參考了其他工具或開源字體項目，主要包括：
     - [思源黑體](https://github.com/adobe-fonts/source-han-sans)。
     - Noto系列裡的其他字體。
-    - [上地宏一](https://twitter.com/kamichikoichi)所開發的[字形維基](https://glyphwiki.org/wiki/GlyphWiki:%e3%83%a1%e3%82%a4%e3%83%b3%e3%83%9a%e3%83%bc%e3%82%b8)及 KAGE Engine。
     - [oppekebekkanko](https://oppekebekkanko.booth.pm/)所開發的[すきまゴシック（Sukima Gothic、隙間黑體）](https://oppekebekkanko.booth.pm/items/2117070)。
     - [綿雲飴里](https://github.com/MY1L)所開發的[Noto Unicode](https://github.com/MY1L/Unicode/tree/main/NotoUnicode)。
     - [昭源黑體](https://github.com/chiron-fonts/chiron-hei-hk)。
     - [奈白不弍](https://github.com/Buernia)所開發的[煮豆黑體](https://github.com/Buernia/Zhudou-Sans)。
-    - [秋空黑體](https://github.com/ChiuMing-Neko/ChiuKongGothic)。
-    - [Nôm Na Tống（喃那宋）](https://github.com/nomfoundation/font)。
-    - [魏安（Andrew West）](https://twitter.com/BabelStone)所開發的[BabelStone Han（巴別宋）](https://www.babelstone.co.uk/Fonts/index.html)。
     - [白易](https://github.com/yi-bai)所開發的[字統網](https://zi.tools)。
     - [Gothic Nguyen（阮黑體）](https://github.com/TKYKmori/Gothic-Nguyen)。
     - [Unicode官方碼表文件](https://www.unicode.org/charts/)。
     - [Unihan數據庫](https://www.unicode.org/Public/16.0.0/ucd/Unihan.zip)。
-    - [Losketch](https://github.com/Losketch)所開發的[落尘無襯](https://github.com/Losketch/LorchinSans)。
     - [ぼんのう堂](https://shokaki.booth.pm)所开发的[しょかき変体仮名ゴチック（Shokaki Hentaigana Gothic）](https://shokaki.booth.pm/items/5633978)。
     - [Unicodia](https://github.com/Mercury13/unicodia/)。
 6. 該項目的字形資料由[Hulenkius](https://github.com/Hulenkius)通過SVG檔案進行線上使用，使用者可以通過「<https://seeki.vistudium.top/SVG/{小寫的漢字十六進制碼位}.svg>」鏈接獲取。

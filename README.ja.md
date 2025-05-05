@@ -101,20 +101,15 @@ Android フォンに Plangothic TTC フォントをインストールする手�
 4. このフォントに含まれる中国大陸のグリフの一部は、[Unicodeグラフファイル](https://www.unicode.org/charts/)に表示されているフォントに**完全に準拠していません**。気になる場合や納得できない場合は、このフォントを使用しないでください。
 5. 本プロジェクトは、主に以下のツールまたはオープンソースフォントプロジェクトの一部またはすべてを使用、ないし参考にしています：
     - [源ノ角ゴシック](https://github.com/adobe-fonts/source-han-sans)。
-    - 他の Noto フォント。
-    - [上地宏一](https://twitter.com/kamichikoichi)氏による[グリフウィキ](https://glyphwiki.org/wiki/GlyphWiki:%e3%83%a1%e3%82%a4%e3%83%b3%e3%83%9a%e3%83%bc%e3%82%b8)と KAGE Engine。
+    - 他のNotoフォント。
     - [oppekebekkanko](https://oppekebekkanko.booth.pm/)氏による[すきまゴシック](https://oppekebekkanko.booth.pm/items/2117070)。
     - [綿雲飴里](https://github.com/MY1L)氏による[Noto Unicode](https://github.com/MY1L/Unicode/tree/main/NotoUnicode)。
     - [Chiron Hei HK（昭源黑體）](https://github.com/chiron-fonts/chiron-hei-hk)。
     - [奈白不弍](https://github.com/Buernia)氏による[Zhudou-Sans（煮豆黑體）](https://github.com/Buernia/Zhudou-Sans)。
-    - [ChiuKong Gothic](https://github.com/ChiuMing-Neko/ChiuKongGothic)。
-    - [Nôm Na Tống](https://github.com/nomfoundation/font)。
-    - [魏安（Andrew West、アンドリュー・ウェスト）](https://twitter.com/BabelStone)氏による[BabelStone Han](https://www.babelstone.co.uk/Fonts/index.html)。
     - [白易](https://github.com/yi-bai)氏による[Zitools](https://zi.tools)。
     - [Gothic Nguyen](https://github.com/TKYKmori/Gothic-Nguyen)。
     - [Unicodeグラフファイル](https://www.unicode.org/charts/)。
     - [Unihanデータベース](https://www.unicode.org/Public/16.0.0/ucd/Unihan.zip)。
-    - [Losketch](https://github.com/Losketch)氏による[落尘無襯](https://github.com/Losketch/LorchinSans)。
     - [ぼんのう堂](https://shokaki.booth.pm)氏による[しょかき変体仮名ゴチック](https://shokaki.booth.pm/items/5633978)。
     - [Unicodia](https://github.com/Mercury13/unicodia/)。
 6. このプロジェクトの文字データは[Hulenkius](https://github.com/Hulenkius)によって SVG ファイルを使用してオンラインで提供されています。ユーザーは「<https://seeki.vistudium.top/SVG/{小文字の漢字の 16 進コードポイント}.svg>」リンクを使用して取得することができます。

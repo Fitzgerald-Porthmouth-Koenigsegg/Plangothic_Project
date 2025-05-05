@@ -116,23 +116,18 @@
 4. 本字体包含的部分国标字形**未完全遵循**[Unicode官方码表文件](https://www.unicode.org/charts/)中所展示的字形，十分介意者请勿使用。
 5. 本项目部分或全部借用或参考了其他工具或开源字体项目，主要包括：
     - [思源黑体](https://github.com/adobe-fonts/source-han-sans)。
-    - Noto 系列里的其他字体。
-    - [上地宏一](https://twitter.com/kamichikoichi)所开发的[字形维基](https://glyphwiki.org/wiki/GlyphWiki:%e3%83%a1%e3%82%a4%e3%83%b3%e3%83%9a%e3%83%bc%e3%82%b8)及 KAGE Engine。
+    - Noto系列里的其他字体。
     - [oppekebekkanko](https://oppekebekkanko.booth.pm/)所开发的[すきまゴシック（Sukima Gothic、隙间黑体）](https://oppekebekkanko.booth.pm/items/2117070)。
     - [绵云饴里](https://github.com/MY1L)所开发的[Noto Unicode](https://github.com/MY1L/Unicode/tree/main/NotoUnicode)。
     - [昭源黑体](https://github.com/chiron-fonts/chiron-hei-hk)。
     - [奈白不弍](https://github.com/Buernia)所开发的[煮豆黑体](https://github.com/Buernia/Zhudou-Sans)。
-    - [秋空黑体](https://github.com/ChiuMing-Neko/ChiuKongGothic)。
-    - [Nôm Na Tống（喃那宋）](https://github.com/nomfoundation/font)。
-    - [魏安（Andrew West）](https://twitter.com/BabelStone)所开发的 [BabelStone Han（巴别宋）](https://www.babelstone.co.uk/Fonts/index.html)。
     - [白易](https://github.com/yi-bai)所开发的[字统网](https://zi.tools)。
     - [Gothic Nguyen（阮黑体）](https://github.com/TKYKmori/Gothic-Nguyen)。
     - [Unicode官方码表文件](https://www.unicode.org/charts/)。
     - [Unihan数据库](https://www.unicode.org/Public/16.0.0/ucd/Unihan.zip)。
-    - [Losketch](https://github.com/Losketch)所开发的[落尘无衬](https://github.com/Losketch/LorchinSans)。
     - [ぼんのう堂](https://shokaki.booth.pm)所开发的[しょかき変体仮名ゴチック（Shokaki Hentaigana Gothic）](https://shokaki.booth.pm/items/5633978)。
-    - [Unicodia](https://github.com/Mercury13/unicodia/tree/main)。
-6. 该项目的字形资料由 [Hulenkius](https://github.com/Hulenkius) 通过 SVG 文件进行线上使用，使用者可以通过「<https://seeki.vistudium.top/SVG/{小写的汉字十六进制码位}.svg>」链接获取。
+    - [Unicodia](https://github.com/Mercury13/unicodia/)。
+6. 该项目的字形资料由[Hulenkius](https://github.com/Hulenkius)通过SVG文件进行线上使用，使用者可以通过「<https://seeki.vistudium.top/SVG/{小写的汉字十六进制码位}.svg>」链接获取。
 
     例：`<img src="https://seeki.vistudium.top/SVG/2ebf0.svg"/>`的显示结果将会是：
 <div align="center"><img src="https://seeki.vistudium.top/SVG/2ebf0.svg" width="20%"/></div>

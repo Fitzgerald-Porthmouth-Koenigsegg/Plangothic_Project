@@ -102,19 +102,14 @@ If you have any questions or suggestions during the use of this font, please fee
 5. This project borrows and/or refers to other tools and/or open-source font projects in part or whole, mainly including:
     - [Source Han Sans](https://github.com/adobe-fonts/source-han-sans).
     - Other fonts in the Noto series.
-    - [Glyphwiki](https://glyphwiki.org/wiki/GlyphWiki:%e3%83%a1%e3%82%a4%e3%83%b3%e3%83%9a%e3%83%bc%e3%82%b8) and KAGE Engine developed by [Kamichi Koichi](https://twitter.com/kamichikoichi).
     - [Sukima Gothic (すきまゴシック)](https://oppekebekkanko.booth.pm/items/2117070) developed by [oppekebekkanko](https://oppekebekkanko.booth.pm/).
     - [Noto Unicode](https://github.com/MY1L/Unicode/tree/main/NotoUnicode) developed by [My1l](https://github.com/MY1L).
     - [Chiron Hei HK](https://github.com/chiron-fonts/chiron-hei-hk)。
     - [Zhudou-Sans](https://github.com/Buernia/Zhudou-Sans) developed by [Buernia](https://github.com/Buernia).
-    - [ChiuKong Gothic](https://github.com/ChiuMing-Neko/ChiuKongGothic).
-    - [Nôm Na Tống](https://github.com/nomfoundation/font).
-    - [BabelStone Han](https://www.babelstone.co.uk/Fonts/index.html) developed by [Andrew West](https://twitter.com/BabelStone).
     - [Zitools](https://zi.tools) developed by [Yi Bai](https://github.com/yi-bai).
     - [Gothic Nguyen](https://github.com/TKYKmori/Gothic-Nguyen).
     - [Unicode charts file](https://www.unicode.org/charts/).
     - [Unihan database](https://www.unicode.org/Public/16.0.0/ucd/Unihan.zip).
-    - [Lorchin Sans](https://github.com/Losketch/LorchinSans) developed by [Losketch](https://github.com/Losketch).
     - [Shokaki Hentaigana Gothic（しょかき変体仮名ゴチック）](https://shokaki.booth.pm/items/5633978) developed by [ぼんのう堂](https://shokaki.booth.pm).
     - [Unicodia](https://github.com/Mercury13/unicodia/).
 6. The glyph data of this project is provided by [Hulenkius](https://github.com/Hulenkius) in SVG format. Users can access the glyphs via the link:  
