@@ -21,9 +21,9 @@
 本字體主要支援擴展B區至擴展J區的全部漢字，其他區塊有零星的字元。
 
 ## 貢獻者
-- 主製作：**[Fitzgerald](https://github.com/Fitzgerald-Porthmouth-Koenigsegg)**、[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)
+- 主製作：[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)
 - 聯合製作：Magnetshroom、[Humework](https://github.com/Humework-Gollayosh-Carzonharch-Hu)
-- 其他技術協助：[0xAA55](https://github.com/0xAA55)、[Baysoftware](https://github.com/yi-bai)、Boris Ivanovich、[Henry Chan](https://github.com/hfhchan)、[Hulenkius](https://github.com/Hulenkius)、[Losketch](https://github.com/Losketch)
+- 其他技術協助：[0xAA55](https://github.com/0xAA55)、[Baysoftware](https://github.com/yi-bai)、Boris Ivanovich、[Henry Chan](https://github.com/hfhchan)、[Hulenkius](https://github.com/Hulenkius)、[Losketch](https://github.com/Losketch)、**[Fitzgerald](https://github.com/Fitzgerald-Porthmouth-Koenigsegg)**
 
 還有不少其他曾經向遍黑體項目給予支持、參與製作的人員，也在此對他們表示感謝。
 
@@ -159,11 +159,13 @@
     - **項目狀態**：已創設項目本體，但未創建項目主頁，項目名稱暫定。
 6. **Plantsing Project（遍擎體項目）**：基於武英殿本《康熙字典》，對中日韓越統一表意文字擴展區進行字形補充的項目，其字元收錄範圍暫定為與遍黑體項目拉齊。
     - **項目狀態**：未創設項目本體和項目主頁。
-7. **Planhangul Project（遍訓體項目）**：基於思源黑體，但以漢字的形式對諺文進行字形製作的項目，其字元收錄範圍暫定為基本諺文和擴展諺文。
+7. **Plangul Project（遍訓體項目）**：基於思源黑體，但以漢字的形式對諺文進行字形製作的項目，其字元收錄範圍暫定為基本諺文和擴展諺文。
     - **項目狀態**：未創設項目本體和項目主頁，項目名稱暫定。
 8. **Planfixibit Project（遍繕體項目）**：基於[Fixedsys Excelsior](https://github.com/kika/fixedsys)，跟進最新版本的Unicode，並進行字元補充的項目。
     - **項目狀態**：未創設項目本體和項目主頁，項目名稱暫定。
+9. **Plantone Project（遍磊體項目）**：基於《開成石經》，對中日韓越統一表意文字擴展區進行字形補充的項目。
+    - **項目狀態**：未創設項目本體和項目主頁，項目名稱暫定。
 > [!WARNING]
 >
-> 1. 嚴格意義上來說，遍象體項目和遍繕體項目不符合收錄進「遍宇宙家族」的要求，但出於方便考慮，仍然將這兩個項目納入進該家族中。
-> 2. 遍象體項目、遍擎體項目、遍繕體項目疑似容易產生版權爭端，是否能够存活亟待商榷。
+> 1. 嚴格意義上來說，遍象體項目、遍繕體項目、遍訓體項目不符合收錄進「遍宇宙家族」的要求，但出於方便考慮，仍然將這三個項目納入進該家族中。
+> 2. 遍象體項目疑似容易產生版權爭端。
