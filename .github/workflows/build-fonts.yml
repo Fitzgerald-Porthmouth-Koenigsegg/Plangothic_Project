@@ -44,7 +44,7 @@ jobs:
       - name: 优化并转换字体 / Optimize and Convert Fonts
         run: |
           mkdir -p optimized fonts/otf fonts/web fonts/static
-          
+
           echo "===== 开始优化字形 ====="
           find build -name "Plangothic*-Regular.ttf" | parallel fontforge -script tools/optimize_glyph.py {} -s 0.5
           mv build/*_merge_glyphs.ttf optimized/
@@ -87,7 +87,7 @@ jobs:
             base=$(basename "$ttf" _merge_glyphs.ttf)
             cp "$ttf" "fonts/static/${base}.ttf"
           done
-          
+
           echo "===== 生成文件验证 ====="
           echo "OTF文件:"
           ls -la fonts/otf/
@@ -128,8 +128,8 @@ jobs:
 
           LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
 
-          if [[ "$LAST_COMMIT_MSG" == *"[skip ci][√]"* ]]; then
-            echo "最近的提交已经包含[skip ci][√]标记，跳过修改"
+          if [[ "$LAST_COMMIT_MSG" == *"[skip ci][✓]"* ]]; then
+            echo "最近的提交已经包含[skip ci][✓]标记，跳过修改"
             exit 0
           fi
 
@@ -144,7 +144,7 @@ jobs:
           git add fonts/
 
           CURRENT_BRANCH=${GITHUB_REF#refs/heads/}
-          git commit --amend -m "$LAST_COMMIT_MSG [skip ci][√]"
+          git commit --amend -m "$LAST_COMMIT_MSG [skip ci][✓]"
 
           echo "推送修改后的提交到 $CURRENT_BRANCH..."
           git push --force origin "$CURRENT_BRANCH" && echo "成功推送修改" || echo "推送失败"

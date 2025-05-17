@@ -3,144 +3,126 @@ name: Release Packaging
 on:
   release:
     types: [published]
+  workflow_dispatch:
     inputs:
       font_name:
-        description: 'Font name prefix for packages (overrides default)'
+        description: '包的字体名称前缀（覆盖默认设置） / Font name prefix for packages (overrides default)'
+        required: false
+        default: 'Plangothic'
+      tag_version:
+        description: '手动运行时的标签版本 / Tag version for manual run'
         required: false
         default: ''
 
 env:
-  DEFAULT_FONT_NAME: "Plangothic"
+  DEFAULT_FONT_NAME: Plangothic
 
 jobs:
-  package:
+  prepare:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.set_vars.outputs.version }}
+      font_name: ${{ steps.set_vars.outputs.font_name }}
     steps:
-      - name: 检出代码 / Checkout code
+      - name: 签出代码 / Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: 设置环境变量 / Set up environment
-        id: setup
+      - name: Set VERSION and FONT_NAME
+        id: set_vars
         run: |
-          # 设置版本号
-          if [[ $GITHUB_REF == refs/tags/* ]]; then
-            VERSION=${GITHUB_REF#refs/tags/}
-            echo "使用发布标签版本: $VERSION"
+          # 1. 计算版本号
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            V=${GITHUB_REF#refs/tags/}
           elif [[ -n "${{ github.event.inputs.tag_version }}" ]]; then
-            VERSION="${{ github.event.inputs.tag_version }}"
-            echo "使用手动指定版本: $VERSION"
+            V=${{ github.event.inputs.tag_version }}
           else
-            VERSION=dev-$(date +'%Y%m%d-%H%M%S')
-            echo "使用自动生成版本: $VERSION"
+            V=dev-$(date +'%Y%m%d-%H%M%S')
           fi
-          echo "VERSION=${VERSION}" >> $GITHUB_ENV
-          echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
-
-          # 设置字体名称
-          FONT_NAME="${{ env.DEFAULT_FONT_NAME }}"
+          # 2. 计算字体名
+          FN="${DEFAULT_FONT_NAME}"
           if [[ -n "${{ github.event.inputs.font_name }}" ]]; then
-            FONT_NAME="${{ github.event.inputs.font_name }}"
-            echo "使用自定义字体名称: ${FONT_NAME}"
-          else
-            echo "使用默认字体名称: ${FONT_NAME}"
+            FN="${{ github.event.inputs.font_name }}"
           fi
-          echo "FONT_NAME=${FONT_NAME}" >> $GITHUB_ENV
+          echo "version=$V" >> $GITHUB_OUTPUT
+          echo "font_name=$FN" >> $GITHUB_OUTPUT
 
-          # 安装依赖
-          sudo apt-get update && sudo apt-get install -y p7zip-full
-
-          # 验证字体目录结构
-          if [[ ! -d "./fonts" ]]; then
-            echo "错误: 未找到fonts目录!"
-            exit 1
-          fi
-
-          # 检查并报告子目录状态
-          declare -a SUBDIRS=("otf" "static" "web")
-          for DIR in "${SUBDIRS[@]}"; do
-            if [[ -d "./fonts/$DIR" ]]; then
-              echo "✓ 找到目录: ./fonts/$DIR"
-            else
-              echo "⚠ 警告: ./fonts/$DIR 目录不存在，将被跳过"
-            fi
-          done
-
-      - name: 准备并打包字体文件 / Prepare and package font files
+      - name: Install p7zip
         run: |
-          mkdir -p ./dist
+          sudo apt-get update
+          sudo apt-get install -y p7zip-full
 
-          # 复制LICENSE到字体目录
-          if [[ -f "LICENSE.txt" ]]; then
-            echo "正在复制许可证文件..."
-            for DIR in "static" "otf" "web"; do
-              if [[ -d "./fonts/$DIR" ]]; then
-                cp LICENSE.txt "./fonts/$DIR/"
-                echo "✓ 已复制LICENSE到 ./fonts/$DIR/"
-              fi
-            done
-          else
-            echo "⚠ 警告: 未找到LICENSE.txt文件"
-          fi
-
-          cd ./fonts
-          
-          # 定义包目录
-          declare -A PACKAGES=(
-            ["OTF"]="../dist/${FONT_NAME}-OTF-${VERSION}"
-            ["Static"]="../dist/${FONT_NAME}-Static-${VERSION}"
-            ["Web"]="../dist/${FONT_NAME}-Web-${VERSION}"
-            ["Super"]="../dist/${FONT_NAME}-Super-${VERSION}"
-          )
-          
-          # 创建包目录
-          for DIR in "${PACKAGES[@]}"; do
-            mkdir -p "$DIR"
-          done
-          
-          # 复制文件到包目录
-          [[ -d "otf" ]] && cp -r otf/* "${PACKAGES[OTF]}/"
-          [[ -d "static" ]] && cp -r static/* "${PACKAGES[Static]}/"
-          [[ -d "web" ]] && cp -r web/* "${PACKAGES[Web]}/"
-          cp -r ./* "${PACKAGES[Super]}/"
-          
-          cd ../dist
-          
-          # 创建压缩包
-          echo "正在创建压缩文件..."
-          for DIR in ${FONT_NAME}-*-${VERSION}; do
-            if [[ -d "$DIR" ]]; then
-              echo "正在打包: $DIR"
-              zip -r -9 "${DIR}.zip" "$DIR" > /dev/null
-              7z a -t7z -mx=9 "${DIR}.7z" "$DIR" > /dev/null
-              echo "✓ 已完成: ${DIR}.zip 和 ${DIR}.7z"
+      - name: 验证字体文件夹 / Validate font folders
+        run: |
+          for d in otf static web; do
+            if [[ -d "fonts/$d" ]]; then
+              echo "✓ fonts/$d"
+            else
+              echo "⚠ skip fonts/$d"
             fi
           done
-          
-          echo "==== 创建的包文件列表 ===="
-          ls -lh *.zip *.7z | awk '{print $5"\t"$9}'
 
-      - name: 上传Release资源 / Upload release assets
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
+  package:
+    needs: prepare
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg: [OTF, Static, Web, Super]
+    env:
+      VERSION: ${{ needs.prepare.outputs.version }}
+      FONT_NAME: ${{ needs.prepare.outputs.font_name }}
+      PKG: ${{ matrix.pkg }}
+    steps:
+      - name: 签出代码 / Checkout code
+        uses: actions/checkout@v4
         with:
-          files: |
-            dist/${{ env.FONT_NAME }}-OTF-${{ env.VERSION }}.zip
-            dist/${{ env.FONT_NAME }}-OTF-${{ env.VERSION }}.7z
-            dist/${{ env.FONT_NAME }}-Static-${{ env.VERSION }}.zip
-            dist/${{ env.FONT_NAME }}-Static-${{ env.VERSION }}.7z
-            dist/${{ env.FONT_NAME }}-Web-${{ env.VERSION }}.zip
-            dist/${{ env.FONT_NAME }}-Web-${{ env.VERSION }}.7z
-            dist/${{ env.FONT_NAME }}-Super-${{ env.VERSION }}.zip
-            dist/${{ env.FONT_NAME }}-Super-${{ env.VERSION }}.7z
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
-      - name: 上传工作流构建产物 / Upload artifacts for manual runs
+      - name: 准备打包目录 / Prepare package dir
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Packaging $PKG…"
+          mkdir -p dist
+
+          TARGET="dist/${FONT_NAME}-${PKG}-${VERSION}"
+          mkdir -p "$TARGET"
+
+          if [[ "$PKG" == "Super" ]]; then
+            cp -r fonts/* "$TARGET"/
+          else
+            sub=$(echo "$PKG" | tr '[:upper:]' '[:lower:]')
+            if [[ -d "fonts/$sub" ]]; then
+              cp -r "fonts/$sub"/* "$TARGET"/
+            else
+              echo "⚠ fonts/$sub not found, skipping"
+            fi
+          fi
+
+      - name: Compress to .zip & .7z
+        shell: bash
+        run: |
+          cd dist
+          base="${FONT_NAME}-${PKG}-${VERSION}"
+          zip -qr "${base}.zip" "$base"
+          7z a -t7z -mx=9 "${base}.7z" "$base"
+          ls -lh "${base}."*
+
+      - name: 上传工件(手动运行) / Upload artifact (manual run)
         if: github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.FONT_NAME }}-packaged-fonts-${{ env.VERSION }}
-          path: dist/*.{zip,7z}
+          name: ${{ env.FONT_NAME }}-${{ matrix.pkg }}-${{ env.VERSION }}.7z
+          path: dist/${{ env.FONT_NAME }}-${{ matrix.pkg }}-${{ env.VERSION }}.7z
           retention-days: 7
+
+      - name: 上传到发行版 / Upload to Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/${{ env.FONT_NAME }}-${{ matrix.pkg }}-${{ env.VERSION }}.*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
