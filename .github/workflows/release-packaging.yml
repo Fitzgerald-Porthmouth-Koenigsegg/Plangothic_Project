@@ -27,41 +27,41 @@ jobs:
       - name: 签出代码 / Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Set VERSION and FONT_NAME
         id: set_vars
         run: |
-          # 1. 计算版本号
           if [[ "${{ github.event_name }}" == "release" ]]; then
-            V=${GITHUB_REF#refs/tags/}
-          elif [[ -n "${{ github.event.inputs.tag_version }}" ]]; then
-            V=${{ github.event.inputs.tag_version }}
+            VERSION=${GITHUB_REF#refs/tags/}
           else
-            V=dev-$(date +'%Y%m%d-%H%M%S')
+            VERSION=${{ github.event.inputs.tag_version || format('dev-{0}', github.run_number) }}
           fi
-          # 2. 计算字体名
-          FN="${DEFAULT_FONT_NAME}"
-          if [[ -n "${{ github.event.inputs.font_name }}" ]]; then
-            FN="${{ github.event.inputs.font_name }}"
-          fi
-          echo "version=$V" >> $GITHUB_OUTPUT
-          echo "font_name=$FN" >> $GITHUB_OUTPUT
 
-      - name: Install p7zip
+          FONT_NAME=${{ github.event.inputs.font_name || env.DEFAULT_FONT_NAME }}
+
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "font_name=$FONT_NAME" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y p7zip-full
+          sudo apt-get update && sudo apt-get install -y p7zip-full
 
       - name: 验证字体文件夹 / Validate font folders
         run: |
+          missing_dirs=()
           for d in otf static web; do
             if [[ -d "fonts/$d" ]]; then
-              echo "✓ fonts/$d"
+              echo "✓ fonts/$d exists"
             else
-              echo "⚠ skip fonts/$d"
+              echo "⚠ fonts/$d missing"
+              missing_dirs+=("$d")
             fi
           done
+
+          if [[ ${#missing_dirs[@]} -gt 0 && "${{ matrix.pkg }}" != "Super" ]]; then
+            echo "::warning::Missing directories: ${missing_dirs[*]}"
+          fi
 
   package:
     needs: prepare
@@ -78,14 +78,14 @@ jobs:
       - name: 签出代码 / Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: 准备打包目录 / Prepare package dir
         shell: bash
         run: |
           set -euo pipefail
 
-          echo "Packaging $PKG…"
+          echo "Packaging $PKG for version $VERSION..."
           mkdir -p dist
 
           TARGET="dist/${FONT_NAME}-${PKG}-${VERSION}"
@@ -102,13 +102,15 @@ jobs:
             fi
           fi
 
-      - name: Compress to .zip & .7z
-        shell: bash
+      - name: Compress files
         run: |
           cd dist
           base="${FONT_NAME}-${PKG}-${VERSION}"
-          zip -qr "${base}.zip" "$base"
-          7z a -t7z -mx=9 "${base}.7z" "$base"
+
+          zip -qr "${base}.zip" "$base" &
+          7z a -t7z -mx=9 "${base}.7z" "$base" &
+          wait
+
           ls -lh "${base}."*
 
       - name: 上传工件(手动运行) / Upload artifact (manual run)
@@ -126,3 +128,38 @@ jobs:
           files: dist/${{ env.FONT_NAME }}-${{ matrix.pkg }}-${{ env.VERSION }}.*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  update-changelog:
+    needs: [prepare, package]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.action == 'published'
+    env:
+      VERSION: ${{ needs.prepare.outputs.version }}
+      FONT_NAME: ${{ needs.prepare.outputs.font_name }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: 生成下载链接 / Generate download links
+        id: generate_links
+        run: |
+          set -euo pipefail
+
+          BASE_URL="https://github.com/${REPO}/releases/download/${VERSION}"
+          packages=(Super Static OTF Web)
+
+          table="### 下载链接\n\n| Package | 7z | zip |\n| -- | -- | -- |"
+          for pkg in "${packages[@]}"; do
+            table+=$'\n'"| $pkg | [📦 Download](${BASE_URL}/${FONT_NAME}-$pkg-$VERSION.7z) | [📦 Download](${BASE_URL}/${FONT_NAME}-$pkg-$VERSION.zip) |"
+          done
+
+          echo -e "$table"
+
+          echo "links<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$table" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: 更新发行版描述 / Update release description
+        run: |
+          gh release edit "$VERSION" --notes-file <(echo -e "${{ steps.generate_links.outputs.links }}")
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
