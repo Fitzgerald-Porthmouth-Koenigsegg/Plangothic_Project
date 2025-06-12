@@ -21,9 +21,9 @@
 本字体主要支援扩展B区至扩展J区的全部汉字，其他区块有零星的字符。
 
 ## 贡献者
-- 主制作：[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)
+- 主制作：[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)、Nachicraft
 - 联合制作：Magnetshroom、[Humework](https://github.com/Humework-Gollayosh-Carzonharch-Hu)
-- 其他技术协助：[0xAA55](https://github.com/0xAA55)、[Baysoftware](https://github.com/yi-bai)、Boris Ivanovich、[Henry Chan](https://github.com/hfhchan)、[Hulenkius](https://github.com/Hulenkius)、[Losketch](https://github.com/Losketch)、**[Fitzgerald](https://github.com/Fitzgerald-Porthmouth-Koenigsegg)**
+- 其他技术协助：[0xAA55](https://github.com/0xAA55)、[Baysoftware](https://github.com/yi-bai)、Boris Ivanovich、[Henry Chan](https://github.com/hfhchan)、[Hulenkius](https://github.com/Hulenkius)、[Losketch](https://github.com/Losketch)
 
 还有不少其他曾经向遍黑体项目给予支持、参与制作的人员，也在此对他们表示感谢。
 
@@ -149,13 +149,13 @@
 3. **Planschrift Project（遍玨体项目）**：基于汇文明朝体，对中日韩越统一表意文字扩展区进行字形补充的项目，其字符收录范围暂定为在汇文明朝体的字符范围基础上扩充至思源黑体+遍黑体。
     - **项目状态**：已创设项目本体和[项目主页](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Planschrift_Project)，但未完成。
 4. **Planseal Project（遍篆体项目）**：基于《说文解字》小篆体，对中日韩越统一表意文字扩展区进行字形补充的项目。
-    - **项目状态**：未创设项目本体和项目主页，项目名称暂定。
+    - **项目状态**：未创设项目本体和项目主页，项目名称暂定，未来可能会与遍黑体项目合并，成为其中的一部分。
 5. **Planicon Project（遍象体项目）**：基于字统网中部分汉字图标的字形补充的项目，其字符收录范围暂定为基本区和扩展A区，其他汉字区块散有字形。
     - **项目状态**：已创设项目本体，但未创建项目主页，项目名称暂定。
 6. **Plantsing Project（遍擎体项目）**：基于武英殿本《康熙字典》，对中日韩越统一表意文字扩展区进行字形补充的项目，其字符收录范围暂定为与遍黑体项目拉齐。
     - **项目状态**：未创设项目本体和项目主页。
-7. **Plangul Project（遍训体项目）**：基于思源黑体，但以汉字的形式对谚文进行字形制作的项目，其字符收录范围暂定为基本谚文和扩展谚文。
-    - **项目状态**：未创设项目本体和项目主页，项目名称暂定。
+7. ***Plangul Project（遍训体项目）***：基于思源黑体，但以汉字的形式对谚文进行字形制作的项目，其字符收录范围暂定为基本谚文和扩展谚文。
+    - **项目状态**：与遍黑体项目合并，成为其中的一部分。
 8. **Planfixibit Project（遍缮体项目）**：基于[Fixedsys Excelsior](https://github.com/kika/fixedsys)，跟进最新版本的Unicode，并进行字符补充的项目。
     - **项目状态**：未创设项目本体和项目主页，项目名称暂定。
 9. **Plantone Project（遍磊体项目）**：基于《开成石经》，对中日韩越统一表意文字扩展区进行字形补充的项目。

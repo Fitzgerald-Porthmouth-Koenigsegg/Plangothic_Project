@@ -20,9 +20,9 @@ Plangothic Project（プランゴシックプロジェクト、中国語：遍�
 本フォントは主に拡張漢字B区から拡張漢字J区までのすべてを支援し、その他のブロックには散発的な文字がある。
 
 ## 主な開発メンバー
-- 制作コア：[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)
+- 制作コア：[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)、Nachicraft
 - 共同制作：Magnetshroom、[Humework](https://github.com/Humework-Gollayosh-Carzonharch-Hu)
-- 技術協力：[0xAA55](https://github.com/0xAA55)、[Baysoftware](https://github.com/yi-bai)、Boris Ivanovich、[Henry Chan](https://github.com/hfhchan)、[Hulenkius](https://github.com/Hulenkius)、[Losketch](https://github.com/Losketch)、**[Fitzgerald](https://github.com/Fitzgerald-Porthmouth-Koenigsegg)**
+- 技術協力：[0xAA55](https://github.com/0xAA55)、[Baysoftware](https://github.com/yi-bai)、Boris Ivanovich、[Henry Chan](https://github.com/hfhchan)、[Hulenkius](https://github.com/Hulenkius)、[Losketch](https://github.com/Losketch)
 
 その他、これまでにご協力とご支援を頂いた方々にも、心より感謝を申し上げます。
 
@@ -133,14 +133,14 @@ Android フォンに Plangothic TTC フォントをインストールする手�
     - **プロジェクトステータス**：プロジェクト本体は作成されていますが、プロジェクトホームページは作成されていません。
 3. **Planschrift Project（プランシェフト・プロジェクト、中国語：遍玨體項目、遍玨体项目）**：Huiwen-Mincho（匯文明朝）ベースに、CJK 統合漢字拡張ブロックを補完するフォントの作成を目指すプロジェクトです、その文字収録範囲は暫定的に匯文明朝体の文字範囲をベースにして源ノ角ゴシック+プランゴシック・プロジェクトに拡張すると暫定的に設定されている。
     - **プロジェクトステータス**：プロジェクト本体と[プロジェクトホームページ](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Planschrift_Project)を作成しましたが、完了していません。
-4. **Planseal Project（プランシール・プロジェクト、中国語：遍篆體項目、遍篆体项目）**：『説文解字』小篆ベースに、CJK統合漢字拡張ブロックを補完するフォントの作成を目指すプロジェクトです。
+4. **Planseal Project（プランシール・プロジェクト、中国語：遍篆體項目、遍篆体项目）**：『説文解字』小篆ベースに、CJK統合漢字拡張ブロックを補完するフォントの作成を目指すプロジェクトです、将来的にはプランゴシック・プロジェクトと統合され、その一部になる可能性があります。
     - **プロジェクトステータス**：プロジェクト本体とプロジェクトホームページは作成されておらず、プロジェクト名は暫定的である。
 5. **Planicon Project（プランイコン・プロジェクト、中国語：遍象體項目、遍象体项目）**：Zitoolsにおける漢字アイコンの一部にベースづくグリフ補足のプロジェクト，その文字収録範囲は暫定的に URO と拡張 A であり、そ他 CJK 統合漢字拡张のブロックは部分的にのみ実装されています。
     - **プロジェクトステータス**：プロジェクト本体は作成されていますが、プロジェクトホームページは作成されていません、プロジェクト名は暫定的である。
 6. **Plantsing Project（プランツィン・プロジェクト、中国語：遍擎體項目、遍擎体项目）**：武英殿版『康熙字典』ベースに、CJK 統合漢字拡張ブロックを補完するフォントの作成を目指すプロジェクトです、その文字収録範囲は暫定的にプランゴシック・プロジェクトと整列する。
     - **プロジェクトステータス**：プロジェクト本体とプロジェクトホームページは作成されておらず。
-7. **Plangul Project（プラングル・プロジェクト、中国語：遍訓體項目、遍训体项目）**：源ノ角ゴシックベースに、漢字の形式で韓國文の字形制作を行うプロジェクトでは、その文字収録範囲は暫定的に基本韓國文と拡張韓國文となっている。
-    - **プロジェクトステータス**：プロジェクト本体とプロジェクトホームページは作成されておらず、プロジェクト名は暫定的である。
+7. ***Plangul Project（プラングル・プロジェクト、中国語：遍訓體項目、遍训体项目）***：源ノ角ゴシックベースに、漢字の形式で韓國文の字形制作を行うプロジェクトでは、その文字収録範囲は暫定的に基本韓國文と拡張韓國文となっている。
+    - **プロジェクトステータス**：プランゴシック・プロジェクトと合併し、その一部となる。
 8. **Planfixibit Project（プランフィジビト・プロジェクト、中国語：遍繕體項目、遍缮体项目）**：[Fixedsys Excelsior](https://github.com/kika/fixedsys)に基づいて、最新バージョンのUnicodeをフォローし、文字補足の項目を行います。
     - **プロジェクトステータス**：プロジェクト本体とプロジェクトホームページは作成されておらず、プロジェクト名は暫定的である。
 9. **Plantone Project（プラントウン・プロジェクト、中国語：遍磊体项目、遍磊體項目）**：『開成石經』ベースに、CJK統合漢字拡張ブロックを補完するフォントの作成を目指すプロジェクトです。
