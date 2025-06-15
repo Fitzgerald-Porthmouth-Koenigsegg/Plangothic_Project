@@ -24,14 +24,29 @@ jobs:
           sudo apt-get update -q
           sudo apt-get install --no-install-recommends -y \
             p7zip-full \
-            fontforge \
-            python3-fontforge \
             python3-pip \
             ttfautohint \
             parallel \
-
+            fuse
           sudo apt-get clean
           sudo rm -rf /var/lib/apt/lists/*
+
+          wget -qO FontForge.AppImage \
+            https://github.com/fontforge/fontforge/releases/download/20230101/FontForge-2023-01-01-a1dad3e-x86_64.AppImage
+          chmod +x FontForge.AppImage
+
+          ./FontForge.AppImage --appimage-extract
+          sudo mv squashfs-root /opt/fontforge
+
+          sudo tee /usr/local/bin/fontforge << 'EOF'
+          #!/usr/bin/env bash
+          export APPDIR=/opt/fontforge
+          export PATH="$APPDIR/usr/bin:$PATH"
+          export LD_LIBRARY_PATH="$APPDIR/usr/lib:$LD_LIBRARY_PATH"
+          export PYTHONPATH="$APPDIR/usr/lib/python3/dist-packages:$PYTHONPATH"
+          exec "$APPDIR/usr/bin/fontforge" "$@"
+          EOF
+          sudo chmod +x /usr/local/bin/fontforge
 
           pip install --no-cache-dir --upgrade pip
           pip install --no-cache-dir fonttools brotli fontmake

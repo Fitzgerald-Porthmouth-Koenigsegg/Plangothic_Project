@@ -68,6 +68,12 @@ def processing_optimization_glyph_extension(glyph):
     glyph.width = int(round(glyph.width / 10.0) * 10)
     glyph.balance()
     glyph.autoHint()
+    
+    glyph.simplify(1, ('setstarttoextremum', 'removesingletonpoints', 'forcelines'))
+    glyph.cluster(0.5)
+    glyph.removeOverlap()
+    glyph.simplify(1)
+    glyph.round()
 
 def process_font(input_file, simplify_value=0.5):
     try:
