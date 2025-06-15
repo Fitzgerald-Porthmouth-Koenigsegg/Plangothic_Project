@@ -127,6 +127,12 @@ class GlyphProcessor:
         glyph.width = int(round(glyph.width / 10.0) * 10)
         glyph.balance()
         glyph.autoHint()
+        
+        glyph.simplify(1, ('setstarttoextremum', 'removesingletonpoints', 'forcelines'))
+        glyph.cluster(0.5)
+        glyph.removeOverlap()
+        glyph.simplify(1)
+        glyph.round()
 
 
 class ProgressTracker:
