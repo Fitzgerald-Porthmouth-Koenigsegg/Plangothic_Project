@@ -159,7 +159,9 @@ jobs:
 
       - name: 更新发行版描述 / Update release description
         run: |
-          gh release edit "$VERSION" --notes-file <(echo -e "${{ steps.generate_links.outputs.links }}")
+          current_notes=$(gh release view "$VERSION" --json body --jq '.body')
+          new_notes="${current_notes}"$'\n\n'"${{ steps.generate_links.outputs.links }}"
+          gh release edit "$VERSION" --notes "$new_notes"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
