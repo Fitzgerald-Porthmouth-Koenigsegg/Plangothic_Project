@@ -1,0 +1,242 @@
+name: Build Fonts and Deploy
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'sources/Plangothic-Regular.7z'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检查仓库 / Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 安装依赖项 / Install dependencies
+        run: |
+          mkdir -p ~/.cache/pip
+
+          sudo apt-get update -q
+          sudo apt-get install --no-install-recommends -y \
+            p7zip-full \
+            python3-pip \
+            ttfautohint \
+            parallel \
+            fuse
+          sudo apt-get clean
+          sudo rm -rf /var/lib/apt/lists/*
+
+          wget -qO FontForge.AppImage \
+            https://github.com/fontforge/fontforge/releases/download/20230101/FontForge-2023-01-01-a1dad3e-x86_64.AppImage
+          chmod +x FontForge.AppImage
+
+          ./FontForge.AppImage --appimage-extract
+          sudo mv squashfs-root /opt/fontforge
+
+          sudo tee /usr/local/bin/fontforge << 'EOF'
+          #!/usr/bin/env bash
+          export APPDIR=/opt/fontforge
+          export PATH="$APPDIR/usr/bin:$PATH"
+          export LD_LIBRARY_PATH="$APPDIR/usr/lib:$LD_LIBRARY_PATH"
+          export PYTHONPATH="$APPDIR/usr/lib/python3/dist-packages:$PYTHONPATH"
+          exec "$APPDIR/usr/bin/fontforge" "$@"
+          EOF
+          sudo chmod +x /usr/local/bin/fontforge
+
+          pip install --no-cache-dir --upgrade pip
+          pip install --no-cache-dir fonttools brotli fontmake
+
+      - name: 提取文件 / Extract files
+        run: |
+          mkdir -p temp
+          7z x sources/Plangothic-Regular.7z -obuild/
+
+      - name: 优化并转换字体 / Optimize and Convert Fonts
+        run: |
+          mkdir -p optimized fonts/otf fonts/web fonts/static
+
+          echo "===== 开始优化字形 ====="
+          find build -name "Plangothic*-Regular.ttf" | parallel fontforge -script tools/optimize_glyph.py {} -s 0.5
+          mv build/*_merge_glyphs.ttf optimized/
+
+          process_fonts() {
+            local format=$1
+            local target_dir=$2
+            local extension=$3
+
+            echo "===== 开始转换为${format}格式 ====="
+            find optimized -name "Plangothic*-Regular_merge_glyphs.ttf" | parallel "fontforge -script tools/convert_font.py {} -f ${format}"
+
+            for ttf in optimized/Plangothic*-Regular_merge_glyphs.ttf; do
+              base=$(basename "$ttf" _merge_glyphs.ttf)
+              found=false
+
+              for location in "./" "optimized/"; do
+                source_file="${location}${base}_merge_glyphs.${extension}"
+                if [ -f "$source_file" ]; then
+                  echo "找到${format}文件: $source_file"
+                  mv "$source_file" "${target_dir}/${base}.${extension}"
+                  found=true
+                  break
+                fi
+              done
+
+              if [ "$found" = false ]; then
+                echo "警告: 未能在预期位置找到${base}的${format}文件"
+                echo "尝试查找所有可能的文件:"
+                find . -name "*${base}*.${extension}" -o -name "*Plangothic*.${extension}"
+              fi
+            done
+          }
+
+          process_fonts "otf" "fonts/otf" "otf"
+          process_fonts "woff2" "fonts/web" "woff2"
+
+          echo "===== 创建静态TTF文件 ====="
+          for ttf in optimized/*_merge_glyphs.ttf; do
+            base=$(basename "$ttf" _merge_glyphs.ttf)
+            cp "$ttf" "fonts/static/${base}.ttf"
+          done
+
+          echo "===== 生成文件验证 ====="
+          echo "OTF文件:"
+          ls -la fonts/otf/
+          echo "WOFF2文件:"
+          ls -la fonts/web/
+          echo "TTF文件:"
+          ls -la fonts/static/
+
+      - name: 合并字体到集合 / Merge Fonts to Collections
+        run: |
+          python3 - <<EOF
+          from fontTools.ttLib import TTFont
+          from fontTools.ttLib.ttCollection import TTCollection
+
+          def merge_fonts(input_files, output_file):
+              collection = TTCollection()
+              for font_file in input_files:
+                  font = TTFont(font_file)
+                  collection.fonts.append(font)
+              collection.save(output_file)
+              print(f"已创建字体集合文件: {output_file}")
+
+          import os
+          os.makedirs("fonts/static", exist_ok=True)
+          os.makedirs("fonts/otf", exist_ok=True)
+
+          ttf_files = ["fonts/static/PlangothicP1-Regular.ttf", "fonts/static/PlangothicP2-Regular.ttf"]
+          merge_fonts(ttf_files, "fonts/static/Plangothic.ttc")
+
+          otf_files = ["fonts/otf/PlangothicP1-Regular.otf", "fonts/otf/PlangothicP2-Regular.otf"]
+          merge_fonts(otf_files, "fonts/otf/Plangothic.ttc")
+          EOF
+
+      - name: 生成构建信息 / Generate Build Info
+        run: |
+          mkdir -p build-info
+
+          cat > build-info/build-info.json << EOF
+          {
+            "build_date": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+            "commit_sha": "$GITHUB_SHA",
+            "commit_message": "$(git log -1 --pretty=%B | tr '\n' ' ' | sed 's/"/\\"/g')",
+            "branch": "${GITHUB_REF#refs/heads/}",
+            "workflow_run": "$GITHUB_RUN_NUMBER",
+            "actor": "$GITHUB_ACTOR"
+          }
+          EOF
+
+          echo "# 构建产物清单" > build-info/manifest.md
+          echo "" >> build-info/manifest.md
+          echo "## 文件列表" >> build-info/manifest.md
+          echo "" >> build-info/manifest.md
+          find fonts -type f | sort | while read file; do
+            size=$(du -h "$file" | cut -f1)
+            echo "- \`$file\` ($size)" >> build-info/manifest.md
+          done
+
+      - name: 部署到build分支 / Deploy to build branch
+        run: |
+          cp -r fonts /tmp/fonts
+          cp -r build-info /tmp/build-info
+          rm -rf fonts build-info build/
+
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+          if git show-ref --verify --quiet refs/remotes/origin/build; then
+            git checkout build
+            git pull origin build
+          else
+            git checkout --orphan build
+            git rm -rf .
+          fi
+
+          find . -maxdepth 1 -not -name '.git' -not -name '.' -exec rm -rf {} +
+
+          cp -r /tmp/fonts fonts
+          cp -r /tmp/build-info build-info
+
+          git add .
+          if git diff --staged --quiet; then
+            echo "没有变更需要提交"
+          else
+            git commit -m "deploy: ${GITHUB_SHA:0:7}"
+
+            git push origin build
+            printf "\e]8;;https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}\adeploy: %s\e]8;;\a\n" "${GITHUB_SHA:0:7}"
+          fi
+
+      - name: 上传构建产物 / Upload artifacts  
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: font-files-${{ github.run_number }}
+          path: |
+            fonts/
+            build-info/
+          retention-days: 30
+
+      - name: 创建发布摘要 / Create Release Summary
+        if: success()
+        run: |
+          echo "## 🎉 字体构建成功！" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 构建信息" >> $GITHUB_STEP_SUMMARY
+          echo "- **构建时间**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> $GITHUB_STEP_SUMMARY
+          echo "- **提交SHA**: \`$GITHUB_SHA\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **工作流运行**: #$GITHUB_RUN_NUMBER" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📁 生成的文件" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          find fonts -type f | sort >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔗 访问链接" >> $GITHUB_STEP_SUMMARY
+          echo "- [build分支](../../tree/build)" >> $GITHUB_STEP_SUMMARY
+          echo "- [字体文件](../../tree/build/fonts)" >> $GITHUB_STEP_SUMMARY
+          echo "- [构建信息](../../tree/build/build-info)" >> $GITHUB_STEP_SUMMARY
+
+      - name: 失败时调试 / Debug on failure
+        if: failure()
+        run: |
+          echo "===== 调试信息 ====="
+          echo "目录结构:"
+          find . -type f -name "*.ttf" -o -name "*.otf" -o -name "*.woff2" | sort
+
+          echo "磁盘空间:"
+          df -h
+
+          echo "Git状态:"
+          git status
+
+          echo "最近的日志:"
+          tail -n 100 $(find /tmp -name "*.log" -type f 2>/dev/null | head -1) 2>/dev/null || echo "没有找到日志文件"
+
+          echo "环境变量:"
+          env | grep -v -E "TOKEN|SECRET|KEY" | sort
