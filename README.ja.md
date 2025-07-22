@@ -20,8 +20,7 @@ Plangothic Project（プランゴシックプロジェクト、中国語：遍�
 本フォントは主に拡張漢字B区から拡張漢字J区までのすべてを支援し、その他のブロックには散発的な文字がある。
 
 ## 主な開発メンバー
-- 制作コア：[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)、Nachicraft
-- 共同制作：Magnetshroom、[Humework](https://github.com/Humework-Gollayosh-Carzonharch-Hu)
+- 制作コア：[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)、Nachicraft、Magnetshroom
 - 技術協力：[0xAA55](https://github.com/0xAA55)、[Baysoftware](https://github.com/yi-bai)、Boris Ivanovich、[Henry Chan](https://github.com/hfhchan)、[Hulenkius](https://github.com/Hulenkius)、[Losketch](https://github.com/Losketch)
 
 その他、これまでにご協力とご支援を頂いた方々にも、心より感謝を申し上げます。
