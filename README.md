@@ -21,8 +21,7 @@
 本字体主要支援扩展B区至扩展J区的全部汉字，其他区块有零星的字符。
 
 ## 贡献者
-- 主制作：[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)、Nachicraft
-- 联合制作：Magnetshroom、[Humework](https://github.com/Humework-Gollayosh-Carzonharch-Hu)
+- 主制作：[Usagixineist](https://github.com/Usagixineist)、[WAAO-SCREAMER](https://github.com/WAAO-SCREAMER)、Nachicraft、Magnetshroom
 - 其他技术协助：[0xAA55](https://github.com/0xAA55)、[Baysoftware](https://github.com/yi-bai)、Boris Ivanovich、[Henry Chan](https://github.com/hfhchan)、[Hulenkius](https://github.com/Hulenkius)、[Losketch](https://github.com/Losketch)
 
 还有不少其他曾经向遍黑体项目给予支持、参与制作的人员，也在此对他们表示感谢。
