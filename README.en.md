@@ -20,8 +20,7 @@ Plangothic Project (Chinese: 遍黑体项目) is based on [Source Han Sans](http
 This font mainly supports all CJK ideographs from extension B to extension J, with sporadic character in other blocks.
 
 ## Contributors
-- Main:  [Usagixineist](https://github.com/Usagixineist), [WAAO-SCREAMER](https://github.com/WAAO-SCREAMER), Nachicraft
-- Collab: Magnetshroom, [Humework](https://github.com/Humework-Gollayosh-Carzonharch-Hu)
+- Main:  [Usagixineist](https://github.com/Usagixineist), [WAAO-SCREAMER](https://github.com/WAAO-SCREAMER), Nachicraft, Magnetshroom
 - Assistants: [0xAA55](https://github.com/0xAA55), [Baysoftware](https://github.com/yi-bai), Boris Ivanovich, [Henry Chan](https://github.com/hfhchan), [Hulenkius](https://github.com/Hulenkius), [Losketch](https://github.com/Losketch)
 
 There are also many other people who have supported and participated in the project. We would like to thank them.
@@ -31,8 +30,8 @@ This font is published under the [SIL Open Font License](https://openfontlicense
 
 ### You can:
 - Any individual, group, organization, or enterprise may use it for commercial and non-commercial purposes free of charge, without the need to pay fees, inform the author in advance, indicate the source information, or obtain the author's permission.
-- Republish or install font files, embed them into any software or device, and the software or device can be redistributed or resold.
-- Modify, expand, and convert font files, but it is **strictly prohibited to use the reserved names "Plangothic" and "遍黑" for the font in the works that have been modified twice**. The version that has been modified twice **must also be published under the SIL Open Font License** (if only the source font is converted, the reserved name can still be used).
+- Republish or install font files, embed them into any software or device, 和 the software or device can be redistributed or resold.
+- Modify, expand, 和 convert font files, but it is **strictly prohibited to use the reserved names "Plangothic" and "遍黑" for the font in the works that have been modified twice**. The version that has been modified twice **must also be published under the SIL Open Font License** (if only the source font is converted, the reserved name can still be used).
 
 ### You cannot:
 - Sell any part of the font file (including but not limited to glyphs, OpenType feature) for resale, including but not limited to selling the font file separately, bundling it with other fonts, requiring payment for special permissions to use the font, etc.
@@ -42,7 +41,7 @@ This font is published under the [SIL Open Font License](https://openfontlicense
 - Other behaviors that violate the SIL Open Font License that are not listed above.
 
 ### Attention:
-- Any individual, enterprise, team, etc. who uses, copies, modifies, distributes this font or conducts any behavior conforming to the provisions of the SIL Open Font License, and the recipient who uses, downloads, or exercises the rights specified in the contract, shall be deemed to have agreed to comply with all the provisions of the SIL Open Font License by default.
+- Any individual, enterprise, team, etc. who uses, copies, modifies, distributes this font or conducts any behavior conforming to the provisions of the SIL Open Font License, 和 the recipient who uses, downloads, or exercises the rights specified in the contract, shall be deemed to have agreed to comply with all the provisions of the SIL Open Font License by default.
 - This font is a free commercial font. **Any behavior that requires payment to obtain this font is considered fraudulent. Beware of being deceived**. If you obtained this font for payment, please report it immediately and assist relevant judicial authorities if necessary.
 - The author's failure to exercise, timely exercise, or fully exercise the legitimate rights enjoyed by the SIL Open Font License shall not be deemed as a waiver of such rights, nor shall it affect the author's future exercise of such rights.
 - This font does not contain any political intentions, metaphors, or purposes, and is not related to any political activities. The author shall not be liable for any joint legal liability arising from the use of this font.
