@@ -121,7 +121,6 @@ def process_font(input_file, simplify_value=0.5):
         glyph.simplify(simplify_value, ('mergelines', 'smoothcurves', 'removesingletonpoints'), 0.3, 0, 0.5)
         glyph.canonicalContours()
         glyph.canonicalStart()
-        glyph.simplify()
         glyph.removeOverlap()
         glyph.correctDirection()
         glyph.simplify(simplify_value, ('mergelines', 'smoothcurves'), 0.3, 0, 0.5)

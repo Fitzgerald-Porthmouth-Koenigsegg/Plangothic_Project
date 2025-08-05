@@ -106,7 +106,6 @@ class GlyphProcessor:
                      0.3, 0, 0.5)
         glyph.canonicalContours()
         glyph.canonicalStart()
-        glyph.simplify()
         glyph.removeOverlap()
         glyph.correctDirection()
         glyph.simplify(self.simplify_value, 
