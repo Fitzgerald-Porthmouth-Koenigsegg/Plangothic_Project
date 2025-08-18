@@ -52,6 +52,7 @@
       fill-opacity: 0;
       stroke: #171717;
       stroke-width: 2.5;
+      stroke-alignment: inner;
       animation: pathDraw 30s ease infinite alternate;
       will-change: stroke-dashoffset, fill-opacity, stroke-width;
       transform: translateZ(0);
