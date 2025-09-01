@@ -2,15 +2,56 @@
 
 ![Logo Image](./documentation/samples/31fix.svg)
 
-[Simplified Chinese / 简体中文](README.md) | [Japanese / 日本語](README.ja.md) | [Traditional Chinese / 繁體中文](README.zh.hant.md)
+<a href="README.md">
+  <img src="https://img.shields.io/badge/语言-中文-blue?style=for-the-badge&logo=immersivetranslate&logoColor=white" alt="中文版本">
+</a>
+<a href="#">
+  <img src="https://img.shields.io/badge/Language-English-red?style=for-the-badge&logo=immersivetranslate&logoColor=white" alt="English Version">
+</a>
+<a href="README.zh.hant.md">
+  <img src="https://img.shields.io/badge/語言-繁體中文-green?style=for-the-badge&logo=immersivetranslate&logoColor=white" alt="繁體中文版本">
+</a>
+<a href="README.ja.md">
+  <img src="https://img.shields.io/badge/言語-日本語-orange?style=for-the-badge&logo=immersivetranslate&logoColor=white" alt="日本語版本">
+</a>
 
 # Plangothic Project
-[![commits](https://img.shields.io/github/last-commit/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project?color=critical&label=Latest%20Submit&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iI0U2NiI+PHBhdGggZD0iTS40IDEuOSAxLjYgMy4xQTggOCA5MCAxMTAgOSAuOC44IDkwIDAxMS41IDkgNi41IDYuNSA5MCAxMDIuNyA0LjFMNC4xIDUuNUEuMy4zIDkwIDAxMy45IDZILjNBLjMuMyA5MCAwMTAgNS44VjIuMWEuMy4zIDkwIDAxLjQtLjJaTTcuOCA0YS44LjggOTAgMDEuOC44djNsMiAuOEEuOC44IDkwIDAxMTAgMTBMNy41IDlBLjguOCA5MCAwMTcgOC4zVjQuOEEuOC44IDkwIDAxNy44IDRaIi8+PC9zdmc+)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/commits/main)
-[![Latest release](https://img.shields.io/github/release/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project?color=critical&label=Latest+release&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjMgMyAxOCAxOCI+PHBhdGggc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6I0U2NjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2Utd2lkdGg6MiIgZD0iTTEwIDdhMiAyIDAgMDEyLTJoNmEyIDIgMCAwMTIgMnYxMGEyIDIgMCAwMS0yIDJoLTZhMiAyIDAgMDEtMi0yek03IDd2MTBNNCA4djgiLz48L3N2Zz4=)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/latest)
-[![Total Download](https://img.shields.io/github/downloads/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/total.svg?color=critical&label=Total%20Download&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3LjQyIDcuNDIiPjxjaXJjbGUgY3g9IjMuNyIgY3k9IjMuNyIgcj0iMy43IiBmaWxsPSIjZDY2Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTQuMiAxLjZjLjguMiAxLjQuOSAxLjQgMS42LjQgMCAuOC41LjggMS4xUzYgNS40IDUuNiA1LjRIMmMtLjQgMC0uOC0uNS0uOC0xLjFzLjMtMS4xLjgtMS4xYzAtLjcuNi0xLjQgMS40LTEuNlYzLjJIMi42TDMuOCA0LjcgNC45IDMuMkg0LjJaIi8+PC9zdmc+)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/latest)
-[![License](https://img.shields.io/static/v1?label=License&message=SIL%20Open%20Font%20License&color=critical&logo=creative%20commons)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/blob/main/LICENSE)
+<img src="https://api.visitorbadge.io/api/visitors?path=Fitzgerald-Porthmouth-Koenigsegg.Plangothic_Project&countColor=%234ecdc4" alt="Github Visitors">
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/stargazers">
+  <img src="https://img.shields.io/github/stars/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project?style=for-the-badge&color=yellow" alt="GitHub Stars">
+</a>
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/forks">
+  <img src="https://img.shields.io/github/forks/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project?style=for-the-badge&color=8a2be2" alt="GitHub Forks">
+</a>
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/issues">
+  <img src="https://img.shields.io/github/issues-raw/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project?style=for-the-badge&label=Issues&color=orange" alt="Github Issues">
+</a>
+<br/>
 
-[![Video introduction](https://img.shields.io/badge/Video%20introduction-00a1d6?logo=Bilibili&logoColor=ffffff)](https://www.bilibili.com/video/BV1Dr4y1V7b7)　　[![Stars](https://img.shields.io/github/stars/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project?label=Stars&color=critical&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGZpbGw9IiNmZDAiIGQ9Im00IDAgMSAyLjYgMi43LjMtMi4xIDEuOC44IDNMNCA2LjQgMS42IDcuN2wuOC0zTC4zIDIuOSAzIDIuNnoiLz48L3N2Zz4=)](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/stargazers)
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/releases/latest">
+  <img src="https://img.shields.io/github/downloads/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/total?style=for-the-badge&logo=abdownloadmanager&logoColor=fff" alt="Github Downloads">
+</a>
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/releases/latest">
+  <img src="https://img.shields.io/github/v/release/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project?style=for-the-badge&color=brightgreen&logo=github" alt="Version">
+</a>
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/actions">
+  <img src="https://img.shields.io/github/actions/workflow/status/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/deploy-build-fonts.yml?style=for-the-badge&logo=condaforge" alt="Github Action">
+</a>
+
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/commits">
+  <img src="https://img.shields.io/github/last-commit/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project?style=for-the-badge&logo=git&logoColor=fff" alt="Last Commit">
+</a>
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/commits">
+  <img src="https://img.shields.io/github/commit-activity/m/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project?style=for-the-badge&logo=githubactions&logoColor=fff" alt="Commit Activity">
+</a>
+<br/>
+
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&message=SIL%20Open%20Font%20License&color=critical&logo=creativecommons" alt="GitHub LICENSE">
+</a>
+<a href="https://www.bilibili.com/video/BV1Dr4y1V7b7">
+  <img src="https://img.shields.io/badge/Video%20introduction-00a1d6?style=for-the-badge&logo=bilibili&logoColor=ffffff" alt="Video introduction">
+</a>
 </div>
 
 ## Overview
