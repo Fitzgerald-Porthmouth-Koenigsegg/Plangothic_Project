@@ -1,6 +1,3 @@
 # Ignore tools directory in language stats
 # /tools/** linguist-hidden=true
 # /tools/** linguist-vendored=true
-
-# 将tools目录标记为FontForge脚本
-/tools/** linguist-language=FontForge
