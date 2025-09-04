@@ -46,8 +46,11 @@
 </a>
 <br/>
 
-<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE">
-  <img src="https://img.shields.io/static/v1?style=for-the-badge&message=SIL%20Open%20Font%20License&color=critical&logo=creativecommons" alt="GitHub LICENSE">
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE-OFL.txt">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&message=SIL%20Open%20Font%20License&color=critical&logo=creativecommons" alt="OFL LICENSE">
+</a>
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE-MIT.txt">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&message=MIT%20License&color=green&logo=opensourceinitiative" alt="MIT LICENSE">
 </a>
 <a href="https://www.bilibili.com/video/BV1Dr4y1V7b7">
   <img src="https://img.shields.io/badge/Video%20introduction-00a1d6?style=for-the-badge&logo=bilibili&logoColor=ffffff" alt="Video introduction">
@@ -67,7 +70,7 @@ Plangothic Project（プランゴシックプロジェクト、中国語：遍�
 その他、これまでにご協力とご支援を頂いた方々にも、心より感謝を申し上げます。
 
 ## ライセンス
-本フォントはSIL Open Font License（SILオープンフォントライセンス）形式で公開されており、詳細は[ライセンス](LICENSE)を参照。
+本フォントはSIL Open Font License（SILオープンフォントライセンス）形式で公開されており、詳細は[ライセンス](LICENSE-OFL.txt)を参照。
 
 ### あなたは：
 - いかなる個人、団体、組織及び企業は無料で商業目的と非商業目的の使用を行うことができ、費用を支払う必要がなく、事前に著者に知らせ、ソース情報を明記したり、著者の許可を得たりする必要がない。

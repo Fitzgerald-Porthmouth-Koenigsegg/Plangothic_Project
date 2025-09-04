@@ -46,8 +46,11 @@
 </a>
 <br/>
 
-<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE">
-  <img src="https://img.shields.io/static/v1?style=for-the-badge&message=SIL%20Open%20Font%20License&color=critical&logo=creativecommons" alt="GitHub LICENSE">
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE-OFL.txt">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&message=SIL%20Open%20Font%20License&color=critical&logo=creativecommons" alt="OFL LICENSE">
+</a>
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE-MIT.txt">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&message=MIT%20License&color=green&logo=opensourceinitiative" alt="MIT LICENSE">
 </a>
 <a href="https://www.bilibili.com/video/BV1Dr4y1V7b7">
   <img src="https://img.shields.io/badge/Video%20introduction-00a1d6?style=for-the-badge&logo=bilibili&logoColor=ffffff" alt="Video introduction">
@@ -71,7 +74,7 @@
 還有不少其他曾經向遍黑體項目給予支持、參與製作的人員，也在此對他們表示感謝。
 
 ## 字體授權
-本字體以[SIL Open Font License（SIL開放字體協議）](https://openfontlicense.org/open-font-license-official-text/)授權形式發佈，詳見[授權文件](LICENSE)。
+本字體以[SIL Open Font License（SIL開放字體協議）](https://openfontlicense.org/open-font-license-official-text/)授權形式發佈，詳見[授權文件](LICENSE-OFL.txt)。
 
 授權協議的簡體中文版參考（非官方譯本）：https://www.maoken.com/ofl 。
 
