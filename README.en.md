@@ -46,8 +46,11 @@
 </a>
 <br/>
 
-<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE">
-  <img src="https://img.shields.io/static/v1?style=for-the-badge&message=SIL%20Open%20Font%20License&color=critical&logo=creativecommons" alt="GitHub LICENSE">
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE-OFL.txt">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&message=SIL%20Open%20Font%20License&color=critical&logo=creativecommons" alt="OFL LICENSE">
+</a>
+<a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE-MIT.txt">
+  <img src="https://img.shields.io/static/v1?style=for-the-badge&message=MIT%20License&color=green&logo=opensourceinitiative" alt="MIT LICENSE">
 </a>
 <a href="https://www.bilibili.com/video/BV1Dr4y1V7b7">
   <img src="https://img.shields.io/badge/Video%20introduction-00a1d6?style=for-the-badge&logo=bilibili&logoColor=ffffff" alt="Video introduction">
@@ -67,7 +70,7 @@ This font mainly supports all CJK ideographs from extension B to extension J, wi
 There are also many other people who have supported and participated in the project. We would like to thank them.
 
 ## License
-This font is published under the [SIL Open Font License](https://openfontlicense.org/open-font-license-official-text/). Please refer to the [LICENSE](LICENSE) for details.
+This font is published under the [SIL Open Font License](https://openfontlicense.org/open-font-license-official-text/). Please refer to the [LICENSE](LICENSE-OFL.txt) for details.
 
 ### You can:
 - Any individual, group, organization, or enterprise may use it for commercial and non-commercial purposes free of charge, without the need to pay fees, inform the author in advance, indicate the source information, or obtain the author's permission.
