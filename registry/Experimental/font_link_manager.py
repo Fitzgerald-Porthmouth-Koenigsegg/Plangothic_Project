@@ -45,8 +45,10 @@ class FontLinkManager:
             "Meiryo",
             "Microsoft JhengHei Bold",
             "Microsoft JhengHei UI Bold",
+            "Microsoft JhengHei UI Light",
             "Microsoft JhengHei UI",
             "Microsoft JhengHei",
+            "Microsoft Sans Serif",
             "Microsoft YaHei Bold",
             "Microsoft YaHei UI Bold",
             "Microsoft YaHei UI",
@@ -63,8 +65,14 @@ class FontLinkManager:
             "NSimSun",
             "PMingLiU",
             "PMingLiU-ExtB",
+            "Segoe UI Semibold",
+            "Segoe UI Semilight",
+            "Segoe UI Bold",
+            "Segoe UI Light",
+            "Segoe UI",
             "SimSun",
             "SimSun-ExtB",
+            "SimSun-ExtG",
             "SimSun-PUA",
             "Tahoma",
             "Times New Roman",
@@ -73,6 +81,14 @@ class FontLinkManager:
             "微软雅黑",
             "微软雅黑 Bold",
         ]
+
+        self.append_fonts = {
+            "Segoe UI Semibold",
+            "Segoe UI Semilight", 
+            "Segoe UI Bold",
+            "Segoe UI Light",
+            "Segoe UI"
+        }
 
         self.plangothic_entries = [
             "PlangothicP1-Regular.ttf,Plangothic P1",
@@ -170,7 +186,7 @@ class FontLinkManager:
 
     def create_modified_reg(self, backup_file: str, output_file: str) -> bool:
         """
-        创建修改后的 .reg 文件，在每个字体的条目开头添加 Plangothic 字体
+        创建修改后的 .reg 文件，对不同字体使用不同的插入策略
 
         Args:
             backup_file: 备份文件路径
@@ -186,7 +202,9 @@ class FontLinkManager:
                 f.write(f'; 修改后的字体链接配置\n')
                 f.write(f'; 基于备份文件: {os.path.basename(backup_file)}\n')
                 f.write(f'; 修改时间: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}\n')
-                f.write(f'; 说明: 在每个字体的链接列表开头添加了 Plangothic 字体\n\n')
+                f.write(f'; 说明: \n')
+                f.write(f';   - 特定字体: 在末尾添加 Plangothic 字体\n')
+                f.write(f';   - 其他字体: 在开头添加 Plangothic 字体\n\n')
 
                 modify_count = 0
 
@@ -203,22 +221,33 @@ class FontLinkManager:
                             font_name
                         )
 
+                        # 判断是在末尾添加还是在开头添加
+                        append_to_end = font_name in self.append_fonts
+
                         if font_links is not None:
-                            # 已存在的字体：在开头添加 Plangothic 字体
-                            new_font_links = self.plangothic_entries.copy()
-                            new_font_links.extend(font_links)
+                            # 已存在的字体：根据字体类型决定插入位置
+                            if append_to_end:
+                                # 在末尾添加
+                                new_font_links = font_links.copy()
+                                new_font_links.extend(self.plangothic_entries)
+                                insertion_info = "末尾"
+                            else:
+                                # 在开头添加
+                                new_font_links = self.plangothic_entries.copy()
+                                new_font_links.extend(font_links)
+                                insertion_info = "开头"
 
                             hex_data = self.converter.encode_to_hex_string(new_font_links, "regedit")
                             f.write(f'"{font_name}"={hex_data}\n')
                             path_modify_count += 1
                             modify_count += 1
 
-                            print(f"已修改: [{arch}] {font_name}")
+                            print(f"已修改: [{arch}] {font_name} (在{insertion_info}添加)")
                             print(f"  原有条目: {len(font_links)} 个")
                             print(f"  新增条目: {len(self.plangothic_entries)} 个")
                             print(f"  总计条目: {len(new_font_links)} 个")
                         else:
-                            # 不存在的字体：创建新配置
+                            # 不存在的字体：创建新配置（统一在开头）
                             hex_data = self.converter.encode_to_hex_string(self.plangothic_entries, "regedit")
                             f.write(f'"{font_name}"={hex_data}\n')
                             path_modify_count += 1
@@ -230,6 +259,9 @@ class FontLinkManager:
 
                 print(f"\n修改版文件创建完成！共处理 {modify_count} 个字体配置")
                 print(f"输出文件: {output_file}")
+                print(f"\n插入策略:")
+                print(f"  末尾添加: {', '.join(sorted(self.append_fonts))}")
+                print(f"  开头添加: 其他所有字体")
                 return True
 
         except Exception as e:
@@ -255,7 +287,8 @@ class FontLinkManager:
                 )
 
                 if font_links is not None:
-                    print(f"  {font_name}:")
+                    insertion_strategy = "末尾添加" if font_name in self.append_fonts else "开头添加"
+                    print(f"  {font_name} [{insertion_strategy}]:")
                     for i, link in enumerate(font_links, 1):
                         print(f"    {i}. {link}")
                     found_count += 1
