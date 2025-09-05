@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-字体链接配置工具主程序
-使用 FontLinkManager 库来管理字体链接配置
-"""
 
 import ctypes
 import sys
-from font_link_manager import FontLinkManager
+from fontlink import FontLinkManager
 
 
 def check_admin_privileges():
