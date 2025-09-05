@@ -15,7 +15,7 @@ These registry files (.reg) are designed to enhance the installation of Plangoth
   - **卸载配置** - 移除遍黑体后备字体配置
 
 ### Python Tool / Python 工具
-- **`font_link_manager.py`** - Advanced font link configuration backup and modification tool
+- **`main.py`** - Advanced font link configuration backup and modification tool
   - **字体链接管理器** - 高级字体链接配置备份和修改工具
 
 ## What These Files Do / 文件功能说明
@@ -35,8 +35,8 @@ The registry files modify the following Windows font systems:
    - `SimSun` (宋体)
 
 ### Python Tool Features / Python 工具功能
-The `font_link_manager.py` script provides:
-`font_link_manager.py` 脚本提供：
+The `ontlink` library provides:
+`fontlink` 库提供：
 
 - **Automatic Backup** - Creates backup of current font link configuration
   - **自动备份** - 创建当前字体链接配置的备份
@@ -92,7 +92,7 @@ The `font_link_manager.py` script provides:
 
 1. **Run** / **运行**
    ```bash
-   python font_link_manager.py
+   python main.py
    ```
 
 2. **Follow the Interactive Process** / **按照交互流程操作**

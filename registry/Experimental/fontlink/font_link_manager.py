@@ -3,15 +3,13 @@
 """
 字体链接配置备份和修改工具库
 用于备份和修改 Windows 注册表中的字体链接配置
-
-需要配合 reg_multi_sz_converter 库使用
 """
 
 import winreg
 import os
 from datetime import datetime
 from typing import Dict, List, Optional, Set
-from reg_multi_sz_converter import RegMultiSzConverter
+from .reg_multi_sz_converter import RegMultiSzConverter
 
 
 class FontLinkManager:
