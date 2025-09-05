@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-字体链接配置备份和修改工具
+字体链接配置备份和修改工具库
 用于备份和修改 Windows 注册表中的字体链接配置
 
 需要配合 reg_multi_sz_converter 库使用
@@ -9,95 +9,30 @@
 
 import winreg
 import os
-import sys
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Set
 from reg_multi_sz_converter import RegMultiSzConverter
 
 
 class FontLinkManager:
     """字体链接管理器"""
 
-    def __init__(self):
+    def __init__(self, registry_paths: Dict[str, str], target_fonts: List[str], 
+                 append_fonts: Set[str], font_entries: List[str]):
+        """
+        初始化字体链接管理器
+
+        Args:
+            registry_paths: 注册表路径字典，格式: {"架构名": "注册表路径"}
+            target_fonts: 目标字体列表
+            append_fonts: 需要在末尾添加字体条目的字体集合
+            font_entries: 要添加的字体条目列表
+        """
         self.converter = RegMultiSzConverter()
-
-        self.registry_paths = {
-            "64bit": r"SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink",
-            "32bit": r"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink"
-        }
-
-        self.target_fonts = [
-            "Arial",
-            "Batang",
-            "BatangChe",
-            "Dotum",
-            "DotumChe",
-            "Gulim",
-            "GulimChe",
-            "Gungsuh",
-            "GungsuhChe",
-            "Lucida Sans Unicode",
-            "Malgun Gothic Bold",
-            "Malgun Gothic",
-            "Meiryo Bold",
-            "Meiryo UI Bold",
-            "Meiryo UI",
-            "Meiryo",
-            "Microsoft JhengHei Bold",
-            "Microsoft JhengHei UI Bold",
-            "Microsoft JhengHei UI Light",
-            "Microsoft JhengHei UI",
-            "Microsoft JhengHei",
-            "Microsoft Sans Serif",
-            "Microsoft YaHei Bold",
-            "Microsoft YaHei UI Bold",
-            "Microsoft YaHei UI",
-            "Microsoft YaHei",
-            "MingLiU",
-            "MingLiU_HKSCS",
-            "MingLiU_HKSCS-ExtB",
-            "MingLiU-ExtB",
-            "MS Gothic",
-            "MS Mincho",
-            "MS PGothic",
-            "MS PMincho",
-            "MS UI Gothic",
-            "NSimSun",
-            "PMingLiU",
-            "PMingLiU-ExtB",
-            "Segoe UI Semibold",
-            "Segoe UI Semilight",
-            "Segoe UI Bold",
-            "Segoe UI Light",
-            "Segoe UI",
-            "SimSun",
-            "SimSun-ExtB",
-            "SimSun-ExtG",
-            "SimSun-PUA",
-            "Tahoma",
-            "Times New Roman",
-            "微軟正黑體",
-            "微軟正黑體 Bold",
-            "微软雅黑",
-            "微软雅黑 Bold",
-        ]
-
-        self.append_fonts = {
-            "Segoe UI Semibold",
-            "Segoe UI Semilight", 
-            "Segoe UI Bold",
-            "Segoe UI Light",
-            "Segoe UI"
-        }
-
-        self.plangothic_entries = [
-            "PlangothicP1-Regular.ttf,Plangothic P1",
-            "PlangothicP1-Regular.otf,Plangothic P1",
-            "PlangothicP2-Regular.ttf,Plangothic P2",
-            "PlangothicP2-Regular.otf,Plangothic P2",
-            "Plangothic.ttc,Plangothic P1",
-            "Plangothic.ttc,Plangothic P2"
-        ]
+        self.registry_paths = registry_paths
+        self.target_fonts = target_fonts
+        self.append_fonts = append_fonts
+        self.font_entries = font_entries
 
     def read_registry_value(self, hkey: int, path: str, value_name: str) -> Optional[List[str]]:
         """
@@ -177,7 +112,14 @@ class FontLinkManager:
                     f.write('\n')
                     print(f"{arch} 路径处理完成: {path_backup_count} 个备份, {path_delete_count} 个删除标记")
 
-                print(f"\n备份完成！共处理 {backup_count + sum(1 for arch in self.registry_paths for font in self.target_fonts if self.read_registry_value(winreg.HKEY_LOCAL_MACHINE, self.registry_paths[arch], font) is None)} 个字体配置到: {output_file}")
+                # 计算不存在的字体数量
+                total_delete_count = sum(
+                    1 for arch in self.registry_paths 
+                    for font in self.target_fonts 
+                    if self.read_registry_value(winreg.HKEY_LOCAL_MACHINE, self.registry_paths[arch], font) is None
+                )
+
+                print(f"\n备份完成！共处理 {backup_count + total_delete_count} 个字体配置到: {output_file}")
                 return True
 
         except Exception as e:
@@ -203,8 +145,8 @@ class FontLinkManager:
                 f.write(f'; 基于备份文件: {os.path.basename(backup_file)}\n')
                 f.write(f'; 修改时间: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}\n')
                 f.write(f'; 说明: \n')
-                f.write(f';   - 特定字体: 在末尾添加 Plangothic 字体\n')
-                f.write(f';   - 其他字体: 在开头添加 Plangothic 字体\n\n')
+                f.write(f';   - 特定字体: 在末尾添加字体条目\n')
+                f.write(f';   - 其他字体: 在开头添加字体条目\n\n')
 
                 modify_count = 0
 
@@ -229,11 +171,11 @@ class FontLinkManager:
                             if append_to_end:
                                 # 在末尾添加
                                 new_font_links = font_links.copy()
-                                new_font_links.extend(self.plangothic_entries)
+                                new_font_links.extend(self.font_entries)
                                 insertion_info = "末尾"
                             else:
                                 # 在开头添加
-                                new_font_links = self.plangothic_entries.copy()
+                                new_font_links = self.font_entries.copy()
                                 new_font_links.extend(font_links)
                                 insertion_info = "开头"
 
@@ -244,15 +186,15 @@ class FontLinkManager:
 
                             print(f"已修改: [{arch}] {font_name} (在{insertion_info}添加)")
                             print(f"  原有条目: {len(font_links)} 个")
-                            print(f"  新增条目: {len(self.plangothic_entries)} 个")
+                            print(f"  新增条目: {len(self.font_entries)} 个")
                             print(f"  总计条目: {len(new_font_links)} 个")
                         else:
                             # 不存在的字体：创建新配置（统一在开头）
-                            hex_data = self.converter.encode_to_hex_string(self.plangothic_entries, "regedit")
+                            hex_data = self.converter.encode_to_hex_string(self.font_entries, "regedit")
                             f.write(f'"{font_name}"={hex_data}\n')
                             path_modify_count += 1
                             modify_count += 1
-                            print(f"已创建: [{arch}] {font_name} (新配置，{len(self.plangothic_entries)} 个条目)")
+                            print(f"已创建: [{arch}] {font_name} (新配置，{len(self.font_entries)} 个条目)")
 
                     f.write('\n')
                     print(f"{arch} 路径修改完成: {path_modify_count} 个字体")
@@ -300,65 +242,57 @@ class FontLinkManager:
             print(f"  统计: {found_count} 个存在, {not_found_count} 个不存在")
             print()
 
+    def run_full_process(self, backup_filename: Optional[str] = None, 
+                        modified_filename: Optional[str] = None) -> bool:
+        """
+        运行完整的备份和修改流程
 
-def main():
-    """主函数"""
-    print("字体链接配置备份和修改工具")
-    print("=" * 50)
+        Args:
+            backup_filename: 备份文件名，如果为None则自动生成
+            modified_filename: 修改文件名，如果为None则自动生成
 
-    try:
-        import ctypes
-        is_admin = ctypes.windll.shell32.IsUserAnAdmin()
-        if not is_admin:
-            print("警告: 建议以管理员权限运行此脚本以确保能够读取注册表")
-            print()
-    except:
-        pass
+        Returns:
+            流程是否成功完成
+        """
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        backup_file = backup_filename or f"fontlink_backup_{timestamp}.reg"
+        modified_file = modified_filename or f"fontlink_modified_{timestamp}.reg"
 
-    manager = FontLinkManager()
+        try:
+            print("1. 预览当前配置...")
+            self.preview_current_config()
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    backup_file = f"fontlink_backup_{timestamp}.reg"
-    modified_file = f"fontlink_modified_{timestamp}.reg"
-
-    try:
-        print("1. 预览当前配置...")
-        manager.preview_current_config()
-
-        print("2. 备份原始配置...")
-        if manager.backup_font_links(backup_file):
+            print("2. 备份原始配置...")
+            if not self.backup_font_links(backup_file):
+                print("✗ 备份失败")
+                return False
             print(f"✓ 备份成功: {backup_file}")
-        else:
-            print("✗ 备份失败")
-            return
+            print()
 
-        print()
-
-        print("3. 创建修改版配置...")
-        if manager.create_modified_reg(backup_file, modified_file):
+            print("3. 创建修改版配置...")
+            if not self.create_modified_reg(backup_file, modified_file):
+                print("✗ 修改版创建失败")
+                return False
             print(f"✓ 修改版创建成功: {modified_file}")
-        else:
-            print("✗ 修改版创建失败")
-            return
+            print()
 
-        print()
-        print("=" * 50)
-        print("操作完成！")
-        print(f"备份文件: {backup_file}")
-        print(f"修改文件: {modified_file}")
-        print()
-        print("使用说明:")
-        print("1. 双击 .reg 文件可以导入到注册表")
-        print("2. 建议先备份当前配置，然后再导入修改版")
-        print("3. 如需恢复，可以导入备份文件")
-        print("4. 修改注册表后可能需要重启或重新登录才能生效")
-        print("5. 备份文件中 '字体名'=- 表示删除该注册表项")
+            print("=" * 50)
+            print("操作完成！")
+            print(f"备份文件: {backup_file}")
+            print(f"修改文件: {modified_file}")
+            print()
+            print("使用说明:")
+            print("1. 双击 .reg 文件可以导入到注册表")
+            print("2. 建议先备份当前配置，然后再导入修改版")
+            print("3. 如需恢复，可以导入备份文件")
+            print("4. 修改注册表后可能需要重启或重新登录才能生效")
+            print("5. 备份文件中 '字体名'=- 表示删除该注册表项")
+            
+            return True
 
-    except KeyboardInterrupt:
-        print("\n操作已取消")
-    except Exception as e:
-        print(f"发生错误: {e}")
-
-
-if __name__ == "__main__":
-    main()
+        except KeyboardInterrupt:
+            print("\n操作已取消")
+            return False
+        except Exception as e:
+            print(f"发生错误: {e}")
+            return False
