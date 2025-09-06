@@ -22,7 +22,7 @@ def get_plangothic_config():
         "32bit": r"SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink"
     }
 
-    target_fonts = [
+    append_fonts = {
         "Arial",
         "Batang",
         "BatangChe",
@@ -75,17 +75,10 @@ def get_plangothic_config():
         "微軟正黑體",
         "微軟正黑體 Bold",
         "微软雅黑",
-        "微软雅黑 Bold",
-    ]
-
-    append_fonts = {
-        "Microsoft Sans Serif",
-        "Segoe UI Semibold",
-        "Segoe UI Semilight", 
-        "Segoe UI Bold",
-        "Segoe UI Light",
-        "Segoe UI"
+        "微软雅黑 Bold"
     }
+
+    target_fonts = list(append_fonts)
 
     plangothic_entries = [
         "PlangothicP1-Regular.ttf,Plangothic P1",
