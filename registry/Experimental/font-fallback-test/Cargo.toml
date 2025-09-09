@@ -1,0 +1,26 @@
+[package]
+name = "font-fallback-test"
+version = "0.2.0"
+edition = "2021"
+
+[dependencies]
+windows = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Registry",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+debug = false
+split-debuginfo = 'off'
+debug-assertions = false
+overflow-checks = false
+incremental = false
+rpath = false
