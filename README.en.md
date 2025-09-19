@@ -72,29 +72,32 @@ There are also many other people who have supported and participated in the proj
 ## License
 
 ### Font Files (OFL 1.1 License)
-**Scope:** All font files in the `fonts/` and `sources/` directories
+**Scope:** All font files in the `fonts/` and `sources/` directories.
 
-**You can:**
-- Use for free commercial and non-commercial purposes without authorization
-- Embed in software, web pages, or devices for distribution
-- Modify and convert formats (modified versions must maintain OFL license and cannot use "Plangothic"/"遍黑" names)
+#### You can:
+- Any individual, group, organization, or enterprise may use it for commercial and non-commercial purposes free of charge, without the need to pay fees, inform the author in advance, indicate the source information, or obtain the author's permission.
+- Republish or install font files, embed them into any software or device, and the software or device can be redistributed or resold.
+- Modify, expand, and convert font files, but it is **strictly prohibited to use the reserved names "Plangothic" and "遍黑" for the font in the works that have been modified twice**. The version that has been modified twice **must also be published under the SIL Open Font License** (if only the source font is converted, the reserved name can still be used).
 
-**You cannot:**
-- Sell font files separately
-- Change to other license agreements
-- Use for illegal purposes
+#### You cannot:
+- Sell any part of the font file (including but not limited to glyphs, OpenType feature) for resale, including but not limited to selling the font file separately, bundling it with other fonts, requiring payment for special permissions to use the font, etc.
+- Publish any part of the font file under a non SIL Open Font License.
+- Using this font file or its derivatives to harm the normal operation of computer systems (including but not limited to embedding computer viruses in font files, subjectively intentionally exploiting vulnerabilities in programs or systems to disrupt the normal operation of computer systems, etc.).
+- Use this font for purposes that violate local laws and regulations.
+- Other behaviors that violate the SIL Open Font License that are not listed above.
 
 ### Build Tools (MIT License)
-**Scope:** Source code, scripts, and configuration files in the `tools/`, `registry/`, `sources/build.py`, and `.github/workflows/` directories
+**Scope:** Source code, scripts, and configuration files in the `tools/`, `registry/`, `sources/build.py`, and `.github/workflows/` directories.
 
-Free to use, modify, and distribute, including for commercial purposes.
+- Free to use, modify, and distribute, including for commercial purposes.
 
 ---
 
 **Important Notice:**
-- Using any content in this repository indicates agreement to comply with the respective licenses
-- This font is completely free - any paid acquisition is fraudulent behavior
-- For detailed terms, please refer to [LICENSE-OFL.txt](LICENSE-OFL.txt) and [LICENSE-MIT.txt](LICENSE-MIT.txt)
+- Using any content in this repository indicates agreement to comply with the respective licenses, for detailed terms, please refer to [LICENSE-OFL.txt](LICENSE-OFL.txt) and [LICENSE-MIT.txt](LICENSE-MIT.txt).
+- This font is a free commercial font. **Any behavior that requires payment to obtain this font is considered fraudulent. Beware of being deceived**. If you obtained this font for payment, please report it immediately and assist relevant judicial authorities if necessary.
+- The author's failure to exercise, delayed exercise, or insufficient exercise of the legal rights enjoyed under the licensing agreement shall not be deemed as a waiver of such rights, nor shall it affect the author's ability to exercise such rights in the future.
+- All content in this warehouse does not contain any political intentions, metaphors, or purposes, and is unrelated to any political activities. The author does not assume any joint legal liability arising from your use of this font.
 
 ## FAQ
 ### 1. Why are there two font files for Plangothic?
@@ -161,6 +164,7 @@ If you have any questions or suggestions during the use of this font, please fee
     - [Unihan database](https://www.unicode.org/Public/16.0.0/ucd/Unihan.zip).
     - [Shokaki Hentaigana Gothic（しょかき変体仮名ゴチック）](https://shokaki.booth.pm/items/5633978) developed by [ぼんのう堂](https://shokaki.booth.pm).
     - [Unicodia](https://github.com/Mercury13/unicodia/).
+    - [Shanggu Sans](https://github.com/GuiWonder/Shanggu).
 6. The glyph data of this project is provided by [Hulenkius](https://github.com/Hulenkius) in SVG format. Users can access the glyphs via the link:  
 「<https://seeki.vistudium.top/SVG/{lowercase-hex-unicode}.svg>」
 

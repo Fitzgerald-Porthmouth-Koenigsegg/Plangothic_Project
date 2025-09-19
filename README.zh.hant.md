@@ -76,29 +76,34 @@
 ## 授權協議
 
 ### 字體文件（OFL 1.1協議）
-**適用範圍：** `fonts/` 和 `sources/` 目錄下的所有字體文件
+**適用範圍：** `fonts/` 和 `sources/` 目錄下的所有字體文件。
 
-**允許：**
-- 免費商業和非商業使用，無需授權
-- 嵌入軟體、网页或裝置中分發
-- 修改和格式轉換（修改版須保持OFL協議，不得使用"Plangothic"/"遍黑"名稱）
+授權協議的簡體中文版參考（非官方譯本）：https://www.maoken.com/ofl 。
 
-**禁止：**
-- 單獨售賣字體文件
-- 更改為其他授權協議
-- 用於違法用途
+#### 您可以：
+- 任何個人、團體、組織及企業可免費進行商業目的和非商業目的使用，無需支付費用、事先告知作者、標明來源訊息或征得作者許可。
+- 對字體檔案進行二次發佈或安裝、嵌入到任何軟體或設備中，同時軟體或設備可被再次分發或銷售。
+- 對字體檔案進行修改、擴充和格式轉換，但二次修改的作品**嚴禁使用本字體的保留名稱「Plangothic」、「遍黑」**，二次修改過後的版本**亦須以 SIL Open Font License 發表**（若僅對源字體進行格式轉換可繼續使用該保留名稱）。
+
+#### 您不可以：
+- 對字體檔案中的任何部分（包括但不限於字形、OpenType特性邏輯）進行倒賣兜售，如將字體檔案單獨售賣，與其他字體進行捆綁售賣、需付費辦理特殊許可權才可使用字體等。
+- 將字體檔案中的任何部分以非SIL Open Font License授權協議發表。
+- 利用本字體檔案或其衍生品進行危害計算機系統正常進行的行為（包括但不限於在字體檔案中嵌入計算機病毒、主觀故意利用程式或系統存在的漏洞來擾亂計算機系統的正常運作等）。
+- 將本字體用作違反當地法律法規的用途。
+- 其他上述未列明的違反SIL Open Font License授權協議的行為。
 
 ### 構建工具（MIT協議）
-**適用範圍：** `tools/`、`registry/`、`sources/build.py`、`.github/workflows/` 目錄下的源代碼、腳本與配置文件
+**適用範圍：** `tools/`、`registry/`、`sources/build.py`、`.github/workflows/` 目錄下的源代碼、腳本與配置文件。
 
-可自由使用、修改、分發，包括商業用途。
+- 可自由使用、修改、分發，包括商業用途。
 
 ---
 
 **重要提醒：**
-- 使用本倉庫內容即表示同意遵守相應協議
-- 本字體完全免費，任何付費獲取都是詐騙行為
-- 詳細條款請參見 [LICENSE-OFL.txt](LICENSE-OFL.txt) 和 [LICENSE-MIT.txt](LICENSE-MIT.txt)
+- 使用本倉庫中的任何內容，即默認視為同意遵守相應協議，詳細條款請參見[LICENSE-OFL.txt](LICENSE-OFL.txt)和[LICENSE-MIT.txt](LICENSE-MIT.txt)。
+- 本字體為免費商用字體，**凡是需要付費來獲得該字體的行為，都是詐騙行為，謹防上當受騙**。如您是付費獲得的此字體，請立刻對其進行舉報，必要時可協助相關司法機關。
+- 作者不行使、未能及時行使或未充分行使授權協議中所享有的合法權利，不視為放棄該權利，也不影響作者在將來行使該權利。
+- 本倉庫中的所有內容不包含任何政治意圖、隱喻及目的，與一切政治活動無關。作者不承擔您使用該字體所產生的任何連帶法律責任。
 
 ## 常見問題
 ### 1. 為什麼遍黑體是兩個字體檔案？
@@ -174,9 +179,10 @@
     - [白易](https://github.com/yi-bai)所開發的[字統網](https://zi.tools)。
     - [Gothic Nguyen（阮黑體）](https://github.com/TKYKmori/Gothic-Nguyen)。
     - [Unicode官方碼表文件](https://www.unicode.org/charts/)。
-    - [Unihan數據庫](https://www.unicode.org/Public/16.0.0/ucd/Unihan.zip)。
+    - [Unihan數據庫](https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip)。
     - [ぼんのう堂](https://shokaki.booth.pm)所开发的[しょかき変体仮名ゴチック（Shokaki Hentaigana Gothic）](https://shokaki.booth.pm/items/5633978)。
     - [Unicodia](https://github.com/Mercury13/unicodia/)。
+    - [尚古黑體](https://github.com/GuiWonder/Shanggu)。
 6. 該項目的字形資料由[Hulenkius](https://github.com/Hulenkius)通過SVG檔案進行線上使用，使用者可以通過「<https://seeki.vistudium.top/SVG/{小寫的漢字十六進制碼位}.svg>」鏈接獲取。
 
     例：`<img src="https://seeki.vistudium.top/SVG/2ebf0.svg"/>`的顯示結果將會是：
