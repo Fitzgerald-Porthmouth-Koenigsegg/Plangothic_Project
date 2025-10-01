@@ -120,30 +120,14 @@
 <details>
 <summary><b>附：遍黑體安裝至Windows平台並全局Fallback的方法：</b></summary>
 
-1. 下載TTF版字型檔案（兩個單獨的ttf或者單個的ttc檔案任選其一）；
-2. 在資源管理器上選擇字型檔案，然後點擊**滑鼠右鍵→“為所有使用者安裝”（需要管理員權限，Win11使用者還需要點擊“顯示更多選項”）**，安裝字型檔案；
-3. 下載註冊表檔案`reg/Plangothic-Install.reg`，雙擊執行（需要管理員權限），若出現安全警告請點擊“執行”；
-4. 註銷並重新登錄Windows系統帳戶，設置即可生效；
-5. 若要刪除字型，則僅需刪除字型本體即可，註冊表設置無需變動。如果要刪註冊表內容，下載文件`reg/Plangothic-Uninstall.reg`，雙擊執行即可。
-</details>
+**基礎安裝方法：**
 
-<details>
-<summary><b>附：遍黑體安裝至手機的方法：</b></summary>
+1. **安裝字體**：下載TTF版字體文件（兩個單獨的ttf或者單個的ttc文件任選其一），右鍵選擇"為所有用户安裝"（需要管理員權限）；
+2. **配置後備**：雙擊運行 `registry/Plangothic-Install.reg`（需要管理員權限）
+3. **重新登錄**：註銷並重新登錄Windows賬户使設置生效
+4. **卸載**：刪除字體文件即可，或運行 `registry/Plangothic-Uninstall.reg` 移除註冊表配置
 
-要將TTC字體安裝至Android手機，請遵循以下步驟：
-1. 備份當前手機系統的 `/system/etc/fonts.xml` 和 `/system/etc/font_fallback.xml` （如果有）文件。
-2. 打開 `system/etc/fonts.xml` 和 `/system/etc/font_fallback.xml` （如果有）文件。
-3. 在文件的 `<family lang="ko">` 標籤後，找到相應的 `</family>` 標籤後換行。
-4. 添加以下 XML 代碼，確保正確縮進：
-``` xml
-    <family>
-        <font weight="400" style="normal" index="0">Plangothic.ttc</font>
-        <font weight="400" style="normal" index="1">Plangothic.ttc</font>
-    </family>
-``` 
-完成這些步驟後，重新啟動手機以使更改生效。如果仍然遇到問題，請檢查是否正確更新了字體文件，並確保設備權限允許修改系統文件。
-
-另請注意，以上方法**不適用**於蘋果手機的用戶，亦無法提供針對蘋果手機用戶的安裝至手機的方法，敬請諒解。
+> **高級用法和詳細説明**：請查看 [Experimental_README.md](./registry/Experimental/README.md)
 </details>
 
 ## 支持我們

@@ -114,30 +114,14 @@ There are also many other people who have supported and participated in the proj
 <details>
 <summary><b>P.S.: How to install Plangothic font on the Windows platform and set it as the global fallback font:</b></summary>
 
-1. Download the TTF version of the font file (choose either two separate ttf files or a single ttc file).
-2. In File Explorer, select the font file, then **click right mouse button→"Install for all users"(requires administrator privileges, Windows 11 users also need to click "Show more options")** to install the font file.
-3. Download the registry file `reg/Plangothic-Install.reg`, double-click to run it (requires administrator privileges), and if a security warning appears, click "Run".
-4. Log out and log back in to the Windows system account for the settings to take effect.
-5. To delete the font, simply delete the font file itself, and there is no need to change the registry settings. If you want to delete the registry content, download the file `reg/Plangothic-Uninstall.reg`and double-click to run it.
-</details>
+**Basic Installation Method:**
 
-<details>
-<summary><b>P.S.: Method for installing the Plangothic on the phone:</b></summary>
+1. **Install font**: Download TTF version font files (choose either two separate ttf files or a single ttc file), right-click and select "Install for all users" (requires administrator privileges);
+2. **Configure fallback**: Double-click to run `registry/Plangothic-Install.reg` (requires administrator privileges)
+3. **Re-login**: Log out and log back in to Windows account for settings to take effect
+4. **Uninstall**: Simply delete font files, or run `registry/Plangothic-Uninstall.reg` to remove registry configuration
 
-To install the Plangothic TTC font on an Android phone, follow these steps:
-1. Backup the `/system/etc/fonts.xml` and `/system/etc/font_fallback.xml` files of your current phone system (if available).
-2. Open the `system/etc/fonts.xml` and `/system/etc/font_fallback.xml` files.
-3. After the closing `</family>` tag of `<family lang="ko">`, insert a new line.
-4. Add the following XML code snippet with correct indentation:
-``` xml
-    <family>
-        <font weight="400" style="normal" index="0">Plangothic.ttc</font>
-        <font weight="400" style="normal" index="1">Plangothic.ttc</font>
-    </family>
-``` 
-After completing these steps, restart your phone to apply the changes. If you encounter issues, verify that the font files have been correctly updated and ensure that your device permissions allow modifications to system files.
-
-Please note that the above methods are **NOT applicable** to Apple phone users and cannot provide installation methods for Apple phone users. We apologize for any inconvenience caused.
+> **Advanced usage and detailed instructions**: See [Experimental_README.md](./registry/Experimental/README.md)
 </details>
 
 ## Contact

@@ -1,0 +1,106 @@
+[fonts]
+# 常见系统字体列表
+system_fonts = [
+    "Arial",
+    "Batang",
+    "BatangChe", 
+    "Dotum",
+    "DotumChe",
+    "Gulim",
+    "GulimChe",
+    "Gungsuh",
+    "GungsuhChe",
+    "Lucida Sans Unicode",
+    "Malgun Gothic Bold",
+    "Malgun Gothic",
+    "Meiryo Bold",
+    "Meiryo UI Bold",
+    "Meiryo UI",
+    "Meiryo",
+    "Microsoft JhengHei Bold",
+    "Microsoft JhengHei UI Bold",
+    "Microsoft JhengHei UI Light",
+    "Microsoft JhengHei UI",
+    "Microsoft JhengHei",
+    "Microsoft Sans Serif",
+    "Microsoft YaHei Bold",
+    "Microsoft YaHei UI Bold",
+    "Microsoft YaHei UI",
+    "Microsoft YaHei",
+    "MingLiU",
+    "MingLiU_HKSCS",
+    "MingLiU_HKSCS-ExtB",
+    "MingLiU-ExtB",
+    "MS Gothic",
+    "MS Mincho",
+    "MS PGothic",
+    "MS PMincho",
+    "MS UI Gothic",
+    "NSimSun",
+    "PMingLiU",
+    "PMingLiU-ExtB",
+    "Segoe UI Semibold",
+    "Segoe UI Semilight",
+    "Segoe UI Bold",
+    "Segoe UI Light",
+    "Segoe UI",
+    "SimSun",
+    "SimSun-ExtB",
+    "SimSun-ExtG",
+    "SimSun-PUA",
+    "Tahoma",
+    "Times New Roman",
+    "微軟正黑體",
+    "微軟正黑體 Bold",
+    "微软雅黑",
+    "微软雅黑 Bold",
+]
+
+[text]
+# 测试文本
+test_text = "包罗万象化春外，最美全年天地中"
+
+[registry]
+# FontLink注册表路径
+key_path = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\FontLink\\SystemLink"
+
+[ui]
+# 界面相关配置
+window_title = "字体回退测试工具 v3.1"
+header_text = "🔤 字体回退测试工具 - SystemLink 配置检查器"
+
+# 状态栏文本
+status_bar_texts = [
+    "字体回退测试工具",
+    "检查系统FontLink配置", 
+    "✅=有配置 ❌=无配置"
+]
+
+# 列标题
+column_headers = [
+    "字体名称",
+    "预览", 
+    "FontLink",
+    "FontLink配置"
+]
+
+# 列宽度
+column_widths = [200, 300, 80, 400]
+
+# 字体配置
+[ui.fonts]
+header_font_size = -16
+header_font_name = "Segoe UI"
+header_font_weight = 600  # FW_SEMIBOLD
+
+listview_font_size = -12
+preview_font_size = -16
+
+# 颜色配置
+[ui.colors]
+header_bg_color = 0x00AA6600  # 深橙色
+header_text_color = 0x00FFFFFF  # 白色
+preview_text_color = 0x00AA6600  # 深橙色
+success_color = 0x00008000  # 绿色
+error_color = 0x000000AA  # 红色
+info_color = 0x00666666  # 灰色
