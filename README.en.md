@@ -110,6 +110,14 @@ There are also many other people who have supported and participated in the proj
 - The fonts of this project orientate themselves as pragmatic tool fonts, that is they are not responsible for precise typesetting but only for display (see [Unifont](https://unifoundry.com/unifont) and [Noto Unicode](https://github.com/MY1L/Unicode/tree/main/NotoUnicode) developed by [My1l](https://github.com/MY1L)). Using CTL to typeset and display these scripts, and displaying regional variation ideographs other than the CN variant using IVSs is OUTSIDE the coverage of the project. If you have such ideas, you can produce derivation fonts of this project by yourself if in need.
 ### 5. Can the TTC font from this project (a collection of multiple TrueType fonts) be directly used on smartphones or within software? Can it be installed on a phone to display all font styles simultaneously? Are there compatibility issues across software platforms or is it limited to specific platforms?
 - The TTC font from this project is compatible with Windows platforms and works seamlessly there. However, on mobile devices, directly installing a TTC font file typically results in displaying only one font style (usually P1) due to technical constraints. To display all font styles within software applications, special configurations may be required. Compatibility with TTC fonts can vary across different platforms, often requiring additional steps. Detailed instructions for installing Plangothic on an Android phone are provided here.
+### 6. What are the differences between the distribution editions?
+- **Super edition**: Includes font files in all formats; the package size is relatively large.
+- **Static edition**: Contains two separate TTF font files (P1 and P2) and a TTC file.
+- **OTF edition**: OpenType format font files and a TTC/OTC file.
+- **Web edition**: WOFF2 format web font files.
+- **Individual TTF files**: Extracted directly from the Static edition for convenient separate download and use.
+
+**Archive formats**: The .7z and .zip files contain the same contents, only differing in compression. .7z yields smaller archives but may require third‑party decompression software; .zip archives are slightly larger but are supported natively by most operating systems.
 
 <details>
 <summary><b>P.S.: How to install Plangothic font on the Windows platform and set it as the global fallback font:</b></summary>
