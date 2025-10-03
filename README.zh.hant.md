@@ -52,10 +52,6 @@
 <a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE-MIT.txt">
   <img src="https://img.shields.io/static/v1?style=for-the-badge&message=MIT%20License&color=green&logo=opensourceinitiative" alt="MIT LICENSE">
 </a>
-<a href="https://www.bilibili.com/video/BV1Dr4y1V7b7">
-  <img src="https://img.shields.io/badge/Video%20introduction-00a1d6?style=for-the-badge&logo=bilibili&logoColor=ffffff" alt="Video introduction">
-</a>
-
 <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=HvSdPx6z78suzTz51M3xGe-gENeaa1yc&authKey=eHjDZI54yDVbhyFjQqA2ImtV35LFy%2Fit8EuAzVDscVPcACE23L0hT314LiU9ey2%2F&noverify=0&group_code=1135661191">
   <img src="https://img.shields.io/badge/QQ%20group-1135661191-critical?style=for-the-badge&color=1EBAFC&logo=qq" alt="QQ group">
 </a>
