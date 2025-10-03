@@ -52,9 +52,6 @@
 <a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/blob/main/LICENSE-MIT.txt">
   <img src="https://img.shields.io/static/v1?style=for-the-badge&message=MIT%20License&color=green&logo=opensourceinitiative" alt="MIT LICENSE">
 </a>
-<a href="https://www.bilibili.com/video/BV1Dr4y1V7b7">
-  <img src="https://img.shields.io/badge/Video%20introduction-00a1d6?style=for-the-badge&logo=bilibili&logoColor=ffffff" alt="Video introduction">
-</a>
 </div>
 
 ## 概要
