@@ -264,7 +264,6 @@ def main():
 
     if not args.font_file:
         logger.error("没有选择字体")
-        input("按回车键退出...")
         sys.exit(1)
 
     try:
@@ -278,7 +277,6 @@ def main():
             logger.error("处理失败！")
     except Exception as e:
         logger.error(f"发生严重错误：{str(e)}")
-        input("按回车键退出...")
 
 
 if __name__ == "__main__":
