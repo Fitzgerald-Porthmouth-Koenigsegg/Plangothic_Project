@@ -51,7 +51,7 @@ SUPPORTED_FORMATS = {
 FORMAT_FLAGS = {
     'otf': ('opentype', 'round', 'dummy-dsig', 'apple'),
     'ttf': ('opentype', 'round', 'dummy-dsig', 'apple', 'short-post', 'old-kern'),
-    'woff2': ('opentype', 'round', 'dummy-dsig', 'no-flex', 'no-hints', 'short-post', 'omit-instructions'),
+    'woff2': ('opentype', 'round', 'dummy-dsig', 'no-flex', 'short-post', 'omit-instructions'),
     # 其他格式使用默认设置
 }
 
