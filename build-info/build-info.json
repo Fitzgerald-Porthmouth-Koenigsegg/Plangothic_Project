@@ -1,8 +1,8 @@
 {
-  "build_date": "2025-09-11T09:40:07Z",
-  "commit_sha": "32e14ea62430b1988b3e468b1ef8648ecca387f2",
-  "commit_message": "V2.9.5787 ",
+  "build_date": "2025-10-25T14:53:06Z",
+  "commit_sha": "2a673c500f98a043c9bc1f8457228029a4ab29b5",
+  "commit_message": "尝试更新CI中的FontForge版本  ",
   "branch": "main",
-  "workflow_run": "11",
-  "actor": "Fitzgerald-Porthmouth-Koenigsegg"
+  "workflow_run": "14",
+  "actor": "Losketch"
 }
