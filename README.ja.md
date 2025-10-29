@@ -144,7 +144,6 @@ Plangothic Project（プランゴシックプロジェクト、中国語：遍�
     - [源ノ角ゴシック](https://github.com/adobe-fonts/source-han-sans)。
     - 他のNotoフォント。
     - [oppekebekkanko](https://oppekebekkanko.booth.pm/)氏による[すきまゴシック](https://oppekebekkanko.booth.pm/items/2117070)。
-    - [綿雲飴里](https://github.com/MY1L)氏による[Noto Unicode](https://github.com/MY1L/Unicode/tree/main/NotoUnicode)。
     - [Chiron Hei HK（昭源黑體）](https://github.com/chiron-fonts/chiron-hei-hk)。
     - [奈白不弍](https://github.com/Buernia)氏による[Zhudou-Sans（煮豆黑體）](https://github.com/Buernia/Zhudou-Sans)。
     - [白易](https://github.com/yi-bai)氏による[Zitools](https://zi.tools)。
@@ -154,19 +153,7 @@ Plangothic Project（プランゴシックプロジェクト、中国語：遍�
     - [ぼんのう堂](https://shokaki.booth.pm)氏による[しょかき変体仮名ゴチック](https://shokaki.booth.pm/items/5633978)。
     - [Unicodia](https://github.com/Mercury13/unicodia/)。
     - [尚古黑體](https://github.com/GuiWonder/Shanggu)。
-6. このプロジェクトの文字データは[Hulenkius](https://github.com/Hulenkius)によって SVG ファイルを使用してオンラインで提供されています。ユーザーは「<https://seeki.vistudium.top/SVG/{小文字の漢字の 16 進コードポイント}.svg>」リンクを使用して取得することができます。
-
-    例：`<img src="https://seeki.vistudium.top/SVG/2ebf0.svg"/>`の表示結果は次のようになります：
-<div align="center"><img src="https://seeki.vistudium.top/SVG/2ebf0.svg" width="20%"/></div>
-
-さらに、**SVG-VF 動的版字形のデモ**（インタラクティブな字重・スタイル調整対応）を以下のリンクから体験できます：  
-「[SVG-VF 動的体験](https://losketch.github.io/Plgo/VF)」
-
-> [!IMPORTANT]
->  - オンラインの SVG ファイルには、CJK 統合漢字拡張 B 領域から CJK 統合漢字拡張 I までの文字しか含まれていません。
->  - オンラインの SVG ファイルは、このプロジェクトの更新と完全に同期しているわけではないので、適宜ご利用ください。
-> - **SVG-VF 動的版字形は実験的機能です**。レンダリング互換性の問題が発生する可能性があります。最新のブラウザ（Chrome 120+、Firefox 121+ 等）での利用を推奨します。
-
+    - [寒蝉端黑體](https://github.com/Warren2060/ChillDuanSans)。
 ## 「プランニヴァース」（Planiverse）について
 このフォントファミリーは、Fitzgerald によって 2023 年 12 月に作成され、現在は次のサブフォントプロジェクトが含まれています：
 1. **Plangothic Project（プランゴシック・プロジェクト、中国語：遍黒體項目、遍黑体项目）**：源ノ角ゴシックの中国大陸版をベースに、CJK 統合漢字拡張ブロックを補完するゴシック体フォントの作成を目指すプロジェクトです。

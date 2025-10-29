@@ -144,7 +144,6 @@ If you have any questions or suggestions during the use of this font, please fee
     - [Source Han Sans](https://github.com/adobe-fonts/source-han-sans).
     - Other fonts in the Noto series.
     - [Sukima Gothic (すきまゴシック)](https://oppekebekkanko.booth.pm/items/2117070) developed by [oppekebekkanko](https://oppekebekkanko.booth.pm/).
-    - [Noto Unicode](https://github.com/MY1L/Unicode/tree/main/NotoUnicode) developed by [My1l](https://github.com/MY1L).
     - [Chiron Hei HK](https://github.com/chiron-fonts/chiron-hei-hk)。
     - [Zhudou-Sans](https://github.com/Buernia/Zhudou-Sans) developed by [Buernia](https://github.com/Buernia).
     - [Zitools](https://zi.tools) developed by [Yi Bai](https://github.com/yi-bai).
@@ -154,20 +153,7 @@ If you have any questions or suggestions during the use of this font, please fee
     - [Shokaki Hentaigana Gothic（しょかき変体仮名ゴチック）](https://shokaki.booth.pm/items/5633978) developed by [ぼんのう堂](https://shokaki.booth.pm).
     - [Unicodia](https://github.com/Mercury13/unicodia/).
     - [Shanggu Sans](https://github.com/GuiWonder/Shanggu).
-6. The glyph data of this project is provided by [Hulenkius](https://github.com/Hulenkius) in SVG format. Users can access the glyphs via the link:  
-「<https://seeki.vistudium.top/SVG/{lowercase-hex-unicode}.svg>」
-
-    Example: `<img src="https://seeki.vistudium.top/SVG/2ebf0.svg"/>` will display as:  
-<div align="center"><img src="https://seeki.vistudium.top/SVG/2ebf0.svg" width="20%"/></div>
-
-Additionally, you can experience the **SVG-VF Dynamic Glyph Demo** (with interactive weight and style adjustments) through the following link:  
-「[SVG-VF Dynamic Experience](https://losketch.github.io/Plgo/VF)」
-
-> [!IMPORTANT]
-> - The online SVG files only cover CJK Unified Ideographs Extension B to Extension I.
-> - The online SVG files are not fully synchronized with this project's updates. Use with caution.
-> - **The SVG-VF dynamic glyph feature is experimental**. Rendering compatibility issues may occur. Modern browsers (e.g., Chrome 120+, Firefox 121+) are recommended.
-
+    - [Chill Duan Sans](https://github.com/Warren2060/ChillDuanSans)。
 ## About "The Planiverse"
 Founded by Fitzgerald in December 2023 and includes several sub-projects currently as follows:
 1. **Plangothic Project (Chinese: 遍黑体项目)**: Based on Source Han Sans CN and takes the CN variant as the standard to supplement the CJK Unified Ideographs Extension blocks.

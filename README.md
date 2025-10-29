@@ -161,7 +161,6 @@
     - [思源黑体](https://github.com/adobe-fonts/source-han-sans)。
     - Noto系列里的其他字体。
     - [oppekebekkanko](https://oppekebekkanko.booth.pm/)所开发的[すきまゴシック（Sukima Gothic、隙间黑体）](https://oppekebekkanko.booth.pm/items/2117070)。
-    - [绵云饴里](https://github.com/MY1L)所开发的[Noto Unicode](https://github.com/MY1L/Unicode/tree/main/NotoUnicode)。
     - [昭源黑体](https://github.com/chiron-fonts/chiron-hei-hk)。
     - [奈白不弍](https://github.com/Buernia)所开发的[煮豆黑体](https://github.com/Buernia/Zhudou-Sans)。
     - [白易](https://github.com/yi-bai)所开发的[字统网](https://zi.tools)。
@@ -171,19 +170,7 @@
     - [ぼんのう堂](https://shokaki.booth.pm)所开发的[しょかき変体仮名ゴチック（Shokaki Hentaigana Gothic）](https://shokaki.booth.pm/items/5633978)。
     - [Unicodia](https://github.com/Mercury13/unicodia/)。
     - [尚古黑体](https://github.com/GuiWonder/Shanggu)。
-6. 该项目的字形资料由[Hulenkius](https://github.com/Hulenkius)通过SVG文件进行线上使用，使用者可以通过「<https://seeki.vistudium.top/SVG/{小写的汉字十六进制码位}.svg>」链接获取。
-
-    例：`<img src="https://seeki.vistudium.top/SVG/2ebf0.svg"/>`的显示结果将会是：
-<div align="center"><img src="https://seeki.vistudium.top/SVG/2ebf0.svg" width="20%"/></div>
-
-此外，您可以通过以下链接在线体验 **SVG-VF 动态版字形 Demo**（支持交互式字重与样式调节）：  
-「[SVG-VF 动态体验](https://losketch.github.io/Plgo/VF)」
-
-> [!IMPORTANT]
-> - 线上的 SVG 文件仅包含中日韩统一表意文字扩展 B 区至中日韩统一表意文字扩展 I 区。
-> - 线上的 SVG 文件不和本项目的更新完全同步，请酌情使用。
-> - **SVG-VF 动态版字形目前为实验性功能**，可能存在渲染兼容性问题，建议使用现代浏览器（如 Chrome 120+、Firefox 121+）访问。
-
+    - [寒蝉端黑体](https://github.com/Warren2060/ChillDuanSans)。
 ## 关于「遍宇宙家族」（Planiverse）
 该字体家族由 Fitzgerald 在 2023 年 12 月创设，目前涵盖了以下的几个子字体项目：
 1. **Plangothic Project（遍黑体项目）**：基于思源黑体，并以中国大陆字形为标准的对中日韩越统一表意文字扩展区进行字形补充的项目。
