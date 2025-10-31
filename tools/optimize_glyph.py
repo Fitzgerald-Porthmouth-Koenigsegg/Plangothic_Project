@@ -127,7 +127,7 @@ class GlyphProcessor:
         glyph.balance()
         glyph.autoHint()
         
-        glyph.simplify(0.1, ('setstarttoextremum', 'removesingletonpoints', 'forcelines'))
+        glyph.simplify(0, ('setstarttoextremum', 'removesingletonpoints', 'forcelines'))
         glyph.cluster(0.5)
         glyph.removeOverlap()
         glyph.removePosSub("*")
