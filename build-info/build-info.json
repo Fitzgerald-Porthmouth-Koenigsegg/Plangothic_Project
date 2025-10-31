@@ -1,8 +1,8 @@
 {
-  "build_date": "2025-10-25T14:53:06Z",
-  "commit_sha": "2a673c500f98a043c9bc1f8457228029a4ab29b5",
-  "commit_message": "尝试更新CI中的FontForge版本  ",
+  "build_date": "2025-10-31T12:21:27Z",
+  "commit_sha": "73fe5be17545e0be8ee3f00525584a6a25947034",
+  "commit_message": "修改数值  修复一个可能导致莫名多出毛刺的问题  ",
   "branch": "main",
-  "workflow_run": "14",
+  "workflow_run": "15",
   "actor": "Losketch"
 }
