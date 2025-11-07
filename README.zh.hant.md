@@ -1,6 +1,6 @@
 <div align="center">
 
-![Logo Image](./documentation/samples/31fix.svg)
+<img src="./documentation/samples/31fix.svg" alt="Logo Image">
 
 <a href="README.md">
   <img src="https://img.shields.io/badge/语言-中文-blue?style=for-the-badge&logo=immersivetranslate&logoColor=white" alt="中文版本">
@@ -15,7 +15,7 @@
   <img src="https://img.shields.io/badge/言語-日本語-orange?style=for-the-badge&logo=immersivetranslate&logoColor=white" alt="日本語版本">
 </a>
 
-# 遍黑體項目（Plangothic Project）
+<h1>遍黑體項目（Plangothic Project）</h1>
 <img src="https://api.visitorbadge.io/api/visitors?path=Fitzgerald-Porthmouth-Koenigsegg.Plangothic_Project&countColor=%234ecdc4" alt="Github Visitors">
 <a href="https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/stargazers">
   <img src="https://img.shields.io/github/stars/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project?style=for-the-badge&color=yellow" alt="GitHub Stars">
