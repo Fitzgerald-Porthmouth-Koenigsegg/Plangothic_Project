@@ -1,8 +1,8 @@
 {
-  "build_date": "2025-10-31T12:21:27Z",
-  "commit_sha": "73fe5be17545e0be8ee3f00525584a6a25947034",
-  "commit_message": "修改数值  修复一个可能导致莫名多出毛刺的问题  ",
+  "build_date": "2026-01-01T08:41:36Z",
+  "commit_sha": "f0e7e23a20926d5c7c9d992ec8c90ebb35f22969",
+  "commit_message": "V2.9.5789 ",
   "branch": "main",
-  "workflow_run": "15",
-  "actor": "Losketch"
+  "workflow_run": "16",
+  "actor": "Fitzgerald-Porthmouth-Koenigsegg"
 }
