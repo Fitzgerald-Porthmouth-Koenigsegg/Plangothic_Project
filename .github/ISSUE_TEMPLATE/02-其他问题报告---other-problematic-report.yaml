@@ -1,13 +1,12 @@
-name: 其他问题报告 / Other problematic report
+name: 其他问题或建议反馈 / Other questions or suggestions feedback
 description: >
-  如果你有其他方面的问题，请在这里反映。 
-  / If you have any other problems, please report them here.
-title: "[其他问题 / Other problematic]"
+  如果你有其他方面的问题或建议，请在此处反馈。 / If you have any other questions or suggestions, please provide feedback here.
+title: "[问题或建议 / Q. & S.]"
 labels: ["其他疑问"]
 body:
 - type: textarea
   attributes:
-    label: 问题描述 / Description
-    description: 请详细描述您遇到的问题 / Please describe the issue you encountered in detail
+    label: 具体内容 / Specific content
+    description: 
   validations:
     required: true
