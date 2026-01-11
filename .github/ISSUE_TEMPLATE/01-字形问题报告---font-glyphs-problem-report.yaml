@@ -1,0 +1,38 @@
+name: 字形问题报告 / Font glyphs problem report
+description: >
+  如果你发现了字体中存在字形问题（如：字形错误，字形不规范等），请在这里反映。 
+  / If you find any glyphs issues (e.g.: incorrect or non-standard glyphs), please report them here.
+title: "[字形问题报告 / Font glyphs report]"
+labels: ["字形错误或有改动疑问"]
+body:
+- type: textarea
+  attributes:
+    label: 问题字形的码位 / Unicode point of problematic glyphs
+    description: >
+      请输入问题字形的Unicode码位，多个码位用逗号分隔 
+      / Enter the Unicode code points of the problematic glyphs, separated by commas
+    placeholder: "e.g.: U+21035, U+306CE"
+    render: markdown
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: 描述问题 / Describe the problem
+    description: >
+      对错误进行清晰简洁的描述。 
+      / A clear and concise description of what the problem is.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: 截图 / Screenshots
+    description: >
+      如适用，请添加截图以帮助解释您的问题。 
+      / If applicable, add screenshots to help explain your problem.
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: 其他附加说明（可选） / Other additional notes (optional)
+  validations:
+    required: false
