@@ -77,11 +77,12 @@ There are also many other people who have supported and participated in the proj
 - Modify, expand, and convert font files, but it is **strictly prohibited to use the reserved names "Plangothic" and "遍黑" for the font in the works that have been modified twice**. The version that has been modified twice **must also be published under the SIL Open Font License** (if only the source font is converted, the reserved name can still be used).
 
 #### You cannot:
-- Sell any part of the font file (including but not limited to glyphs, OpenType feature) for resale, including but not limited to selling the font file separately, bundling it with other fonts, requiring payment for special permissions to use the font, etc.
+- Sell the font files themselves as a standalone product (fonts may be bundled with software/devices as part of a sale, but cannot be sold as individual items).
 - Publish any part of the font file under a non SIL Open Font License.
-- Using this font file or its derivatives to harm the normal operation of computer systems (including but not limited to embedding computer viruses in font files, subjectively intentionally exploiting vulnerabilities in programs or systems to disrupt the normal operation of computer systems, etc.).
-- Use this font for purposes that violate local laws and regulations.
 - Other behaviors that violate the SIL Open Font License that are not listed above.
+ 
+**Disclaimer (Non-Legal Clause):**
+This font is released under SIL Open Font License 1.1. Users are free to use the font while complying with local laws and regulations. The author assumes no liability for any system damage or legal disputes resulting from the use of this font. The OFL license itself includes a disclaimer clause, see [LICENSE-OFL.txt](LICENSE-OFL.txt) for details.
 
 ### Build Tools (MIT License)
 **Scope:** Source code, scripts, and configuration files in the `tools/`, `registry/`, `sources/build.py`, and `.github/workflows/` directories.
