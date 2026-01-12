@@ -92,10 +92,10 @@ This font is released under SIL Open Font License 1.1. Users are free to use the
 ---
 
 **Important Notice:**
-- Using any content in this repository indicates agreement to comply with the respective licenses, for detailed terms, please refer to [LICENSE-OFL.txt](LICENSE-OFL.txt) and [LICENSE-MIT.txt](LICENSE-MIT.txt).
-- This font is a free commercial font. **Any behavior that requires payment to obtain this font is considered fraudulent. Beware of being deceived**. If you obtained this font for payment, please report it immediately and assist relevant judicial authorities if necessary.
-- The author's failure to exercise, delayed exercise, or insufficient exercise of the legal rights enjoyed under the licensing agreement shall not be deemed as a waiver of such rights, nor shall it affect the author's ability to exercise such rights in the future.
-- All content in this warehouse does not contain any political intentions, metaphors, or purposes, and is unrelated to any political activities. The author does not assume any joint legal liability arising from your use of this font.
+- Using any content in this repository indicates agreement to comply with the respective licenses. For detailed terms, please refer to [LICENSE-OFL.txt](LICENSE-OFL.txt) and [LICENSE-MIT.txt](LICENSE-MIT.txt).
+- This font is freely available for commercial use and is released under the OFL license. Anyone may freely use, modify, and distribute it. The author has never authorized any individual or organization to **sell this font file separately**. If you are required to pay a fee to obtain the font file, such behavior may involve misleading practices or fraud risks, so please exercise caution. It should be noted that the OFL license permits the font to be bundled and distributed as part of other paid software or hardware.
+- The author's failure to exercise, delayed exercise, or incomplete exercise of any legal rights under the license agreement shall not be deemed a waiver of such rights, nor shall it affect the author's ability to exercise such rights in the future.
+- All content in this repository contains no political intent, metaphor, or purpose, and is unrelated to any political activities. The author assumes no joint legal liability arising from your use of this font.
 
 ## FAQ
 ### 1. Why are there two font files for Plangothic?
