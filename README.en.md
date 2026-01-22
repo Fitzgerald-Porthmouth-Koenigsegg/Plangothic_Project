@@ -163,8 +163,8 @@ Founded by Fitzgerald in December 2023 and includes several sub-projects current
     - **Status**: Created project without homepage. Uncompleted.
 3. **Planschrift Project (Chinese: 遍玨体项目)**: Based on Huiwen-mincho supplementing the CJK Unified Ideographs Extension blocks. Temporary character range expanded from the range of Huiwen-mincho to Source Han Sans + Plangothic Project.
     - **Status**: Created project and its [homepage](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Planschrift_Project). Uncompleted.
-4. **Planseal Project (Chinese: 遍篆体项目)**: Based on the seal script in *Shuowen Jiezi* and as the standard to supplement the CJK Unified Ideographs Extension blocks.
-    - **Status**: Not created. Name tentative, In the future, it may merge with the Plangothic project and become a part of it.
+4. ***Planseal Project (Chinese: 遍篆体项目)***: Based on the seal script in *Shuowen Jiezi* and as the standard to supplement the CJK Unified Ideographs Extension blocks.
+    - **Status**: Due to the addition of the seal script in Unicode 18.0, it has been merged with the Plangothic project and become a part of it.
 5. **Planicon Project (Chinese: 遍象体项目)**: Based on CJK ideographs icons in the [Zi.tools](https://zi.tools/) and as the standard to supplement the CJK Unified Ideographs Extension blocks. Temporary character range set to URO and Extension A. Other ideographs are partly available.
     - **Status**: Not created. Name tentative.
 6. **Plantsing Project (Chinese: 遍擎体项目)**: Based on the Wuying Hall version of *Kangxi Dictionary* and as the standard to supplement the CJK Unified Ideographs Extension blocks. Temporary character range set to align with the Plangothic Project.
