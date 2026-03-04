@@ -11,18 +11,16 @@ os.chdir(script_dir)
 
 def extract_ufoz(ufoz_path):
     """解压 .ufoz 文件并返回 .ufo 目录路径"""
+    base_name = os.path.splitext(os.path.basename(ufoz_path))[0]
+    ufo_dir = f"{base_name}.ufo"
+
+    if os.path.exists(ufo_dir):
+        shutil.rmtree(ufo_dir)
+
+    os.makedirs(ufo_dir)
+
     with zipfile.ZipFile(ufoz_path, 'r') as zip_ref:
-        ufo_dirs = [f for f in zip_ref.namelist() 
-                    if f.endswith('.ufo/') or f.endswith('.ufo\\') or f.endswith('.ufo')]
-
-        if not ufo_dirs:
-            raise Exception(f"在 {ufoz_path} 中未找到 .ufo 目录")
-
-        ufo_dir = ufo_dirs[0].rstrip('/').rstrip('\\')
-
-        for file in zip_ref.namelist():
-            if file.startswith(ufo_dir):
-                zip_ref.extract(file, '.')
+        zip_ref.extractall(ufo_dir)
 
     return ufo_dir
 
