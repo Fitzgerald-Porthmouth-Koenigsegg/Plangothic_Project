@@ -71,9 +71,9 @@
 
 ## 授權協議
 
-### 字體文件（OFL 1.1協議）
-**適用範圍：** `fonts/` 和 `sources/` 目錄下的所有字體文件。
+### 字體文件（SIL Open Font License 1.1）
 
+字體文件以 SIL Open Font License 1.1 協議發布。
 授權協議的簡體中文版參考（非官方譯本）：https://www.maoken.com/ofl 。
 
 #### 您可以：
@@ -87,12 +87,10 @@
 - 其他上述未列明的違反SIL Open Font License授權協議的行為。
  
 **免責聲明（非協議條款）：**
-本字體以 SIL Open Font License 1.1 授權發布，用戶可在遵守當地法律法規的前提下自由使用。作者不對因使用本字體導致的任何系統損壞或法律糾紛承擔責任。OFL 協議本身已包含免責條款，詳見 [LICENSE-OFL.txt](LICENSE-OFL.txt)。
+用戶可在遵守當地法律法規的前提下自由使用。作者不對因使用本字體導致的任何系統損壞或法律糾紛承擔責任。OFL 協議本身已包含免責條款，詳見 [LICENSE-OFL.txt](LICENSE-OFL.txt)。
 
-### 構建工具（MIT協議）
-**適用範圍：** `tools/`、`registry/`、`sources/build.py`、`.github/workflows/` 目錄下的源代碼、腳本與配置文件。
-
-- 可自由使用、修改、分發，包括商業用途。
+### 構建與開發代碼（MIT License）
+- 倉庫中的源代碼、腳本與配置文件以 MIT License 發布，可自由使用、修改、分發，包括商業用途。
 
 ---
 

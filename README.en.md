@@ -68,8 +68,9 @@ There are also many other people who have supported and participated in the proj
 
 ## License
 
-### Font Files (OFL 1.1 License)
-**Scope:** All font files in the `fonts/` and `sources/` directories.
+### Font Files (SIL Open Font License 1.1)
+
+Font files are released under the SIL Open Font License 1.1.
 
 #### You can:
 - Any individual, group, organization, or enterprise may use it for commercial and non-commercial purposes free of charge, without the need to pay fees, inform the author in advance, indicate the source information, or obtain the author's permission.
@@ -82,12 +83,10 @@ There are also many other people who have supported and participated in the proj
 - Other behaviors that violate the SIL Open Font License that are not listed above.
  
 **Disclaimer (Non-Legal Clause):**
-This font is released under SIL Open Font License 1.1. Users are free to use the font while complying with local laws and regulations. The author assumes no liability for any system damage or legal disputes resulting from the use of this font. The OFL license itself includes a disclaimer clause, see [LICENSE-OFL.txt](LICENSE-OFL.txt) for details.
+Users are free to use the font while complying with local laws and regulations. The author assumes no liability for any system damage or legal disputes resulting from the use of this font. The OFL license itself includes a disclaimer clause, see [LICENSE-OFL.txt](LICENSE-OFL.txt) for details.
 
-### Build Tools (MIT License)
-**Scope:** Source code, scripts, and configuration files in the `tools/`, `registry/`, `sources/build.py`, and `.github/workflows/` directories.
-
-- Free to use, modify, and distribute, including for commercial purposes.
+### Build and Development Code (MIT License)
+- Source code, scripts, and configuration files in this repository are released under the MIT License, free to use, modify, and distribute, including for commercial purposes.
 
 ---
 
