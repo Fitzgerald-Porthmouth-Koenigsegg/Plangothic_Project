@@ -104,7 +104,7 @@ Users are free to use the font while complying with local laws and regulations. 
 ### 3. Will there be a version containing other weights (or other local glyphs) in the future?
 - Since the quantities of this project are too large, so this request is not in our reach by now. If you have such ideas, you can make a derivative font version of the project with your requirements.
 ### 4. Why is there no ℂomplex 𝕋ext 𝕃ayout (CTL) and 𝕀deographs 𝕍ariation 𝕊electors (IVS) in this font?
-- The fonts of this project orientate themselves as pragmatic tool fonts, that is they are not responsible for precise typesetting but only for display (see [Unifont](https://unifoundry.com/unifont) and [Noto Unicode](https://github.com/MY1L/Unicode/tree/main/NotoUnicode) developed by [My1l](https://github.com/MY1L)). Using CTL to typeset and display these scripts, and displaying regional variation ideographs other than the CN variant using IVSs is OUTSIDE the coverage of the project. If you have such ideas, you can produce derivation fonts of this project by yourself if in need.
+- The fonts of this project orientate themselves as pragmatic tool fonts, that is they are not responsible for precise typesetting but only for display (see [Unifont](https://unifoundry.com/unifont)). Using CTL to typeset and display these scripts, and displaying regional variation ideographs other than the CN variant using IVSs is OUTSIDE the coverage of the project. If you have such ideas, you can produce derivation fonts of this project by yourself if in need.
 ### 5. Can the TTC font from this project (a collection of multiple TrueType fonts) be directly used on smartphones or within software? Can it be installed on a phone to display all font styles simultaneously? Are there compatibility issues across software platforms or is it limited to specific platforms?
 - The TTC font from this project is compatible with Windows platforms and works seamlessly there. However, on mobile devices, directly installing a TTC font file typically results in displaying only one font style (usually P1) due to technical constraints. To display all font styles within software applications, special configurations may be required. Compatibility with TTC fonts can vary across different platforms, often requiring additional steps. Detailed instructions for installing Plangothic on an Android phone are provided here.
 ### 6. What are the differences between the distribution editions?
@@ -154,6 +154,7 @@ If you have any questions or suggestions during the use of this font, please fee
     - [Unicodia](https://github.com/Mercury13/unicodia/).
     - [Shanggu Sans](https://github.com/GuiWonder/Shanggu).
     - [Chill Duan Sans](https://github.com/Warren2060/ChillDuanSans)。
+
 ## About "The Planiverse"
 Founded by Fitzgerald in December 2023 and includes several sub-projects currently as follows:
 1. **Plangothic Project (Chinese: 遍黑体项目)**: Based on Source Han Sans CN and takes the CN variant as the standard to supplement the CJK Unified Ideographs Extension blocks.
@@ -178,3 +179,6 @@ Founded by Fitzgerald in December 2023 and includes several sub-projects current
 >
 > 1. Strictly speaking, Planicon Project, Planfixibit Project, Plangul Project does not meet the requirements for "The Planiverse", but still included for convenience.
 > 2. Prone to Planicon Project copyright disputes.
+
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project.svg?variant=adaptive)](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project)
