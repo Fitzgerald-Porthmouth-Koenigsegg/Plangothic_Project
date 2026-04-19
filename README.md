@@ -108,7 +108,7 @@
 ### 3. 未来是否会做包含其他字重（或其他地区字形）的版本？
 - 因为本项目工程量过于庞大，所以不会有此打算。若您有类似想法，可自行制作有关于您需求的该项目的衍生字体版本。
 ### 4. 为什么这个项目里的字体没有复杂文种排版（ℂomplex 𝕋ext 𝕃ayout, CTL）或是异体字选择器（𝕀deographs 𝕍ariation 𝕊electors, IVS）功能？
-- 因为本项目的字体使用性质侧重于工具字体、亦即不负责排版仅负责显示（类似于[Unifont](https://unifoundry.com/unifont)和[绵云饴里](https://github.com/MY1L)所开发的[Noto Unicode](https://github.com/MY1L/Unicode/tree/main/NotoUnicode)），使用复杂文种处理准确地排版这些语言文字，或是使用异体字选择器显示其它地区字形的功能**并不在**本项目的涵盖范围内。若您有类似的想法，可自行制作满足您需求的衍生字体。
+- 因为本项目的字体使用性质侧重于工具字体、亦即不负责排版仅负责显示（类似于[Unifont](https://unifoundry.com/unifont)），使用复杂文种处理准确地排版这些语言文字，或是使用异体字选择器显示其它地区字形的功能**并不在**本项目的涵盖范围内。若您有类似的想法，可自行制作满足您需求的衍生字体。
 ### 5. 本项目的TTC字体（即多个TrueType字体的合并）是否可以直接用于手机或在软件中使用？即是否可以直接安装在手机上并显示所有字形？遇到的问题是否适用于所有软件平台，或者只限于特定平台？
 - 本项目的TTC字体适用于Windows平台，可以正常使用。因为其他原因，对于手机设备直接安装TTC字体文件只能显示其中的一个字形（通常是P1），无法同时显示所有字形。在软件中使用时，可能需要特殊设置才能显示TTC字体中的所有字形。不同平台对TTC字体的兼容性可能有所不同，但大多数情况需要额外步骤。
 ### 6. 各个发行版本有什么区别？
@@ -170,6 +170,7 @@
     - [Unicodia](https://github.com/Mercury13/unicodia/)。
     - [尚古黑体](https://github.com/GuiWonder/Shanggu)。
     - [寒蝉端黑体](https://github.com/Warren2060/ChillDuanSans)。
+
 ## 关于「遍宇宙家族」（Planiverse）
 该字体家族由 Fitzgerald 在 2023 年 12 月创设，目前涵盖了以下的几个子字体项目：
 1. **Plangothic Project（遍黑体项目）**：基于思源黑体，并以中国大陆字形为标准的对中日韩越统一表意文字扩展区进行字形补充的项目。
@@ -194,3 +195,6 @@
 >
 > 1. 严格意义上来说，遍象体项目、遍缮体项目、遍训体项目不符合收录进「遍宇宙家族」的要求，但出于方便考虑，仍然将这三个项目纳入进该家族中。
 > 2. 遍象体项目疑似容易产生版权争端。
+
+## 星标历史
+[![Stargazers over time](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project.svg?variant=adaptive)](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project)
