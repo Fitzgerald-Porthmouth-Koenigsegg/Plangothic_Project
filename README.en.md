@@ -178,3 +178,5 @@ Founded by Fitzgerald in December 2023 and includes several sub-projects current
 >
 > 1. Strictly speaking, Planicon Project, Planfixibit Project, Plangul Project does not meet the requirements for "The Planiverse", but still included for convenience.
 > 2. Prone to Planicon Project copyright disputes.
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project.svg?variant=adaptive)](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project)
