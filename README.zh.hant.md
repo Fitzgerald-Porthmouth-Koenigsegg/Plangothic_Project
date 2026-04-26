@@ -194,3 +194,5 @@
 >
 > 1. 嚴格意義上來說，遍象體項目、遍繕體項目、遍訓體項目不符合收錄進「遍宇宙家族」的要求，但出於方便考慮，仍然將這三個項目納入進該家族中。
 > 2. 遍象體項目疑似容易產生版權爭端。
+## 星標歷史
+[![Stargazers over time](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project.svg?variant=adaptive)](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project)
