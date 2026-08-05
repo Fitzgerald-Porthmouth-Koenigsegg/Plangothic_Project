@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "built_at": "2026-08-05T07:30:14.545422Z",
+  "source": {
+    "commit_sha": "150d762c919807dca89f54912f3d8640c250096f",
+    "ref": "main",
+    "commit_message": "update workflows",
+    "archive": "sources/Plangothic-Regular.7z",
+    "archive_sha256": "597a1e2174f5ab0ac779470cd91ed94710fc94e56d66a1b2367c4c1f597e1b13",
+    "input_fingerprint": "b9c0774844ed9f8711bf8781cf720359881eff8d75dd4509a65104048cb4c6b2",
+    "inputs": [
+      {
+        "path": "sources/Plangothic-Regular.7z",
+        "size": 14010586,
+        "sha256": "597a1e2174f5ab0ac779470cd91ed94710fc94e56d66a1b2367c4c1f597e1b13"
+      },
+      {
+        "path": "tools/optimize_glyph.py",
+        "size": 9554,
+        "sha256": "4d9d1da38a07be7778429236a97feade0192142841177960f68061dea88ea440"
+      },
+      {
+        "path": "tools/convert_font.py",
+        "size": 8561,
+        "sha256": "5d97dfe63890e6f0852ec9e484d313b8090ee5b5d13bda5068391aee69e92080"
+      },
+      {
+        "path": "tools/build-fonts/build_fonts.py",
+        "size": 12624,
+        "sha256": "128f6aa32d67c80f6166c246a77c23d6675d08bea6ce9eb2dadd86aed8e555d9"
+      },
+      {
+        "path": "tools/build-fonts/requirements.txt",
+        "size": 32,
+        "sha256": "6cd2b75a452516f75bd26c5567aaf3fb150c3766f5dfb26b4c03b69ebda0b5a5"
+      },
+      {
+        "path": ".github/workflows/build-fonts.yml",
+        "size": 5810,
+        "sha256": "8a2db62170998f53da83f902e4dd6237f96822987bbfb54ef4de0ccb7f432a53"
+      }
+    ]
+  },
+  "workflow": {
+    "run_id": "30984546875",
+    "run_number": "22",
+    "actor": "Losketch",
+    "repository": "Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project"
+  },
+  "toolchain": {
+    "python": "3.12.13",
+    "fontforge": "Copyright (c) 2000-2025. See AUTHORS for Contributors.",
+    "fonttools": "4.63.0",
+    "brotli": "1.2.0"
+  },
+  "files": [
+    {
+      "path": "fonts/otf/Plangothic.ttc",
+      "size": 28862888,
+      "sha256": "cf9abc0f2fd865538ce34505149ed73543efccad2a0c515b724bc5b33378dc55"
+    },
+    {
+      "path": "fonts/otf/PlangothicP1-Regular.otf",
+      "size": 18228520,
+      "sha256": "0e9b25442e91aae67f7397a4f16be0c63298ea8440b2394a5b87a6d770ebb9ac"
+    },
+    {
+      "path": "fonts/otf/PlangothicP2-Regular.otf",
+      "size": 10634388,
+      "sha256": "2d0e58f0782ce7f4bbc32193ad4eeb9e4918f2a29a17263a59b214175103290c"
+    },
+    {
+      "path": "fonts/static/Plangothic.ttc",
+      "size": 32869924,
+      "sha256": "a4586b16dcee276398666ad491e6304325aeebc0412b8756e7d4f5494b30283f"
+    },
+    {
+      "path": "fonts/static/PlangothicP1-Regular.ttf",
+      "size": 20410664,
+      "sha256": "def8fe054a1f67889b36466d8b61c05d0e962b57d7645838bc52c1261d975d09"
+    },
+    {
+      "path": "fonts/static/PlangothicP2-Regular.ttf",
+      "size": 12459248,
+      "sha256": "d188d3501a1e7f56d7452cefa0818e9090cd68fa3d148d605d8a27995e8394f3"
+    },
+    {
+      "path": "fonts/web/PlangothicP1-Regular.woff2",
+      "size": 8499172,
+      "sha256": "fffa770fb31bce08364082396a34a1f0d9e7d350061fae0a473a042f3708ba44"
+    },
+    {
+      "path": "fonts/web/PlangothicP2-Regular.woff2",
+      "size": 4187636,
+      "sha256": "b6c264a4e3c94c162bdbff2eef757f51187c35b2582f663af6ab777af13ea4ce"
+    }
+  ]
+}
