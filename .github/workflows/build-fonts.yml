@@ -2,188 +2,190 @@ name: Build Fonts
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths:
-      - 'sources/Plangothic-Regular.7z'
+      - sources/Plangothic-Regular.7z
+      - tools/optimize_glyph.py
+      - tools/convert_font.py
+      - tools/build-fonts/**
+      - .github/workflows/build-fonts.yml
   workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: plangothic-build-fonts
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: "3.12"
+  FONTFORGE_RELEASE_ID: "20251009"
+  FONTFORGE_VERSION: "2025-10-09"
 
 jobs:
   build:
+    name: Build and deploy fonts
     runs-on: ubuntu-latest
+    timeout-minutes: 180
 
     steps:
-      - name: 检查仓库 / Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v6
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
-      - name: 安装依赖项 / Install dependencies
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: tools/build-fonts/requirements.txt
+
+      - name: Restore FontForge cache
+        id: fontforge-cache
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/plangothic/fontforge-${{ env.FONTFORGE_VERSION }}
+          key: fontforge-${{ runner.os }}-${{ runner.arch }}-${{ env.FONTFORGE_VERSION }}
+
+      - name: Install system dependencies
+        shell: bash
         run: |
-          mkdir -p ~/.cache/pip
-
+          set -euo pipefail
           sudo apt-get update -q
-          sudo apt-get install --no-install-recommends -y \
-            p7zip-full \
-            python3-pip \
-            ttfautohint \
-            parallel \
-            fuse
-          sudo apt-get clean
-          sudo rm -rf /var/lib/apt/lists/*
+          sudo apt-get install --no-install-recommends -y p7zip-full
 
-          wget -qO FontForge.AppImage \
-            https://github.com/fontforge/fontforge/releases/download/20251009/FontForge-2025-10-09-Linux-x86_64.AppImage
-          chmod +x FontForge.AppImage
+      - name: Download and extract FontForge
+        if: steps.fontforge-cache.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
 
-          ./FontForge.AppImage --appimage-extract
-          sudo mv squashfs-root /opt/fontforge
+          cache_dir="$HOME/.cache/plangothic/fontforge-${FONTFORGE_VERSION}"
+          mkdir -p "$cache_dir"
 
-          sudo tee /usr/local/bin/fontforge << 'EOF'
+          appimage="$cache_dir/FontForge.AppImage"
+          curl --fail --location --retry 3 \
+            --output "$appimage" \
+            "https://github.com/fontforge/fontforge/releases/download/${FONTFORGE_RELEASE_ID}/FontForge-${FONTFORGE_VERSION}-Linux-x86_64.AppImage"
+          chmod +x "$appimage"
+
+          (
+            cd "$cache_dir"
+            rm -rf appdir squashfs-root
+            ./FontForge.AppImage --appimage-extract >/dev/null
+            mv squashfs-root appdir
+            rm -f FontForge.AppImage
+          )
+
+      - name: Configure FontForge
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          appdir="$HOME/.cache/plangothic/fontforge-${FONTFORGE_VERSION}/appdir"
+          test -x "$appdir/usr/bin/fontforge"
+
+          sudo tee /usr/local/bin/fontforge >/dev/null <<EOF
           #!/usr/bin/env bash
-          export APPDIR=/opt/fontforge
-          export PATH="$APPDIR/usr/bin:$PATH"
-          export LD_LIBRARY_PATH="$APPDIR/usr/lib:$LD_LIBRARY_PATH"
-          export PYTHONPATH="$APPDIR/usr/lib/python3/dist-packages:$PYTHONPATH"
-          exec "$APPDIR/usr/bin/fontforge" "$@"
+          export APPDIR="$appdir"
+          export PATH="\$APPDIR/usr/bin:\$PATH"
+          export LD_LIBRARY_PATH="\$APPDIR/usr/lib:\${LD_LIBRARY_PATH:-}"
+          export PYTHONPATH="\$APPDIR/usr/lib/python3/dist-packages:\${PYTHONPATH:-}"
+          exec "\$APPDIR/usr/bin/fontforge" "\$@"
           EOF
           sudo chmod +x /usr/local/bin/fontforge
 
-          pip install --no-cache-dir --upgrade pip
-          pip install --no-cache-dir fonttools brotli fontmake
+          fontforge -version
 
-      - name: 提取文件 / Extract files
+      - name: Install Python dependencies
+        shell: bash
         run: |
-          mkdir -p temp
-          7z x sources/Plangothic-Regular.7z -obuild/
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install --requirement tools/build-fonts/requirements.txt
 
-      - name: 优化并转换字体 / Optimize and Convert Fonts
+      - name: Extract source fonts
+        shell: bash
         run: |
-          mkdir -p optimized fonts/otf fonts/web fonts/static
+          set -euo pipefail
+          rm -rf build optimized fonts build-info
+          mkdir -p build
+          7z x -y sources/Plangothic-Regular.7z -obuild
 
-          echo "===== 开始优化字形 ====="
-          find build -name "Plangothic*-Regular.ttf" | parallel fontforge -script tools/optimize_glyph.py {} -s 0.5
-          mv build/*_merge_glyphs.ttf optimized/
-
-          process_fonts() {
-            local format=$1
-            local target_dir=$2
-            local extension=$3
-
-            echo "===== 开始转换为${format}格式 ====="
-            find optimized -name "Plangothic*-Regular_merge_glyphs.ttf" | parallel "fontforge -script tools/convert_font.py {} -f ${format}"
-
-            for ttf in optimized/Plangothic*-Regular_merge_glyphs.ttf; do
-              base=$(basename "$ttf" _merge_glyphs.ttf)
-              found=false
-
-              for location in "./" "optimized/"; do
-                source_file="${location}${base}_merge_glyphs.${extension}"
-                if [ -f "$source_file" ]; then
-                  echo "找到${format}文件: $source_file"
-                  mv "$source_file" "${target_dir}/${base}.${extension}"
-                  found=true
-                  break
-                fi
-              done
-
-              if [ "$found" = false ]; then
-                echo "警告: 未能在预期位置找到${base}的${format}文件"
-                echo "尝试查找所有可能的文件:"
-                find . -name "*${base}*.${extension}" -o -name "*Plangothic*.${extension}"
-              fi
-            done
-          }
-
-          process_fonts "otf" "fonts/otf" "otf"
-          process_fonts "woff2" "fonts/web" "woff2"
-
-          echo "===== 创建静态TTF文件 ====="
-          for ttf in optimized/*_merge_glyphs.ttf; do
-            base=$(basename "$ttf" _merge_glyphs.ttf)
-            cp "$ttf" "fonts/static/${base}.ttf"
-          done
-
-          echo "===== 生成文件验证 ====="
-          echo "OTF文件:"
-          ls -la fonts/otf/
-          echo "WOFF2文件:"
-          ls -la fonts/web/
-          echo "TTF文件:"
-          ls -la fonts/static/
-
-      - name: 合并字体到集合 / Merge Fonts to Collections
+      - name: Build and validate fonts
+        shell: bash
         run: |
-          python3 - <<EOF
-          from fontTools.ttLib import TTFont
-          from fontTools.ttLib.ttCollection import TTCollection
+          set -euo pipefail
+          python tools/build-fonts/build_fonts.py \
+            --input-dir build \
+            --optimized-dir optimized \
+            --output-dir fonts \
+            --build-info-dir build-info \
+            --source-archive sources/Plangothic-Regular.7z \
+            --jobs "$(nproc)"
 
-          def merge_fonts(input_files, output_file):
-              collection = TTCollection()
-              for font_file in input_files:
-                  font = TTFont(font_file)
-                  collection.fonts.append(font)
-              collection.save(output_file)
-              print(f"已创建字体集合文件: {output_file}")
-
-          import os
-          os.makedirs("fonts/static", exist_ok=True)
-          os.makedirs("fonts/otf", exist_ok=True)
-
-          ttf_files = ["fonts/static/PlangothicP1-Regular.ttf", "fonts/static/PlangothicP2-Regular.ttf"]
-          merge_fonts(ttf_files, "fonts/static/Plangothic.ttc")
-
-          otf_files = ["fonts/otf/PlangothicP1-Regular.otf", "fonts/otf/PlangothicP2-Regular.otf"]
-          merge_fonts(otf_files, "fonts/otf/Plangothic.ttc")
-          EOF
-
-      - name: 更新字体并修改最后提交 / Update Fonts and Amend Last Commit
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-
-          LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
-
-          if [[ "$LAST_COMMIT_MSG" == *"[skip ci][✓]"* ]]; then
-            echo "最近的提交已经包含[skip ci][✓]标记，跳过修改"
-            exit 0
-          fi
-
-          if [ ! -d "fonts" ]; then
-            echo "fonts目录不存在，正在创建..."
-            mkdir -p fonts
-            echo "已创建fonts目录"
-          else
-            echo "fonts目录已存在，继续处理..."
-          fi
-
-          git add fonts/
-
-          CURRENT_BRANCH=${GITHUB_REF#refs/heads/}
-          git commit --amend -m "$LAST_COMMIT_MSG [skip ci][✓]"
-
-          echo "推送修改后的提交到 $CURRENT_BRANCH..."
-          git push --force origin "$CURRENT_BRANCH" && echo "成功推送修改" || echo "推送失败"
-
-      - name: 上传构建产物 / Upload artifacts
-        if: success()
-        uses: actions/upload-artifact@v4
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v7
         with:
-          name: font-files
-          path: fonts/
-          retention-days: 7
+          name: plangothic-fonts-${{ github.run_number }}
+          path: |
+            fonts/
+            build-info/
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
 
-      - name: 失败时调试 / Debug on failure
-        if: failure()
+      - name: Deploy generated snapshot to build branch
+        shell: bash
         run: |
-          echo "===== 调试信息 ====="
-          echo "目录结构:"
-          find . -type f -name "*.ttf" -o -name "*.otf" -o -name "*.woff2" | sort
+          set -euo pipefail
 
-          echo "磁盘空间:"
+          deploy_dir="$RUNNER_TEMP/plangothic-build-branch"
+          rm -rf "$deploy_dir"
+          mkdir -p "$deploy_dir"
+          cp -a fonts build-info "$deploy_dir/"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git checkout --orphan generated-build
+          git rm -rf --ignore-unmatch .
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf -- {} +
+
+          cp -a "$deploy_dir/fonts" ./fonts
+          cp -a "$deploy_dir/build-info" ./build-info
+
+          git add fonts build-info
+          git commit -m "build: ${GITHUB_SHA:0:7}"
+          git push --force origin HEAD:build
+
+      - name: Write workflow summary
+        if: success()
+        shell: bash
+        run: |
+          {
+            echo "## Font build completed"
+            echo
+            echo "- Source commit: \`$GITHUB_SHA\`"
+            echo "- Workflow run: \`$GITHUB_RUN_NUMBER\`"
+            echo "- Output branch: \`build\`"
+            echo
+            echo "### Generated files"
+            echo '```text'
+            find fonts -type f | sort
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Debug build failure
+        if: failure()
+        shell: bash
+        run: |
+          echo "===== Generated font files ====="
+          find . -type f \( -name '*.ttf' -o -name '*.otf' -o -name '*.ttc' -o -name '*.woff2' \) | sort || true
+          echo "===== Disk usage ====="
           df -h
-
-          echo "最近的日志:"
-          tail -n 100 $(find /tmp -name "*.log" -type f 2>/dev/null | head -1) 2>/dev/null || echo "没有找到日志文件"
-
-          echo "环境变量:"
-          env | grep -v -E "TOKEN|SECRET|KEY" | sort
+          echo "===== Git status ====="
+          git status --short --branch || true

@@ -2,168 +2,191 @@ name: Release Packaging
 
 on:
   release:
-    types: [published]
+    types:
+      - published
   workflow_dispatch:
     inputs:
       font_name:
-        description: '包的字体名称前缀（覆盖默认设置） / Font name prefix for packages (overrides default)'
+        description: Font name prefix for package files
         required: false
-        default: 'Plangothic'
+        default: Plangothic
+        type: string
       tag_version:
-        description: '手动运行时的标签版本 / Tag version for manual run'
+        description: Version used for a manual package run; defaults to dev-RUN_NUMBER
         required: false
-        default: ''
+        default: ""
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-packaging-${{ github.event.release.tag_name || inputs.tag_version || github.run_id }}
+  cancel-in-progress: false
 
 env:
+  PYTHON_VERSION: "3.12"
   DEFAULT_FONT_NAME: Plangothic
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.set_vars.outputs.version }}
-      font_name: ${{ steps.set_vars.outputs.font_name }}
-    steps:
-      - name: 签出代码 / Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - name: Set VERSION and FONT_NAME
-        id: set_vars
-        run: |
-          if [[ "${{ github.event_name }}" == "release" ]]; then
-            VERSION=${GITHUB_REF#refs/tags/}
-          else
-            VERSION=${{ github.event.inputs.tag_version || format('dev-{0}', github.run_number) }}
-          fi
-
-          FONT_NAME=${{ github.event.inputs.font_name || env.DEFAULT_FONT_NAME }}
-
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "font_name=$FONT_NAME" >> $GITHUB_OUTPUT
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update && sudo apt-get install -y p7zip-full
-
-      - name: 验证字体文件夹 / Validate font folders
-        run: |
-          missing_dirs=()
-          for d in otf static web; do
-            if [[ -d "fonts/$d" ]]; then
-              echo "✓ fonts/$d exists"
-            else
-              echo "⚠ fonts/$d missing"
-              missing_dirs+=("$d")
-            fi
-          done
-
-          if [[ ${#missing_dirs[@]} -gt 0 && "${{ matrix.pkg }}" != "Super" ]]; then
-            echo "::warning::Missing directories: ${missing_dirs[*]}"
-          fi
-
   package:
-    needs: prepare
+    name: Package build branch
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        pkg: [OTF, Static, Web, Super]
-    env:
-      VERSION: ${{ needs.prepare.outputs.version }}
-      FONT_NAME: ${{ needs.prepare.outputs.font_name }}
-      PKG: ${{ matrix.pkg }}
+    timeout-minutes: 45
+
     steps:
-      - name: 签出代码 / Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout packaging tools
+        uses: actions/checkout@v6
         with:
+          ref: ${{ github.event_name == 'release' && github.event.release.tag_name || github.ref_name }}
+          path: source
           fetch-depth: 1
 
-      - name: 准备打包目录 / Prepare package dir
+      - name: Checkout generated fonts
+        uses: actions/checkout@v6
+        with:
+          ref: build
+          path: build-output
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Resolve package variables
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          INPUT_VERSION: ${{ inputs.tag_version }}
+          INPUT_FONT_NAME: ${{ inputs.font_name }}
+        run: |
+          set -euo pipefail
+
+          if [[ "$GITHUB_EVENT_NAME" == "release" ]]; then
+            version="$RELEASE_TAG"
+          elif [[ -n "$INPUT_VERSION" ]]; then
+            version="$INPUT_VERSION"
+          else
+            version="dev-${GITHUB_RUN_NUMBER}"
+          fi
+
+          font_name="${INPUT_FONT_NAME:-$DEFAULT_FONT_NAME}"
+
+          printf 'VERSION=%s\n' "$version" >> "$GITHUB_ENV"
+          printf 'FONT_NAME=%s\n' "$font_name" >> "$GITHUB_ENV"
+
+      - name: Verify build provenance
         shell: bash
         run: |
           set -euo pipefail
 
-          echo "Packaging $PKG for version $VERSION..."
-          mkdir -p dist
+          expected_sha="$(git -C source rev-parse HEAD)"
+          expected_fingerprint="$(python source/tools/build-fonts/provenance.py --repo-root source)"
 
-          TARGET="dist/${FONT_NAME}-${PKG}-${VERSION}"
-          mkdir -p "$TARGET"
+          readarray -t build_values < <(python - <<'PY'
+          import json
+          from pathlib import Path
 
-          if [[ "$PKG" == "Super" ]]; then
-            cp -r fonts/* "$TARGET"/
-          else
-            sub=$(echo "$PKG" | tr '[:upper:]' '[:lower:]')
-            if [[ -d "fonts/$sub" ]]; then
-              cp -r "fonts/$sub"/* "$TARGET"/
-            else
-              echo "⚠ fonts/$sub not found, skipping"
+          info = json.loads(Path('build-output/build-info/build-info.json').read_text(encoding='utf-8'))
+          print(info['source']['commit_sha'])
+          print(info['source']['input_fingerprint'])
+          PY
+          )
+          built_sha="${build_values[0]}"
+          built_fingerprint="${build_values[1]}"
+
+          echo "Selected source commit:      $expected_sha"
+          echo "Build branch source commit:  $built_sha"
+          echo "Selected input fingerprint:  $expected_fingerprint"
+          echo "Build branch fingerprint:    $built_fingerprint"
+
+          if [[ "$expected_fingerprint" != "$built_fingerprint" ]]; then
+            if [[ "$GITHUB_EVENT_NAME" == "release" ]]; then
+              echo "::error::The build branch does not match the font-building inputs at release $VERSION. Run Build Fonts on the release tag before publishing."
+              exit 1
             fi
+
+            echo "::warning::The selected ref and build branch use different font-building inputs. Manual packaging will continue."
+          elif [[ "$expected_sha" != "$built_sha" ]]; then
+            echo "::notice::The commits differ, but all font-building inputs are identical; packaging is safe to continue."
           fi
 
-      - name: Compress files
+      - name: Install packaging dependency
+        shell: bash
         run: |
-          cd dist
-          base="${FONT_NAME}-${PKG}-${VERSION}"
+          set -euo pipefail
+          sudo apt-get update -q
+          sudo apt-get install --no-install-recommends -y p7zip-full
 
-          zip -qr "${base}.zip" "$base" &
-          7z a -t7z -mx=9 "${base}.7z" "$base" &
-          wait
+      - name: Create release packages
+        shell: bash
+        run: |
+          set -euo pipefail
+          python source/tools/build-fonts/package_release.py \
+            --fonts-dir build-output/fonts \
+            --dist-dir dist \
+            --font-name "$FONT_NAME" \
+            --version "$VERSION" \
+            --repository "$GITHUB_REPOSITORY"
 
-          ls -lh "${base}."*
-
-      - name: 上传工件(手动运行) / Upload artifact (manual run)
+      - name: Upload manual-run artifact
         if: github.event_name == 'workflow_dispatch'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: ${{ env.FONT_NAME }}-${{ matrix.pkg }}-${{ env.VERSION }}.7z
-          path: dist/${{ env.FONT_NAME }}-${{ matrix.pkg }}-${{ env.VERSION }}.7z
-          retention-days: 7
+          name: ${{ env.FONT_NAME }}-packages-${{ env.VERSION }}
+          path: dist/
+          retention-days: 14
+          compression-level: 0
+          if-no-files-found: error
 
-      - name: 上传到发行版 / Upload to Release
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
+      - name: Upload assets to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v3
         with:
+          token: ${{ github.token }}
+          tag_name: ${{ env.VERSION }}
+          fail_on_unmatched_files: true
           files: |
-            dist/${{ env.FONT_NAME }}-${{ matrix.pkg }}-${{ env.VERSION }}.*
+            dist/*.7z
+            dist/*.zip
+            dist/SHA256SUMS.txt
             dist/${{ env.FONT_NAME }}-Static-${{ env.VERSION }}/*.ttf
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  update-changelog:
-    needs: [prepare, package]
-    runs-on: ubuntu-latest
-    if: github.event_name == 'release' && github.event.action == 'published'
-    env:
-      VERSION: ${{ needs.prepare.outputs.version }}
-      FONT_NAME: ${{ needs.prepare.outputs.font_name }}
-      REPO: ${{ github.repository }}
-    steps:
-      - name: 生成下载链接 / Generate download links
-        id: generate_links
+      - name: Update release download table
+        if: github.event_name == 'release'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
 
-          BASE_URL="https://github.com/${REPO}/releases/download/${VERSION}"
-          packages=(Super Static OTF Web)
+          gh release view "$VERSION" --json body --jq '.body // ""' > current-release-notes.md
+          python source/tools/build-fonts/update_release_notes.py \
+            --current-body current-release-notes.md \
+            --block-file dist/download-links.md \
+            --output updated-release-notes.md
+          gh release edit "$VERSION" --notes-file updated-release-notes.md
 
-          table="### 下载链接\n\n| Package | 7z | zip |\n| -- | -- | -- |"
-          for pkg in "${packages[@]}"; do
-            table+=$'\n'"| $pkg | [📦 Download](${BASE_URL}/${FONT_NAME}-$pkg-$VERSION.7z) | [📦 Download](${BASE_URL}/${FONT_NAME}-$pkg-$VERSION.zip) |"
-          done
-
-          echo -e "$table"
-
-          echo "links<<EOF" >> $GITHUB_OUTPUT
-          echo -e "$table" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
-      - name: 更新发行版描述 / Update release description
+      - name: Write workflow summary
+        if: success()
+        shell: bash
         run: |
-          current_notes=$(gh release view "$VERSION" --json body --jq '.body')
-          new_notes="${current_notes}"$'\n\n'"${{ steps.generate_links.outputs.links }}"
-          gh release edit "$VERSION" --notes "$new_notes"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
+          {
+            echo "## Release packages created"
+            echo
+            echo "- Version: \`$VERSION\`"
+            echo "- Font prefix: \`$FONT_NAME\`"
+
+            built_sha="$(
+            python -c 'import json; from pathlib import Path; print(json.loads(Path("build-output/build-info/build-info.json").read_text(encoding="utf-8"))["source"]["commit_sha"])'
+            )"
+
+            echo "- Build branch source: \`$built_sha\`"
+            echo
+            echo "### Assets"
+            echo '```text'
+            find dist -maxdepth 2 -type f | sort
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
