@@ -54,6 +54,12 @@
 </a>
 </div>
 
+> [!CAUTION]
+>
+> - 最近、本フォントを含む多くのオープンソースフォントが、SIL OFL 1.1の「フォントファイルを単独で販売してはならない」という条項に違反して、一部のプラットフォームで不正業者に転売されていることが分かった。本フォントを販売している場合は、**購入しないでください**！お支払いいただいたお金は作成者には流れませんし、更新やサポートを受けることもできません。
+> - 所在地に本フォントを推薦したい場合、法務省はSIL OFL 1.1プロトコルの効力を認めず、従来の「ライセンス証明書」の提供を要求しているため、本フォントの使用を放棄し、ライセンス証明書を発行できる無料の商用フォントに変更するか、商業著作権フォントを購入することをお勧めします。
+> - このフォントは、実際のトレーニングデータが不明なため、AI（人工知能）技術を使用して第三者がトレーニングした後にフォントを再生成するために使用されていることが最近分かった。生成されたフォントには法的リスクがある。そのため、本フォントまたは上流フォントに基づいてトレーニングされたと主張するAIフォントがある場合は、**使用しないでください**！このフォントプロジェクトの開発はすべてAI技術を使用しないことを堅持し、ユーザーの皆様は安心して使用することができます。
+
 ## 概要
 Plangothic Project（プランゴシックプロジェクト、中国語：遍黒體項目、遍黑体项目）は、[源ノ角ゴシック](https://github.com/adobe-fonts/source-han-sans)の中国大陸版をベースに、CJK 統合漢字拡張ブロックを補完するゴシック体フォントの作成を目指すプロジェクトです。2020 年 6 月頃より開発されています。
 
@@ -181,4 +187,4 @@ Plangothic Project（プランゴシックプロジェクト、中国語：遍�
 > 2. プランイコン・プロジェクトは著作権紛争が生じやすいと疑われており。
 
 ## スター履歴
-[![Stargazers over time](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project.svg?variant=adaptive)](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project)
+[![Star History Chart](https://api.star-history.com/chart?repos=fitzgerald-porthmouth-koenigsegg/plangothic_project&type=date&legend=top-left)](https://www.star-history.com/?repos=fitzgerald-porthmouth-koenigsegg%2Fplangothic_project&type=timeline&legend=top-left)

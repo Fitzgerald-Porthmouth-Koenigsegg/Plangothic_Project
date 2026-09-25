@@ -57,6 +57,12 @@
 </a>
 </div>
 
+> [!CAUTION]
+> 
+> - 近来发现，包括本字体在内的众多开源字体在淘宝、小红书等平台被不法商家倒卖，违反了SIL OFL 1.1中「不得单独售卖字体文件」的条款。如您遇到此类店铺贩售本字体，**请不要购买**！您支付的款项**不会**流向作者，您也**无法**获得任何更新或支持。
+> - 如果您希望向所在单位推荐本字体，但法务部门不认可SIL OFL 1.1协议的效力、要求提供传统「授权证明」，建议您放弃使用本字体，改用可开具授权证明的免费商用字体或购买商业版权字体。
+> - 近来发现，本字体遭到第三方使用AI（人工智能）技术训练后用于再生成字体，由于实际训练数据不明，生成的字体具有一定的法律风险。因此，如您遇到某些声称基于本字体或上游字体训练而成的AI字体，**请不要使用**！此字体项目的开发全程坚持不使用任何AI技术，各位用户可放心使用。
+
 ## 概述
 遍黑体项目是基于[思源黑体](https://github.com/adobe-fonts/source-han-sans)，并以中国大陆字形为标准的对中日韩统一表意文字扩展区进行字形补充的项目，是「遍宇宙家族」中的一个子项目，该项目于2020年6月前后启动。
 
@@ -197,4 +203,4 @@
 > 2. 遍象体项目疑似容易产生版权争端。
 
 ## 星标历史
-[![Stargazers over time](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project.svg?variant=adaptive)](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project)
+[![Star History Chart](https://api.star-history.com/chart?repos=fitzgerald-porthmouth-koenigsegg/plangothic_project&type=date&legend=top-left)](https://www.star-history.com/?repos=fitzgerald-porthmouth-koenigsegg%2Fplangothic_project&type=timeline&legend=top-left)

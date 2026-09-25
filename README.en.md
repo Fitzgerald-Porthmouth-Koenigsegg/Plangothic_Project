@@ -54,6 +54,12 @@
 </a>
 </div>
 
+> [!CAUTION]
+> 
+> - Recently, it has been discovered that numerous open-source fonts, including this font, have been resold by illegal merchants on certain platforms, violating the clause in SIL OFL 1.1 that "prohibits the separate sale of font files". If you encounter the situation of selling this font, **DO NOT purchase it!** The payment you made will **NOT** flow to the author, and you will **NOT** receive any updates or support.
+> - If you wish to recommend this font to your organization, but the legal department does not recognize the validity of the SIL OFL 1.1 agreement and requires a traditional "authorization certificate", we suggest that you abandon the use of this font and switch to a free commercial font that can issue an authorization certificate or purchase a commercial copyright font.
+> - Recently, it has been discovered that this font has been trained by a third party using AI (artificial intelligence) technology to regenerate fonts. Due to the unknown actual training data, the generated fonts pose certain legal risks. Therefore, if you encounter AI fonts that claim to be trained based on this font or upstream fonts, **DO NOT use them!** Throughout the development of this font project, we insist on not using any AI. Users can use it with confidence.
+
 ## Overview
 Plangothic Project (Chinese: 遍黑体项目) is based on [Source Han Sans](https://github.com/adobe-fonts/source-han-sans) CN and takes the Chinese Mainland variant ideographs as the standard to supplement the CJK Unified Ideographs Extension blocks. Initiated around June 2020.
 
@@ -180,5 +186,5 @@ Founded by Fitzgerald in December 2023 and includes several sub-projects current
 > 1. Strictly speaking, Planicon Project, Planfixibit Project, Plangul Project does not meet the requirements for "The Planiverse", but still included for convenience.
 > 2. Prone to Planicon Project copyright disputes.
 
-## Stargazers over time
-[![Stargazers over time](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project.svg?variant=adaptive)](https://starchart.cc/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project)
+## Star History
+[![Star History Chart](https://api.star-history.com/chart?repos=fitzgerald-porthmouth-koenigsegg/plangothic_project&type=date&legend=top-left)](https://www.star-history.com/?repos=fitzgerald-porthmouth-koenigsegg%2Fplangothic_project&type=timeline&legend=top-left)
