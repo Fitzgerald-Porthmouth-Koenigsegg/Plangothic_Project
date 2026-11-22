@@ -177,6 +177,7 @@
     - [尚古黑体](https://github.com/GuiWonder/Shanggu)。
     - [寒蝉端黑体](https://github.com/Warren2060/ChillDuanSans)。
     - [源萃黑体](https://genzui.mkpo.li/sans)。
+    - [UniHieroglyphica](UniHieroglyphica)。
 
 ## 关于「遍宇宙家族」（Planiverse）
 该字体家族由 Fitzgerald 在 2023 年 12 月创设，目前涵盖了以下的几个子字体项目：
