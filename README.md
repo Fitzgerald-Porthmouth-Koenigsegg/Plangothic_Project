@@ -85,7 +85,7 @@
 #### 您可以：
 - 任何个人、团体、组织及企业可免费进行商业目的和非商业目的使用，无需支付费用、事先告知作者、标明来源信息或征得作者许可。
 - 对字体文件进行二次发布或安装、嵌入到任何软件或设备中，同时软件或设备可被再次分发或销售。
-- 对字体文件进行修改、扩充和格式转换，但二次修改的作品**严禁使用本字体的保留名称「Plangothic」、「遍黑」**，二次修改过后的版本**亦须以 SIL Open Font License 发表**（若仅对源字体进行格式转换可继续使用该保留名称）。
+- 对字体文件进行修改、扩充和格式转换。修改后的版本**严禁使用本字体的保留名称「Plangothic」、「遍黑」**，且**须以 SIL Open Font License 发布**（若仅对源字体进行格式转换，可继续使用该保留名称）。
 
 #### 您不可以：
 - 将字体文件本身单独售卖（字体可作为软件/设备的一部分进行捆绑销售，但不能单独作为商品出售）。
@@ -113,10 +113,10 @@
 - 因为本项目的宗旨是「基于[思源黑体](https://github.com/adobe-fonts/source-han-sans)进行的补充」，如需显示基本区和扩展 A 区的表意文字，直接使用思源黑体即可。本项目中所包含的零星的基本区和扩展 A 区的表意文字均为在 Unicode 内**有字形改动或者不符合本项目宗旨**的表意文字。本项目在添加这些表意文字之前均已与其他主流字体和 Unicode 码表内字形进行过比对。
 ### 3. 未来是否会做包含其他字重（或其他地区字形）的版本？
 - 因为本项目工程量过于庞大，所以不会有此打算。若您有类似想法，可自行制作有关于您需求的该项目的衍生字体版本。
-### 4. 为什么这个项目里的字体没有复杂文种排版（ℂomplex 𝕋ext 𝕃ayout, CTL）或是异体字选择器（𝕀deographs 𝕍ariation 𝕊electors, IVS）功能？
+### 4. 为什么这个项目里的字体不支持复杂文种排版（Complex Text Layout，CTL）或表意文字异体序列（Ideographic Variation Sequence，IVS）？
 - 因为本项目的字体使用性质侧重于工具字体、亦即不负责排版仅负责显示（类似于[Unifont](https://unifoundry.com/unifont)），使用复杂文种处理准确地排版这些语言文字，或是使用异体字选择器显示其它地区字形的功能**并不在**本项目的涵盖范围内。若您有类似的想法，可自行制作满足您需求的衍生字体。
 ### 5. 本项目的TTC字体（即多个TrueType字体的合并）是否可以直接用于手机或在软件中使用？即是否可以直接安装在手机上并显示所有字形？遇到的问题是否适用于所有软件平台，或者只限于特定平台？
-- 本项目的TTC字体适用于Windows平台，可以正常使用。因为其他原因，对于手机设备直接安装TTC字体文件只能显示其中的一个字形（通常是P1），无法同时显示所有字形。在软件中使用时，可能需要特殊设置才能显示TTC字体中的所有字形。不同平台对TTC字体的兼容性可能有所不同，但大多数情况需要额外步骤。
+- 本项目的 TTC 文件可在 Windows 上正常使用。直接在手机上安装 TTC 文件时，只能使用集合中的一套字体（通常为 P1），因此无法同时显示集合中的全部字形。在软件中使用时，可能需要额外设置才能显示全部字形。不同平台对 TTC 的兼容性可能有所不同，多数情况下需要额外步骤。
 ### 6. 各个发行版本有什么区别？
 - **Super版本**：包含所有格式的字体文件，文件体积较大。
 - **Static版本**：包含P1和P2两个独立的TTF字体文件以及一个TTC文件。
@@ -134,9 +134,9 @@
 1. **安装字体**：下载TTF版字体文件（两个单独的ttf或者单个的ttc文件任选其一），右键选择"为所有用户安装"（需要管理员权限）；
 2. **配置后备**：双击运行 `registry/Plangothic-Install.reg`（需要管理员权限）
 3. **重新登录**：注销并重新登录Windows账户使设置生效
-4. **卸载**：删除字体文件即可，或运行 `registry/Plangothic-Uninstall.reg` 移除注册表配置
+4. **卸载**：删除已安装的字体文件可卸载字体。需要移除后备设置时，运行 `registry/Plangothic-Uninstall.reg`。
 
-> **高级用法和详细说明**：请查看 [Experimental_README.md](./registry/Experimental/README.md)
+> **高级用法和详细说明**：请查看[实验性后备配置说明](./registry/Experimental/README.md)。
 </details>
 
 ## 支持我们
@@ -171,7 +171,7 @@
     - [白易](https://github.com/yi-bai)所开发的[字统网](https://zi.tools)。
     - [Gothic Nguyen（阮黑体）](https://github.com/TKYKmori/Gothic-Nguyen)。
     - [Unicode官方码表文件](https://www.unicode.org/charts/)。
-    - [Unihan数据库](https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip)。
+    - [Unihan数据库](https://www.unicode.org/Public/18.0.0/ucd/Unihan.zip)。
     - [ぼんのう堂](https://shokaki.booth.pm)所开发的[しょかき変体仮名ゴチック（Shokaki Hentaigana Gothic）](https://shokaki.booth.pm/items/5633978)。
     - [Unicodia](https://github.com/Mercury13/unicodia/)。
     - [尚古黑体](https://github.com/GuiWonder/Shanggu)。

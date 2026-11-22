@@ -56,19 +56,19 @@
 
 > [!CAUTION]
 > 
-> - Recently, it has been discovered that numerous open-source fonts, including this font, have been resold by illegal merchants on certain platforms, violating the clause in SIL OFL 1.1 that "prohibits the separate sale of font files". If you encounter the situation of selling this font, **DO NOT purchase it!** The payment you made will **NOT** flow to the author, and you will **NOT** receive any updates or support.
-> - If you wish to recommend this font to your organization, but the legal department does not recognize the validity of the SIL OFL 1.1 agreement and requires a traditional "authorization certificate", we suggest that you abandon the use of this font and switch to a free commercial font that can issue an authorization certificate or purchase a commercial copyright font.
-> - Recently, it has been discovered that this font has been trained by a third party using AI (artificial intelligence) technology to regenerate fonts. Due to the unknown actual training data, the generated fonts pose certain legal risks. Therefore, if you encounter AI fonts that claim to be trained based on this font or upstream fonts, **DO NOT use them!** Throughout the development of this font project, we insist on not using any AI. Users can use it with confidence.
+> - Recently, some sellers on certain platforms have been reselling open-source fonts, including Plangothic, on their own in violation of SIL OFL 1.1. If you come across sellers offering this font on its own, **do not buy it from them**. Your payment will **not** go to the author, and you will **not** receive updates or support.
+> - If you want to recommend this font to your organization but its legal department does not accept SIL OFL 1.1 and requires traditional proof of authorization, we suggest using a font that is free for commercial use and comes with written proof of authorization, or purchasing a commercial font license.
+> - A third party recently used this font to train an AI system and then used it to generate fonts. The training data is unknown, so the generated fonts may carry legal risks. If you come across AI-generated fonts that claim to have been trained on this font or its upstream fonts, **do not use them**. We have not used AI at any stage of this project's development, so you can use this font with confidence.
 
 ## Overview
-Plangothic Project (Chinese: 遍黑体项目) is based on [Source Han Sans](https://github.com/adobe-fonts/source-han-sans) CN and takes the Chinese Mainland variant ideographs as the standard to supplement the CJK Unified Ideographs Extension blocks. Initiated around June 2020.
+The Plangothic Project (Chinese: 遍黑体项目) builds on [Source Han Sans](https://github.com/adobe-fonts/source-han-sans) to supplement glyph coverage in the CJK Unified Ideographs extension blocks, using Mainland Chinese glyph forms as its standard. It is part of the Planiverse font family and began around June 2020.
 
 ## Coverage
-This font mainly supports all CJK ideographs from extension B to extension J, with sporadic character in other blocks.
+This font covers all ideographs in CJK Unified Ideographs Extensions B through J, with a small number of characters from other blocks.
 
 ## Contributors
-- Main:  [Usagixineist](https://github.com/Usagixineist), [WAAO-SCREAMER](https://github.com/WAAO-SCREAMER), Nachicraft, Magnetshroom
-- Assistants: [0xAA55](https://github.com/0xAA55), [Baysoftware](https://github.com/yi-bai), Boris Ivanovich, [Henry Chan](https://github.com/hfhchan), [Hulenkius](https://github.com/Hulenkius), [Losketch](https://github.com/Losketch)
+- Main contributors: [Usagixineist](https://github.com/Usagixineist), [WAAO-SCREAMER](https://github.com/WAAO-SCREAMER), Nachicraft, Magnetshroom
+- Other technical assistance: [0xAA55](https://github.com/0xAA55), [Baysoftware](https://github.com/yi-bai), Boris Ivanovich, [Henry Chan](https://github.com/hfhchan), [Hulenkius](https://github.com/Hulenkius), [Losketch](https://github.com/Losketch)
 
 There are also many other people who have supported and participated in the project. We would like to thank them.
 
@@ -76,20 +76,21 @@ There are also many other people who have supported and participated in the proj
 
 ### Font Files (SIL Open Font License 1.1)
 
-Font files are released under the SIL Open Font License 1.1.
+Font files are released under the SIL Open Font License 1.1. An [unofficial Simplified Chinese translation](https://www.maoken.com/ofl) is available for reference.
 
 #### You can:
-- Any individual, group, organization, or enterprise may use it for commercial and non-commercial purposes free of charge, without the need to pay fees, inform the author in advance, indicate the source information, or obtain the author's permission.
-- Republish or install font files, embed them into any software or device, and the software or device can be redistributed or resold.
-- Modify, expand, and convert font files, but it is **strictly prohibited to use the reserved names "Plangothic" and "遍黑" for the font in the works that have been modified twice**. The version that has been modified twice **must also be published under the SIL Open Font License** (if only the source font is converted, the reserved name can still be used).
+- Anyone, including individuals, groups, organizations, and businesses, may use the fonts for commercial and noncommercial purposes free of charge, without notifying the author in advance, crediting the source, or obtaining the author's permission.
+- Redistribute the font files, or install or embed them in any software or device. The software or device may also be redistributed or sold.
+- Modify, extend, or convert the font files. Modified versions **must not use the reserved names “Plangothic” or “遍黑”** and **must be released under the SIL Open Font License**. A format-only conversion of the original font may retain those names.
 
 #### You cannot:
 - Sell the font files themselves as a standalone product (fonts may be bundled with software/devices as part of a sale, but cannot be sold as individual items).
-- Publish any part of the font file under a non SIL Open Font License.
-- Other behaviors that violate the SIL Open Font License that are not listed above.
- 
-**Disclaimer (Non-Legal Clause):**
-Users are free to use the font while complying with local laws and regulations. The author assumes no liability for any system damage or legal disputes resulting from the use of this font. The OFL license itself includes a disclaimer clause, see [LICENSE-OFL.txt](LICENSE-OFL.txt) for details.
+- Release any part of a font file under a license other than the SIL Open Font License.
+- Violate any other terms of the SIL Open Font License.
+
+**Disclaimer (outside the license terms)**
+
+You may use the font freely provided you comply with local laws and regulations. The author assumes no liability for system damage or legal disputes resulting from use of this font. See [LICENSE-OFL.txt](LICENSE-OFL.txt) for the license's disclaimer.
 
 ### Build and Development Code (MIT License)
 - Source code, scripts, and configuration files in this repository are released under the MIT License, free to use, modify, and distribute, including for commercial purposes.
@@ -98,93 +99,94 @@ Users are free to use the font while complying with local laws and regulations. 
 
 **Important Notice:**
 - Using any content in this repository indicates agreement to comply with the respective licenses. For detailed terms, please refer to [LICENSE-OFL.txt](LICENSE-OFL.txt) and [LICENSE-MIT.txt](LICENSE-MIT.txt).
-- This font is freely available for commercial use and is released under the OFL license. Anyone may freely use, modify, and distribute it. The author has never authorized any individual or organization to **sell this font file separately**. If you are required to pay a fee to obtain the font file, such behavior may involve misleading practices or fraud risks, so please exercise caution. It should be noted that the OFL license permits the font to be bundled and distributed as part of other paid software or hardware.
+- The font is free for commercial use. The OFL permits anyone to use, modify, and distribute it free of charge. The author has never authorized anyone to **sell the font files on their own**. If you are asked to pay for the font files, be cautious about possible misrepresentation or fraud. The OFL permits the font to be distributed as part of a bundle with paid software or hardware.
 - The author's failure to exercise, delayed exercise, or incomplete exercise of any legal rights under the license agreement shall not be deemed a waiver of such rights, nor shall it affect the author's ability to exercise such rights in the future.
 - All content in this repository contains no political intent, metaphor, or purpose, and is unrelated to any political activities. The author assumes no joint legal liability arising from your use of this font.
 
 ## FAQ
 ### 1. Why are there two font files for Plangothic?
-- Because the maximum number of glyphs a font can hold is limited (to 65535), while the total count of CJK ideographs is much greater than this value.
-### 2. Why does this project just include a small amount of CJK ideographs in the URO and extensions A?
-- Since the purpose of this project is "supplement all the extension blocks of CJK Unified Ideographs based on [Source Han Sans](https://github.com/adobe-fonts/source-han-sans) CN", needs of using CJK ideographs in the URO and Extension A blocks can be solved by directly using the Source Han Sans font. As for these CJK ideographs scattered in the URO and Extension A, included in this project are CJK ideographs with glyph changes in Unicode or inconsistent with the purpose of this project. Before adding these CJK ideographs to the project, they have been compared with other mainstream fonts and glyphs in the Unicode.
-### 3. Will there be a version containing other weights (or other local glyphs) in the future?
-- Since the quantities of this project are too large, so this request is not in our reach by now. If you have such ideas, you can make a derivative font version of the project with your requirements.
-### 4. Why is there no ℂomplex 𝕋ext 𝕃ayout (CTL) and 𝕀deographs 𝕍ariation 𝕊electors (IVS) in this font?
-- The fonts of this project orientate themselves as pragmatic tool fonts, that is they are not responsible for precise typesetting but only for display (see [Unifont](https://unifoundry.com/unifont)). Using CTL to typeset and display these scripts, and displaying regional variation ideographs other than the CN variant using IVSs is OUTSIDE the coverage of the project. If you have such ideas, you can produce derivation fonts of this project by yourself if in need.
-### 5. Can the TTC font from this project (a collection of multiple TrueType fonts) be directly used on smartphones or within software? Can it be installed on a phone to display all font styles simultaneously? Are there compatibility issues across software platforms or is it limited to specific platforms?
-- The TTC font from this project is compatible with Windows platforms and works seamlessly there. However, on mobile devices, directly installing a TTC font file typically results in displaying only one font style (usually P1) due to technical constraints. To display all font styles within software applications, special configurations may be required. Compatibility with TTC fonts can vary across different platforms, often requiring additional steps. Detailed instructions for installing Plangothic on an Android phone are provided here.
+- A single font can contain at most 65,535 glyphs, and the total number of ideographs far exceeds that limit.
+### 2. Why does this project include so few ideographs from the basic CJK Unified Ideographs block and Extension A?
+- The aim of this project is to supplement [Source Han Sans](https://github.com/adobe-fonts/source-han-sans). To display ideographs from the basic CJK Unified Ideographs block and Extension A, use Source Han Sans directly. The few ideographs from those blocks included here either have had glyph changes in Unicode or fall outside the project's stated aims. Before adding these glyphs, we compared them with those in other widely used fonts and the Unicode code charts.
+### 3. Are other weights or regional glyph forms planned?
+- Given the scale of the project, we have no plans to add other weights or regional glyph forms. You may create a derivative font to suit your needs.
+### 4. Why doesn't this font support complex text layout (CTL) or ideographic variation sequences (IVSes)?
+- The project's fonts are intended primarily for basic glyph display, similar to [Unifont](https://unifoundry.com/unifont). Precise typesetting of complex scripts with CTL and displaying glyph forms from other regions with IVSes are outside the project's scope. You may create a derivative font to suit your needs.
+### 5. Can I install the TTC (TrueType Collection) directly on a phone or use it in an app? Can it display glyphs from both fonts? Does compatibility vary by platform?
+- The TTC works on Windows. Installing it directly on a mobile device makes only one of the fonts available, usually P1, so glyphs from both fonts cannot be displayed at the same time. In apps, you may need extra configuration to display glyphs from both fonts in the TTC. Compatibility varies by platform, and in most cases additional steps are required.
 ### 6. What are the differences between the distribution editions?
-- **Super edition**: Includes font files in all formats; the package size is relatively large.
-- **Static edition**: Contains two separate TTF font files (P1 and P2) and a TTC file.
-- **OTF edition**: OpenType format font files and a TTC/OTC file.
-- **Web edition**: WOFF2 format web font files.
-- **Individual TTF files**: Extracted directly from the Static edition for convenient separate download and use.
+- **Super edition** includes font files in all formats, so the package is relatively large.
+- **Static edition** contains two separate TTF font files (P1 and P2) and a TTC file.
+- **OTF edition** includes OpenType font files and a TTC/OTC file.
+- **Web edition** includes WOFF2 web font files.
+- **Individual TTF files** are taken directly from the Static edition for separate download and use.
 
-**Archive formats**: The .7z and .zip files contain the same contents, only differing in compression. .7z yields smaller archives but may require third‑party decompression software; .zip archives are slightly larger but are supported natively by most operating systems.
+The .7z and .zip archives contain the same files and differ only in compression ratio. The .7z archives are smaller but may require third-party software to extract. The .zip archives are slightly larger and have built-in system support.
 
 <details>
-<summary><b>P.S.: How to install Plangothic font on the Windows platform and set it as the global fallback font:</b></summary>
+<summary><b>Installing Plangothic on Windows and setting it as a global fallback font</b></summary>
 
-**Basic Installation Method:**
+**Basic installation**
 
-1. **Install font**: Download TTF version font files (choose either two separate ttf files or a single ttc file), right-click and select "Install for all users" (requires administrator privileges);
-2. **Configure fallback**: Double-click to run `registry/Plangothic-Install.reg` (requires administrator privileges)
-3. **Re-login**: Log out and log back in to Windows account for settings to take effect
-4. **Uninstall**: Simply delete font files, or run `registry/Plangothic-Uninstall.reg` to remove registry configuration
+1. **Install the fonts.** Download the two separate TTF files or the single TTC file. Right-click each downloaded file and select “Install for all users” (requires administrator privileges).
+2. **Configure fallback.** Double-click `registry/Plangothic-Install.reg` (requires administrator privileges).
+3. **Sign in again.** Sign out of Windows and sign back in to apply the changes.
+4. **Uninstall.** Remove the installed font files to uninstall the fonts. Run `registry/Plangothic-Uninstall.reg` to remove the fallback registry settings.
 
-> **Advanced usage and detailed instructions**: See [Experimental_README.md](./registry/Experimental/README.md)
+> See the [experimental README](./registry/Experimental/README.md) for advanced use and detailed instructions.
 </details>
 
 ## Contact
-If you have any questions or suggestions during the use of this font, please feel free to provide feedback. You can submit an issue in the project (unrelated content is strictly prohibited), or you can provide feedback through the following contact information:
+We welcome questions and suggestions about the font. You can open an issue in this repository. Unrelated submissions are prohibited. You can also contact the author below.
 - GitHub: https://github.com/Fitzgerald-Porthmouth-Koenigsegg
 - Twitter: https://twitter.com/Fitzgerald_P_K_/
-- E-mails: 374601620@qq.com (Backup email: fitzgeraldkoenigsegg@gmail.com)
+- Email: 374601620@qq.com (backup: fitzgeraldkoenigsegg@gmail.com)
 
-## Other instructions
-1. Due to certain reasons, we DO NOT have any discussion groups (Telegram, Discord, etc.), and we deeply apologize for any inconvenience caused to you.
-2. This is a long-term project. We would be grateful if you could promote the project to others. We also welcome technical personnels in font production and accept you to continue to improve this project. You can contact the author through said information. The development of this project is inseparable from your publicity and encouragement.
-3. The members of this project are not professional font designers, so the font structure may not be aesthetically pleasing, and the added text may have a slight inconsistency compared to the original version. In addition, due to the limited time and energy of the members, there is no extra time for the project to refine. Some parts of the Chinese characters will be assembled very rigidly. Therefore, we cannot guarantee the accuracy of the font data and whether the expected presentation effect can be perfectly reproduced on your device. The author makes no express or implied warranties about this font, nor assumes any responsibility for any claims, damages, or attributable reasons arising from your use of this font.
-4. Some of the Chinese Mainland glyphs included in this font **DO NOT** fully follow the fonts displayed in the [Unicode charts file](https://www.unicode.org/charts/). If you mind or cannot accept, please do not use this font.
-5. This project borrows and/or refers to other tools and/or open-source font projects in part or whole, mainly including:
+## Additional notes
+1. Anyone can contribute to the Plangothic Project. Contributors should have a basic understanding of regional glyph forms, glyph design, the relevant software, and Unicode.
+2. We are always looking for contributors, including people with experience making fonts who can help improve the project. You can reach the author through the contact details above. You can also help by introducing others to the project. Your encouragement and support help the project grow.
+3. The project team does not include professional type designers. Some glyphs may be less polished, and added glyphs may look slightly out of place alongside the original ones. The team has limited time and capacity for refinement, so the components of some characters may fit together awkwardly. We cannot guarantee the accuracy of the font data or that the intended rendering will be reproduced perfectly on your device. The author makes no express or implied warranties and assumes no liability for claims, damages, or other liabilities arising from your use of the font.
+4. Some glyphs from Chinese national standards in this font do not fully match the forms shown in the [official Unicode code charts](https://www.unicode.org/charts/). If exact matches are important to you, please do not use this font.
+5. The project uses or draws on other tools and open-source font projects, in whole or in part. The main ones are listed below.
     - [Source Han Sans](https://github.com/adobe-fonts/source-han-sans).
     - Other fonts in the Noto series.
-    - [Sukima Gothic (すきまゴシック)](https://oppekebekkanko.booth.pm/items/2117070) developed by [oppekebekkanko](https://oppekebekkanko.booth.pm/).
-    - [Chiron Hei HK](https://github.com/chiron-fonts/chiron-hei-hk)。
+    - [Sukima Gothic (すきまゴシック, 隙间黑体)](https://oppekebekkanko.booth.pm/items/2117070) developed by [oppekebekkanko](https://oppekebekkanko.booth.pm/).
+    - [Chiron Hei HK](https://github.com/chiron-fonts/chiron-hei-hk).
     - [Zhudou-Sans](https://github.com/Buernia/Zhudou-Sans) developed by [Buernia](https://github.com/Buernia).
-    - [Zitools](https://zi.tools) developed by [Yi Bai](https://github.com/yi-bai).
-    - [Gothic Nguyen](https://github.com/TKYKmori/Gothic-Nguyen).
-    - [Unicode charts file](https://www.unicode.org/charts/).
-    - [Unihan database](https://www.unicode.org/Public/16.0.0/ucd/Unihan.zip).
-    - [Shokaki Hentaigana Gothic（しょかき変体仮名ゴチック）](https://shokaki.booth.pm/items/5633978) developed by [ぼんのう堂](https://shokaki.booth.pm).
+    - [Zi.tools](https://zi.tools) developed by [Yi Bai](https://github.com/yi-bai).
+    - [Gothic Nguyen (阮黑体)](https://github.com/TKYKmori/Gothic-Nguyen).
+    - [Official Unicode code charts](https://www.unicode.org/charts/).
+    - [Unihan database](https://www.unicode.org/Public/18.0.0/ucd/Unihan.zip).
+    - [Shokaki Hentaigana Gothic (しょかき変体仮名ゴチック)](https://shokaki.booth.pm/items/5633978) developed by [ぼんのう堂](https://shokaki.booth.pm).
     - [Unicodia](https://github.com/Mercury13/unicodia/).
     - [Shanggu Sans](https://github.com/GuiWonder/Shanggu).
-    - [Chill Duan Sans](https://github.com/Warren2060/ChillDuanSans)。
+    - [Chill Duan Sans](https://github.com/Warren2060/ChillDuanSans).
+    - [GenZui Sans (源萃黑体)](https://genzui.mkpo.li/sans).
 
 ## About "The Planiverse"
-Founded by Fitzgerald in December 2023 and includes several sub-projects currently as follows:
-1. **Plangothic Project (Chinese: 遍黑体项目)**: Based on Source Han Sans CN and takes the CN variant as the standard to supplement the CJK Unified Ideographs Extension blocks.
-    - **Status**: Keep up with the latest version of Unicode.
-2. **Planwritzen Project (Chinese: 遍蕤体项目)**: Based on Fitzgerald's own handwriting and using the Plangothic Project as the standard. Character range set to align with the Source Han Sans + Plangothic Project temporarily (or there may be an extension).
-    - **Status**: Created project without homepage. Uncompleted.
-3. **Planschrift Project (Chinese: 遍玨体项目)**: Based on Huiwen-mincho supplementing the CJK Unified Ideographs Extension blocks. Temporary character range expanded from the range of Huiwen-mincho to Source Han Sans + Plangothic Project.
-    - **Status**: Created project and its [homepage](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Planschrift_Project). Uncompleted.
-4. ***Planseal Project (Chinese: 遍篆体项目)***: Based on the seal script in *Shuowen Jiezi* and as the standard to supplement the CJK Unified Ideographs Extension blocks.
-    - **Status**: Due to the addition of the seal script in Unicode 18.0, it has been merged with the Plangothic project, Planwritzen Project, Planschrift Project, and become a part of it.
-5. **Planicon Project (Chinese: 遍象体项目)**: Based on CJK ideographs icons in the [Zi.tools](https://zi.tools/) and as the standard to supplement the CJK Unified Ideographs Extension blocks. Temporary character range set to URO and Extension A. Other ideographs are partly available.
-    - **Status**: Not created. Name tentative.
-6. **Plantsing Project (Chinese: 遍擎体项目)**: Based on the Wuying Hall version of *Kangxi Dictionary* and as the standard to supplement the CJK Unified Ideographs Extension blocks. Temporary character range set to align with the Plangothic Project.
-    - **Status**: Not created.
-7. ***Plangul Project (Chinese: 遍训体项目)***: Based on Source Han Sans CN, creating Hangul in the form of CJK ideographs. Temporary  character range set to Hangul and Hangul Extension.
-    - **Status**: Merge with the Plangothic project and become a part of it.
-8. **Planfixibit Project (Chinese: 遍缮体项目)**: Based on [Fixedsys Excelsior](https://github.com/kika/fixedsys), Follow up on the latest version of Unicode and implement character supplementation projects.
-    - **Status**: Not created. Name tentative.
-9. **Plantone Project (Chinese: 遍磊体项目)**: Based on the *Kaicheng Stone Classics* and as the standard to supplement the CJK Unified Ideographs Extension blocks.
-    - **Status**: Not created. Name tentative.
+Fitzgerald founded the Planiverse font family in December 2023. It currently includes the following subprojects.
+1. **Plangothic Project (Chinese: 遍黑体项目)** builds on Source Han Sans to supplement glyph coverage in the CJK Unified Ideographs extension blocks, using Mainland Chinese glyph forms as its standard.
+    - **Status** — Keeps up with the latest Unicode version.
+2. **Planwritzen Project (Chinese: 遍蕤体项目)** is based on Fitzgerald's own handwriting and follows the glyph forms in the Plangothic Project. Its tentative coverage combines that of Source Han Sans and Plangothic, with possible further additions.
+    - **Status** — The project has been started and has no homepage yet.
+3. **Planschrift Project (Chinese: 遍玨体项目)** builds on Huiwen Mincho to supplement glyph coverage in the CJK Unified Ideographs extension blocks. It tentatively aims to extend the coverage of Huiwen Mincho to include that of Source Han Sans and Plangothic.
+    - **Status** — The project and its [homepage](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Planschrift_Project) have been created. The project is unfinished.
+4. ***Planseal Project (Chinese: 遍篆体项目)*** supplements glyph coverage in the CJK Unified Ideographs extension blocks based on the small seal script in *Shuowen Jiezi*.
+    - **Status** — Following the addition of the Seal (Small Seal) block in Unicode 18.0, Planseal was incorporated into Plangothic, Planwritzen, and Planschrift.
+5. **Planicon Project (Chinese: 遍象体项目)** adds glyphs based on selected ideograph icons from [Zi.tools](https://zi.tools/). Its tentative coverage includes the basic CJK Unified Ideographs block and Extension A, with scattered glyphs in other ideograph blocks.
+    - **Status** — The project has been started and has no homepage yet. Its name is tentative.
+6. **Plantsing Project (Chinese: 遍擎体项目)** supplements glyph coverage in the CJK Unified Ideographs extension blocks based on the Wuying Hall edition of the *Kangxi Dictionary*. Its tentative character coverage matches Plangothic's.
+    - **Status** — Neither the project nor its homepage has been created.
+7. ***Plangul Project (Chinese: 遍训体项目)*** builds on Source Han Sans to draw Hangul glyphs in the form of CJK ideographs. Its tentative coverage includes basic and extended Hangul.
+    - **Status** — Incorporated into the Plangothic Project.
+8. **Planfixibit Project (Chinese: 遍缮体项目)** builds on [Fixedsys Excelsior](https://github.com/kika/fixedsys), following the latest Unicode version and adding characters.
+    - **Status** — Neither the project nor its homepage has been created. Its name is tentative.
+9. **Plantone Project (Chinese: 遍磊体项目)** supplements glyph coverage in the CJK Unified Ideographs extension blocks based on the *Kaicheng Stone Classics*.
+    - **Status** — Neither the project nor its homepage has been created. Its name is tentative.
 > [!WARNING]
 >
-> 1. Strictly speaking, Planicon Project, Planfixibit Project, Plangul Project does not meet the requirements for "The Planiverse", but still included for convenience.
-> 2. Prone to Planicon Project copyright disputes.
+> 1. Strictly speaking, Planicon, Planfixibit, and Plangul fall outside the criteria for inclusion in Planiverse. They are listed as part of the family for convenience.
+> 2. The Planicon Project may give rise to copyright disputes.
 
 ## Star History
 [![Star History Chart](https://api.star-history.com/chart?repos=fitzgerald-porthmouth-koenigsegg/plangothic_project&type=date&legend=top-left)](https://www.star-history.com/?repos=fitzgerald-porthmouth-koenigsegg%2Fplangothic_project&type=timeline&legend=top-left)
